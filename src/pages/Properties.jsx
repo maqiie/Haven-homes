@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { properties } from '../propertyData.jsx/propertyData'
+import { properties } from '../data/propertyData'
 
 const Properties = () => {
   const [filters, setFilters] = useState({

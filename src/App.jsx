@@ -6,12 +6,15 @@ import Properties from './pages/Properties'
 import PropertyDetail from './pages/PropertyDetail'
 import Contact from './pages/Contact'
 import About from './pages/About'
+import FloatingChat from './components/FloatingChat'
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
+        <FloatingChat />
+
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />

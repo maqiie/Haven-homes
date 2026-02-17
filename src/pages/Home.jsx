@@ -1,1058 +1,1263 @@
+// import { useState } from 'react'
+// import { Link } from 'react-router-dom'
+
+// const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+
+// const galleryImages = [
+//   { id: 1, src: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80',  label: 'Lavington Villa',      cat: 'Villa'     },
+//   { id: 2, src: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=700&q=80',  label: 'Kilimani Penthouse',   cat: 'Apartment' },
+//   { id: 3, src: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80',     label: 'Westlands Loft',       cat: 'Apartment' },
+//   { id: 4, src: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=700&q=80',  label: 'Runda Retreat',        cat: 'Villa'     },
+//   { id: 5, src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80',  label: 'Karen Residence',      cat: 'House'     },
+//   { id: 6, src: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80',     label: 'Luxury Interior',      cat: 'Interior'  },
+//   { id: 7, src: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80',  label: 'Langata Home',         cat: 'House'     },
+//   { id: 8, src: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=80',  label: 'Kileleshwa Bungalow',  cat: 'Bungalow'  },
+//   { id: 9, src: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=700&q=80',  label: 'Waterfront Villa',     cat: 'Villa'     },
+// ]
+
+// const galHeights = [320, 240, 260, 300, 240, 280, 260, 300, 240]
+
+// const Home = () => {
+//   const [activeFilter, setActiveFilter] = useState('all')
+//   const [formData, setFormData]         = useState({ role: '', name: '', email: '', phone: '', message: '' })
+//   const [formStatus, setFormStatus]     = useState(null)
+//   const [galleryTab, setGalleryTab]     = useState('All')
+//   const [lightbox, setLightbox]         = useState(null)
+
+//   const properties = [
+//     { id: 1, title: 'Modern Waterfront Villa',  location: 'Lavington',  price: 'KSh 24,500,000', beds: 4, baths: 3, sqm: 320, image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80', tag: 'For Sale',  type: 'villa'     },
+//     { id: 2, title: 'Downtown Penthouse',        location: 'Westlands',  price: 'KSh 42,000,000', beds: 3, baths: 3, sqm: 280, image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80', tag: 'Featured',  type: 'apartment' },
+//     { id: 3, title: 'Suburban Family Home',      location: 'Kileleshwa', price: 'KSh 8,750,000',  beds: 5, baths: 4, sqm: 410, image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80', tag: 'For Sale',  type: 'house'     },
+//     { id: 4, title: 'Contemporary Loft',         location: 'Kilimani',   price: 'KSh 11,500,000', beds: 2, baths: 2, sqm: 185, image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80', tag: 'New',       type: 'apartment' },
+//     { id: 5, title: 'Mountain Retreat',          location: 'Runda',      price: 'KSh 38,000,000', beds: 6, baths: 5, sqm: 540, image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80', tag: 'Featured',  type: 'villa'     },
+//     { id: 6, title: 'Coastal Cottage',           location: 'Langata',    price: 'KSh 29,000,000', beds: 3, baths: 2, sqm: 240, image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80', tag: 'For Sale',  type: 'house'     },
+//   ]
+
+//   const propFilters = ['All', 'Villa', 'Apartment', 'House']
+//   const galTabs     = ['All', 'Villa', 'Apartment', 'House', 'Interior', 'Bungalow']
+//   const filtered    = activeFilter === 'all' ? properties : properties.filter(p => p.type === activeFilter)
+//   const visibleGal  = galleryTab  === 'All'  ? galleryImages : galleryImages.filter(i => i.cat === galleryTab)
+
+//   const handleForm = async (e) => {
+//     e.preventDefault()
+//     setFormStatus('sending')
+//     try {
+//       const res = await fetch(FORMSPREE_ENDPOINT, {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+//         body: JSON.stringify(formData),
+//       })
+//       if (res.ok) { setFormStatus('success'); setFormData({ role: '', name: '', email: '', phone: '', message: '' }) }
+//       else setFormStatus('error')
+//     } catch { setFormStatus('error') }
+//   }
+
+//   return (
+//     <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#F9F7F4', color: '#1a1a1a' }}>
+//       <style>{`
+//         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+//         * { box-sizing: border-box; margin: 0; padding: 0; }
+//         html { scroll-behavior: smooth; }
+//         .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+//         .fade-up { animation: fadeUp 0.8s ease both; }
+//         @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+//         .prop-card:hover .prop-img { transform: scale(1.04); }
+//         .prop-img { transition: transform 0.6s ease; }
+//         .ulink { position:relative; display:inline-block; }
+//         .ulink::after { content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:#1a1a1a; transition:width 0.3s; }
+//         .ulink:hover::after { width:100%; }
+//         input:focus, textarea:focus { outline:none; border-color:#8B7355 !important; }
+//         .gal-item { cursor:zoom-in; overflow:hidden; position:relative; }
+//         .gal-img-el { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; }
+//         .gal-item:hover .gal-img-el { transform:scale(1.06); }
+//         .gal-ov { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,transparent 55%); opacity:0; transition:opacity 0.3s; display:flex; align-items:flex-end; padding:20px 22px; }
+//         .gal-item:hover .gal-ov { opacity:1; }
+//         .lbx { position:fixed; inset:0; background:rgba(0,0,0,0.94); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
+//         .policy-row:not(:last-child) { border-bottom:1px solid rgba(255,255,255,0.07); }
+//         @media(max-width:900px) {
+//           .two-col { grid-template-columns:1fr !important; }
+//           .four-stat { grid-template-columns:1fr 1fr !important; }
+//           .loc-grid { grid-template-columns:1fr 1fr !important; grid-template-rows:auto !important; }
+//           .loc-grid a:nth-child(2) { grid-row:auto !important; }
+//           .pol-ben { grid-template-columns:1fr 1fr !important; }
+//         }
+//         @media(max-width:560px) {
+//           .gal-cols { columns:1 !important; }
+//           .four-stat { grid-template-columns:1fr !important; }
+//           .pol-ben { grid-template-columns:1fr !important; }
+//           .loc-grid { grid-template-columns:1fr !important; }
+//         }
+//       `}</style>
+
+//       {/* ══ HERO ══════════════════════════════════════════════════ */}
+//       <section style={{ position:'relative', height:'100vh', minHeight:640, overflow:'hidden' }}>
+//         <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80" alt="Hero"
+//           style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }} />
+//         <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom,rgba(10,8,6,.55) 0%,rgba(10,8,6,.45) 60%,rgba(10,8,6,.72) 100%)' }} />
+//         <div style={{ position:'relative', zIndex:10, height:'100%', display:'flex', flexDirection:'column', justifyContent:'flex-end', padding:'0 6vw 80px' }}>
+//           <p className="fade-up serif" style={{ color:'rgba(255,255,255,.65)', fontSize:14, letterSpacing:'0.2em', textTransform:'uppercase', marginBottom:20, animationDelay:'.1s' }}>
+//             Nairobi's Premier Real Estate
+//           </p>
+//           <h1 className="fade-up serif" style={{ fontSize:'clamp(52px,9vw,110px)', fontWeight:300, color:'#fff', lineHeight:.95, letterSpacing:'-.02em', animationDelay:'.2s' }}>
+//             HavenRise<br /><em>Homes</em>
+//           </h1>
+//           <p className="fade-up" style={{ marginTop:28, fontSize:16, color:'rgba(255,255,255,.6)', maxWidth:420, lineHeight:1.6, fontWeight:300, animationDelay:'.35s' }}>
+//             Extraordinary properties in Kenya's most exclusive neighbourhoods — curated for those who expect the finest.
+//           </p>
+//           <div className="fade-up" style={{ marginTop:44, display:'flex', gap:16, flexWrap:'wrap', animationDelay:'.5s' }}>
+//             <Link to="/properties" style={{ display:'inline-flex', alignItems:'center', gap:10, background:'#fff', color:'#1a1a1a', padding:'14px 32px', fontSize:13, fontWeight:600, letterSpacing:'.1em', textTransform:'uppercase', textDecoration:'none' }}>
+//               Browse Properties <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+//             </Link>
+//             <a href="#contact" style={{ display:'inline-flex', alignItems:'center', background:'transparent', color:'#fff', padding:'14px 32px', fontSize:13, fontWeight:500, letterSpacing:'.1em', textTransform:'uppercase', border:'1px solid rgba(255,255,255,.35)', textDecoration:'none' }}>
+//               Get in Touch
+//             </a>
+//           </div>
+//         </div>
+//         <div style={{ position:'absolute', bottom:36, right:'6vw', display:'flex', flexDirection:'column', alignItems:'center', gap:8, zIndex:10 }}>
+//           <p style={{ color:'rgba(255,255,255,.4)', fontSize:10, letterSpacing:'.25em', textTransform:'uppercase', writingMode:'vertical-lr' }}>Scroll</p>
+//           <div style={{ width:1, height:48, background:'rgba(255,255,255,.25)' }} />
+//         </div>
+//       </section>
+
+//       {/* ══ MARQUEE ═══════════════════════════════════════════════ */}
+//       <div style={{ background:'#1a1a1a', padding:'20px 0', borderBottom:'1px solid #2a2a2a', overflow:'hidden' }}>
+//         <div style={{ display:'flex', gap:80, whiteSpace:'nowrap', paddingLeft:'6vw' }}>
+//           {["500+ Properties Listed","1,000+ Happy Clients","15 Years of Excellence","98% Client Satisfaction","Nairobi's #1 Agency"].map((item,i) => (
+//             <span key={i} style={{ fontSize:12, letterSpacing:'.2em', textTransform:'uppercase', color:'rgba(255,255,255,.45)' }}>
+//               <span style={{ color:'#8B7355', marginRight:16 }}>◆</span>{item}
+//             </span>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* ══ ABOUT ═════════════════════════════════════════════════ */}
+//       <section style={{ padding:'120px 6vw', maxWidth:1400, margin:'0 auto' }}>
+//         <div className="two-col" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:80, alignItems:'center' }}>
+//           <div>
+//             <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:20, fontWeight:600 }}>About Us</p>
+//             <h2 className="serif" style={{ fontSize:'clamp(38px,4vw,58px)', fontWeight:300, lineHeight:1.1, letterSpacing:'-.02em' }}>
+//               Redefining<br /><em>Luxury Living</em><br />in Nairobi
+//             </h2>
+//             <div style={{ width:40, height:1, background:'#8B7355', margin:'32px 0' }} />
+//             <p style={{ fontSize:15, lineHeight:1.8, color:'#555', fontWeight:300, maxWidth:480 }}>
+//               HavenRise Homes is Nairobi's premier real estate agency, specialising in luxury properties and bespoke real estate solutions. With decades of combined experience, we've built lasting relationships on trust and unparalleled service.
+//             </p>
+//             <p style={{ fontSize:15, lineHeight:1.8, color:'#555', fontWeight:300, maxWidth:480, marginTop:16 }}>
+//               We understand that your home is more than four walls — it's where your story unfolds.
+//             </p>
+//             <Link className="ulink" to="/about" style={{ display:'inline-block', marginTop:36, fontSize:13, letterSpacing:'.15em', textTransform:'uppercase', fontWeight:600, color:'#1a1a1a', textDecoration:'none' }}>
+//               Our Story →
+//             </Link>
+//           </div>
+//           <div style={{ position:'relative' }}>
+//             <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="Luxury interior"
+//               style={{ width:'100%', height:520, objectFit:'cover' }} />
+//             <div style={{ position:'absolute', bottom:-24, left:-24, background:'#F9F7F4', padding:'28px 32px', border:'1px solid #E8E4DF' }}>
+//               <p className="serif" style={{ fontSize:42, fontWeight:300, lineHeight:1 }}>15+</p>
+//               <p style={{ fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', color:'#8B7355', marginTop:6, fontWeight:600 }}>Years of Excellence</p>
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ══ FEATURED PROPERTIES ═══════════════════════════════════ */}
+//       <section style={{ background:'#F0EDE8', padding:'100px 6vw' }}>
+//         <div style={{ maxWidth:1400, margin:'0 auto' }}>
+//           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:60, flexWrap:'wrap', gap:32 }}>
+//             <div>
+//               <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:16, fontWeight:600 }}>Our Collection</p>
+//               <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,52px)', fontWeight:300, letterSpacing:'-.02em', lineHeight:1 }}>Featured Properties</h2>
+//             </div>
+//             <div style={{ display:'flex', gap:8, flexWrap:'wrap' }}>
+//               {propFilters.map(f => (
+//                 <button key={f} onClick={() => setActiveFilter(f.toLowerCase())}
+//                   style={{ padding:'9px 22px', fontSize:12, letterSpacing:'.1em', textTransform:'uppercase', fontWeight:500, cursor:'pointer', border:'1px solid', transition:'all .2s', fontFamily:'inherit', background:activeFilter===f.toLowerCase()?'#1a1a1a':'transparent', color:activeFilter===f.toLowerCase()?'#fff':'#555', borderColor:activeFilter===f.toLowerCase()?'#1a1a1a':'#ccc' }}>
+//                   {f}
+//                 </button>
+//               ))}
+//             </div>
+//           </div>
+
+//           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(320px,1fr))', gap:24 }}>
+//             {filtered.map(p => (
+//               <div key={p.id} className="prop-card" style={{ background:'#fff', overflow:'hidden' }}>
+//                 <div style={{ position:'relative', height:280, overflow:'hidden' }}>
+//                   <img src={p.image} alt={p.title} className="prop-img" style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
+//                   <span style={{ position:'absolute', top:20, left:20, background:'#1a1a1a', color:'#fff', fontSize:10, letterSpacing:'.15em', textTransform:'uppercase', padding:'6px 14px', fontWeight:600 }}>{p.tag}</span>
+//                 </div>
+//                 <div style={{ padding:'28px 28px 32px' }}>
+//                   <h3 style={{ fontSize:18, fontWeight:500, lineHeight:1.3, marginBottom:8 }}>{p.title}</h3>
+//                   <p style={{ fontSize:12, color:'#8B7355', letterSpacing:'.05em', marginBottom:20, display:'flex', alignItems:'center', gap:5 }}>
+//                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+//                     {p.location}, Nairobi
+//                   </p>
+//                   <div style={{ height:1, background:'#F0EDE8', marginBottom:20 }} />
+//                   <div style={{ display:'flex', gap:24, marginBottom:24 }}>
+//                     {[{v:p.beds,l:'Beds'},{v:p.baths,l:'Baths'},{v:p.sqm,l:'Sq m'}].map(s => (
+//                       <div key={s.l}>
+//                         <p style={{ fontSize:16, fontWeight:600 }}>{s.v}</p>
+//                         <p style={{ fontSize:11, color:'#999', marginTop:2 }}>{s.l}</p>
+//                       </div>
+//                     ))}
+//                   </div>
+//                   <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+//                     <p className="serif" style={{ fontSize:22, fontWeight:400 }}>{p.price}</p>
+//                     <Link to={`/property/${p.id}`} className="ulink" style={{ fontSize:12, letterSpacing:'.12em', textTransform:'uppercase', fontWeight:600, color:'#1a1a1a', textDecoration:'none' }}>View →</Link>
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+
+//           <div style={{ textAlign:'center', marginTop:60 }}>
+//             <Link to="/properties" style={{ display:'inline-flex', alignItems:'center', gap:10, background:'#1a1a1a', color:'#fff', padding:'16px 40px', fontSize:12, fontWeight:600, letterSpacing:'.15em', textTransform:'uppercase', textDecoration:'none' }}>
+//               View All Properties <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+//             </Link>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ══ GALLERY ═══════════════════════════════════════════════ */}
+//       <section style={{ padding:'100px 6vw', background:'#1a1a1a' }}>
+//         <div style={{ maxWidth:1400, margin:'0 auto' }}>
+//           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:52, flexWrap:'wrap', gap:24 }}>
+//             <div>
+//               <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:16 }}>Our Portfolio</p>
+//               <h2 className="serif" style={{ fontSize:'clamp(32px,4vw,52px)', fontWeight:300, color:'#fff', letterSpacing:'-.02em', lineHeight:1 }}>Property Gallery</h2>
+//             </div>
+//             <div style={{ display:'flex', gap:6, flexWrap:'wrap' }}>
+//               {galTabs.map(tab => (
+//                 <button key={tab} onClick={() => setGalleryTab(tab)}
+//                   style={{ padding:'8px 18px', fontSize:11, letterSpacing:'.12em', textTransform:'uppercase', fontWeight:500, cursor:'pointer', border:'1px solid', transition:'all .2s', fontFamily:'inherit', background:galleryTab===tab?'#8B7355':'transparent', color:galleryTab===tab?'#fff':'rgba(255,255,255,.4)', borderColor:galleryTab===tab?'#8B7355':'rgba(255,255,255,.15)' }}>
+//                   {tab}
+//                 </button>
+//               ))}
+//             </div>
+//           </div>
+
+//           <div className="gal-cols" style={{ columns:'3 260px', gap:10 }}>
+//             {visibleGal.map((img, i) => (
+//               <div key={img.id} className="gal-item" onClick={() => setLightbox(img)}
+//                 style={{ marginBottom:10, breakInside:'avoid', height: galHeights[i % galHeights.length] }}>
+//                 <img src={img.src} alt={img.label} className="gal-img-el" style={{ height: galHeights[i % galHeights.length] }} />
+//                 <div className="gal-ov">
+//                   <div>
+//                     <p style={{ fontFamily:'Cormorant Garamond,serif', fontSize:18, fontWeight:400, color:'#fff', lineHeight:1 }}>{img.label}</p>
+//                     <p style={{ fontSize:10, letterSpacing:'.18em', textTransform:'uppercase', color:'#8B7355', marginTop:5 }}>{img.cat}</p>
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+
+//           <div style={{ textAlign:'center', marginTop:52 }}>
+//             <Link to="/properties"
+//               style={{ display:'inline-flex', alignItems:'center', gap:10, padding:'14px 38px', background:'transparent', color:'#fff', fontSize:11, fontWeight:600, letterSpacing:'.18em', textTransform:'uppercase', textDecoration:'none', border:'1px solid rgba(255,255,255,.2)', transition:'border-color .2s' }}
+//               onMouseEnter={e => e.currentTarget.style.borderColor='#8B7355'}
+//               onMouseLeave={e => e.currentTarget.style.borderColor='rgba(255,255,255,.2)'}>
+//               View All Properties <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+//             </Link>
+//           </div>
+//         </div>
+
+//         {lightbox && (
+//           <div className="lbx" onClick={() => setLightbox(null)}>
+//             <div style={{ position:'relative', maxWidth:'90vw' }} onClick={e => e.stopPropagation()}>
+//               <img src={lightbox.src} alt={lightbox.label} style={{ maxWidth:'88vw', maxHeight:'80vh', objectFit:'contain', display:'block' }} />
+//               <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:20 }}>
+//                 <div>
+//                   <p style={{ fontFamily:'Cormorant Garamond,serif', fontSize:20, fontWeight:400, color:'#fff' }}>{lightbox.label}</p>
+//                   <p style={{ fontSize:10, letterSpacing:'.18em', textTransform:'uppercase', color:'#8B7355', marginTop:4 }}>{lightbox.cat}</p>
+//                 </div>
+//                 <button onClick={() => setLightbox(null)}
+//                   style={{ background:'none', border:'1px solid rgba(255,255,255,.2)', color:'#fff', cursor:'pointer', padding:'8px 20px', fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', fontFamily:'inherit' }}>
+//                   Close ✕
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         )}
+//       </section>
+
+//       {/* ══ LOCATIONS ═════════════════════════════════════════════ */}
+//       <section style={{ padding:'100px 6vw', maxWidth:1400, margin:'0 auto' }}>
+//         <div style={{ marginBottom:60 }}>
+//           <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:16, fontWeight:600 }}>Where We Operate</p>
+//           <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,52px)', fontWeight:300, letterSpacing:'-.02em' }}>Prime Nairobi Neighbourhoods</h2>
+//         </div>
+//         <div className="loc-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gridTemplateRows:'repeat(2,260px)', gap:12 }}>
+//           {[
+//             { name:'Westlands',  count:45, img:'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80' },
+//             { name:'Kilimani',   count:32, img:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', tall:true },
+//             { name:'Lavington',  count:28, img:'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80' },
+//             { name:'Runda',      count:18, img:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80' },
+//             { name:'Kileleshwa', count:25, img:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80' },
+//           ].map(loc => (
+//             <Link key={loc.name} to={`/properties?location=${loc.name.toLowerCase()}`}
+//               style={{ position:'relative', overflow:'hidden', display:'block', textDecoration:'none', ...(loc.tall ? { gridRow:'span 2' } : {}) }}>
+//               <img src={loc.img} alt={loc.name}
+//                 style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform .6s ease' }}
+//                 onMouseEnter={e => e.currentTarget.style.transform='scale(1.05)'}
+//                 onMouseLeave={e => e.currentTarget.style.transform='scale(1)'} />
+//               <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 50%,transparent 100%)' }} />
+//               <div style={{ position:'absolute', bottom:0, left:0, right:0, padding:'24px 28px' }}>
+//                 <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:loc.tall?32:24, fontWeight:400, color:'#fff', marginBottom:4 }}>{loc.name}</h3>
+//                 <p style={{ fontSize:11, color:'rgba(255,255,255,.65)', letterSpacing:'.1em', textTransform:'uppercase' }}>{loc.count} Properties</p>
+//               </div>
+//             </Link>
+//           ))}
+//         </div>
+//       </section>
+
+//       {/* ══ FULL-BLEED QUOTE ══════════════════════════════════════ */}
+//       <section style={{ position:'relative', height:520, overflow:'hidden' }}>
+//         <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1920&q=80" alt="Interior"
+//           style={{ width:'100%', height:'100%', objectFit:'cover' }} />
+//         <div style={{ position:'absolute', inset:0, background:'rgba(10,8,6,.62)' }} />
+//         <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', textAlign:'center', padding:'0 6vw' }}>
+//           <div>
+//             <p style={{ fontSize:12, letterSpacing:'.25em', textTransform:'uppercase', color:'rgba(255,255,255,.55)', marginBottom:20 }}>Our Promise</p>
+//             <h2 className="serif" style={{ fontSize:'clamp(28px,5vw,60px)', fontWeight:300, color:'#fff', lineHeight:1.15, letterSpacing:'-.02em', maxWidth:760 }}>
+//               "Every home we represent reflects our commitment to <em>exceptional quality</em>"
+//             </h2>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ══ VIEWING POLICY ════════════════════════════════════════ */}
+//       <section style={{ background:'#111010', padding:'100px 6vw' }}>
+//         <div style={{ height:1, background:'linear-gradient(to right,transparent,#8B7355,transparent)', marginBottom:80 }} />
+//         <div style={{ maxWidth:1400, margin:'0 auto' }}>
+
+//           {/* Header row */}
+//           <div className="two-col" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:80, alignItems:'flex-start', marginBottom:72 }}>
+//             <div>
+//               <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:20 }}>HavenRise Realty</p>
+//               <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,56px)', fontWeight:300, color:'#fff', lineHeight:1.05, letterSpacing:'-.02em', marginBottom:28 }}>
+//                 Our Viewing<br /><em>Policy</em>
+//               </h2>
+//               <div style={{ width:40, height:1, background:'#8B7355', marginBottom:28 }} />
+//               <p className="serif" style={{ fontSize:20, fontWeight:300, color:'rgba(255,255,255,.5)', lineHeight:1.7, fontStyle:'italic', maxWidth:460 }}>
+//                 "We value both our clients' time and property owners' privacy — every viewing is a curated, purposeful experience."
+//               </p>
+//             </div>
+//             {/* Fee card */}
+//             <div style={{ background:'#1a1a1a', padding:'44px 40px', borderTop:'2px solid #8B7355' }}>
+//               <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:20 }}>Commitment Fee</p>
+//               <p className="serif" style={{ fontSize:52, fontWeight:300, color:'#fff', lineHeight:1 }}>KES 3,000</p>
+//               <p style={{ fontSize:13, color:'rgba(255,255,255,.3)', margin:'6px 0', fontWeight:300 }}>— to —</p>
+//               <p className="serif" style={{ fontSize:52, fontWeight:300, color:'#fff', lineHeight:1, marginBottom:24 }}>5,000</p>
+//               <div style={{ height:1, background:'rgba(255,255,255,.07)', marginBottom:20 }} />
+//               <p style={{ fontSize:13, color:'rgba(255,255,255,.45)', lineHeight:1.75, fontWeight:300 }}>
+//                 Fully refundable or deductible from commission upon successful purchase. Fee varies by property value.
+//               </p>
+//             </div>
+//           </div>
+
+//           {/* Requirements */}
+//           <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:28 }}>Before Scheduling a Viewing</p>
+//           <div style={{ marginBottom:64 }}>
+//             {[
+//               { n:'01', title:'Client Intake Form', desc:'A completed client intake form helps us understand your property needs, preferences, and lifestyle requirements so we can curate the most relevant viewings for you.' },
+//               { n:'02', title:'Budget & Timeline Confirmation', desc:'Confirmation of your budget range and intended purchase or lease timeline allows our agents to prioritise the most suitable properties for your schedule.' },
+//               { n:'03', title:'Viewing Commitment Fee (KES 3,000 – 5,000)', desc:'Required prior to scheduling. Refundable or deductible from commission upon purchase — ensuring all parties engage seriously and respectfully.' },
+//             ].map(item => (
+//               <div key={item.n} className="policy-row" style={{ display:'grid', gridTemplateColumns:'56px 1fr', gap:28, padding:'32px 0' }}>
+//                 <p className="serif" style={{ fontSize:38, fontWeight:300, color:'rgba(255,255,255,.1)', lineHeight:1 }}>{item.n}</p>
+//                 <div>
+//                   <h3 style={{ fontSize:16, fontWeight:600, color:'#fff', marginBottom:10 }}>{item.title}</h3>
+//                   <p style={{ fontSize:14, color:'rgba(255,255,255,.45)', lineHeight:1.75, fontWeight:300 }}>{item.desc}</p>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+
+//           {/* Benefits */}
+//           <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:24 }}>This Policy Ensures</p>
+//           <div className="pol-ben" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:64 }}>
+//             {[
+//               { title:'Serious Buyer Engagement',          desc:'Every viewing is attended by a financially ready, committed client.' },
+//               { title:'Structured Property Tours',          desc:'Organised, guided viewings with full documentation prepared.' },
+//               { title:'Efficient Time Management',         desc:"Respecting everyone's schedule through disciplined, planned appointments." },
+//               { title:'Professional Seller Representation', desc:'Sellers confident their property is shown only to vetted buyers.' },
+//             ].map(item => (
+//               <div key={item.title} style={{ background:'#1a1a1a', padding:'28px 24px 32px', borderTop:'1px solid rgba(139,115,85,.4)' }}>
+//                 <span style={{ color:'#8B7355', fontSize:14, display:'block', marginBottom:14 }}>✦</span>
+//                 <h3 style={{ fontSize:14, fontWeight:600, color:'#fff', marginBottom:10, lineHeight:1.35 }}>{item.title}</h3>
+//                 <p style={{ fontSize:13, color:'rgba(255,255,255,.4)', lineHeight:1.7, fontWeight:300 }}>{item.desc}</p>
+//               </div>
+//             ))}
+//           </div>
+
+//           {/* Closing */}
+//           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', gap:32, flexWrap:'wrap' }}>
+//             <div style={{ display:'flex', gap:20, alignItems:'flex-start', flex:1 }}>
+//               <div style={{ width:2, background:'#8B7355', flexShrink:0, alignSelf:'stretch', minHeight:40 }} />
+//               <p className="serif" style={{ fontSize:19, fontWeight:300, color:'rgba(255,255,255,.55)', lineHeight:1.65, fontStyle:'italic' }}>
+//                 "We appreciate your understanding as we maintain the highest standards of service for all our clients." — The HavenRise Team
+//               </p>
+//             </div>
+//             <a href="#contact" style={{ display:'inline-flex', alignItems:'center', gap:10, padding:'15px 32px', background:'#8B7355', color:'#fff', fontSize:11, fontWeight:600, letterSpacing:'.18em', textTransform:'uppercase', textDecoration:'none', whiteSpace:'nowrap', flexShrink:0 }}>
+//               Book a Viewing →
+//             </a>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ══ WHY US ════════════════════════════════════════════════ */}
+//       <section style={{ padding:'100px 6vw', maxWidth:1400, margin:'0 auto' }}>
+//         <div style={{ marginBottom:72 }}>
+//           <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:16, fontWeight:600 }}>Why Choose Us</p>
+//           <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,52px)', fontWeight:300, letterSpacing:'-.02em' }}>The HavenRise Difference</h2>
+//         </div>
+//         <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))', gap:40 }}>
+//           {[
+//             { n:'01', title:'Verified Listings',  desc:'Every property is thoroughly vetted and authenticated before listing.' },
+//             { n:'02', title:'24/7 Support',        desc:'Round-the-clock assistance from our dedicated team of licensed professionals.' },
+//             { n:'03', title:'Transparent Pricing', desc:'Competitive, honest rates with zero hidden fees or surprise costs.' },
+//             { n:'04', title:'Seamless Process',    desc:'Streamlined procedures to make your acquisition smooth and stress-free.' },
+//           ].map(f => (
+//             <div key={f.n} style={{ borderTop:'1px solid #E8E4DF', paddingTop:32 }}>
+//               <p className="serif" style={{ fontSize:44, fontWeight:300, color:'#E8E4DF', lineHeight:1, marginBottom:20 }}>{f.n}</p>
+//               <h3 style={{ fontSize:17, fontWeight:600, marginBottom:12 }}>{f.title}</h3>
+//               <p style={{ fontSize:14, color:'#777', lineHeight:1.7, fontWeight:300 }}>{f.desc}</p>
+//             </div>
+//           ))}
+//         </div>
+//       </section>
+
+//       {/* ══ TESTIMONIALS ══════════════════════════════════════════ */}
+//       <section style={{ background:'#1a1a1a', padding:'100px 6vw' }}>
+//         <div style={{ maxWidth:1400, margin:'0 auto' }}>
+//           <div style={{ marginBottom:60 }}>
+//             <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:16, fontWeight:600 }}>Client Stories</p>
+//             <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,52px)', fontWeight:300, color:'#fff', letterSpacing:'-.02em' }}>Trusted by Thousands</h2>
+//           </div>
+//           <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:24 }}>
+//             {[
+//               { name:'Sarah Mitchell', role:'Homeowner',        img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80', text:'HavenRise made finding our dream home effortless. Professional, responsive, and truly understanding of our needs from day one.' },
+//               { name:'James Omondi',   role:'Property Investor', img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80', text:"Exceptional service from start to finish. The team's expertise and dedication exceeded every expectation I had." },
+//               { name:'Amina Hassan',   role:'Tenant',            img:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80', text:'Found the perfect property within our budget in record time. They handled everything seamlessly and professionally.' },
+//             ].map(t => (
+//               <div key={t.name} style={{ background:'#242424', padding:'36px', borderTop:'2px solid #8B7355' }}>
+//                 <div style={{ display:'flex', gap:4, marginBottom:24 }}>
+//                   {[...Array(5)].map((_,i) => <span key={i} style={{ color:'#8B7355', fontSize:14 }}>★</span>)}
+//                 </div>
+//                 <p style={{ fontSize:15, color:'rgba(255,255,255,.7)', lineHeight:1.8, fontWeight:300, marginBottom:28, fontStyle:'italic' }}>"{t.text}"</p>
+//                 <div style={{ display:'flex', alignItems:'center', gap:14 }}>
+//                   <img src={t.img} alt={t.name} style={{ width:44, height:44, borderRadius:'50%', objectFit:'cover' }} />
+//                   <div>
+//                     <p style={{ fontSize:14, fontWeight:600, color:'#fff' }}>{t.name}</p>
+//                     <p style={{ fontSize:11, color:'#8B7355', letterSpacing:'.05em', marginTop:2 }}>{t.role}</p>
+//                   </div>
+//                 </div>
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ══ STATS ═════════════════════════════════════════════════ */}
+//       <section style={{ borderBottom:'1px solid #E8E4DF' }}>
+//         <div className="four-stat" style={{ maxWidth:1400, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)' }}>
+//           {[['500+','Properties Listed'],['1,000+','Happy Clients'],['15+','Years Experience'],['98%','Satisfaction Rate']].map(([num,label]) => (
+//             <div key={label} style={{ padding:'60px 40px', textAlign:'center', borderRight:'1px solid #E8E4DF' }}>
+//               <p className="serif" style={{ fontSize:52, fontWeight:300, lineHeight:1 }}>{num}</p>
+//               <p style={{ fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', color:'#8B7355', marginTop:10, fontWeight:600 }}>{label}</p>
+//             </div>
+//           ))}
+//         </div>
+//       </section>
+
+//       {/* ══ CONTACT FORM ══════════════════════════════════════════ */}
+//       <section id="contact" style={{ background:'#F0EDE8', padding:'100px 6vw' }}>
+//         <div className="two-col" style={{ maxWidth:1000, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:80, alignItems:'start' }}>
+//           <div>
+//             <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:20, fontWeight:600 }}>Let's Talk</p>
+//             <h2 className="serif" style={{ fontSize:'clamp(32px,4vw,48px)', fontWeight:300, lineHeight:1.1, letterSpacing:'-.02em', marginBottom:24 }}>
+//               Find Your<br /><em>Perfect Home</em>
+//             </h2>
+//             <div style={{ width:40, height:1, background:'#8B7355', marginBottom:28 }} />
+//             <p style={{ fontSize:14, color:'#666', lineHeight:1.8, fontWeight:300, marginBottom:40 }}>
+//               Whether you're buying, renting, or listing — our expert team is ready to guide you. Tell us about yourself and we'll be in touch shortly.
+//             </p>
+//             <div style={{ display:'flex', flexDirection:'column', gap:20 }}>
+//               {[
+//                 { svg:<svg width="14" height="14" fill="none" stroke="#8B7355" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>, label:'Phone',  val:'+254 700 000 000' },
+//                 { svg:<svg width="14" height="14" fill="none" stroke="#8B7355" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>, label:'Email',  val:'hello@havenrise.co.ke' },
+//                 { svg:<svg width="14" height="14" fill="none" stroke="#8B7355" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>, label:'Office', val:'Westlands, Nairobi' },
+//               ].map(c => (
+//                 <div key={c.label} style={{ display:'flex', gap:16, alignItems:'flex-start' }}>
+//                   <span style={{ marginTop:2 }}>{c.svg}</span>
+//                   <div>
+//                     <p style={{ fontSize:10, letterSpacing:'.15em', textTransform:'uppercase', color:'#8B7355', fontWeight:600 }}>{c.label}</p>
+//                     <p style={{ fontSize:14, marginTop:3 }}>{c.val}</p>
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+
+//           <div style={{ background:'#fff', padding:'48px 44px' }}>
+//             {formStatus === 'success' ? (
+//               <div style={{ textAlign:'center', padding:'40px 0' }}>
+//                 <div style={{ width:56, height:56, borderRadius:'50%', background:'#f0fdf4', border:'1px solid #86efac', display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 20px', fontSize:24 }}>✓</div>
+//                 <h3 className="serif" style={{ fontSize:28, fontWeight:300, marginBottom:12 }}>Message Sent</h3>
+//                 <p style={{ fontSize:14, color:'#777', lineHeight:1.7 }}>Thank you for reaching out. Our team will contact you within 24 hours.</p>
+//                 <button onClick={() => setFormStatus(null)} style={{ marginTop:28, fontSize:12, letterSpacing:'.15em', textTransform:'uppercase', fontWeight:600, color:'#8B7355', background:'none', border:'none', cursor:'pointer', fontFamily:'inherit' }}>
+//                   Send Another →
+//                 </button>
+//               </div>
+//             ) : (
+//               <form onSubmit={handleForm}>
+//                 <div style={{ marginBottom:28 }}>
+//                   <p style={{ fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', color:'#999', marginBottom:14, fontWeight:600 }}>I am a</p>
+//                   <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8 }}>
+//                     {['Buyer','Tenant','Agent','Other'].map(role => (
+//                       <button key={role} type="button" onClick={() => setFormData({...formData, role})}
+//                         style={{ padding:'11px 8px', fontSize:12, letterSpacing:'.1em', textTransform:'uppercase', fontWeight:500, cursor:'pointer', border:'1px solid', fontFamily:'inherit', transition:'all .15s', background:formData.role===role?'#1a1a1a':'transparent', color:formData.role===role?'#fff':'#999', borderColor:formData.role===role?'#1a1a1a':'#ddd' }}>
+//                         {role}
+//                       </button>
+//                     ))}
+//                   </div>
+//                 </div>
+//                 {[
+//                   { key:'name',  label:'Full Name',     type:'text',  placeholder:'Jane Doe' },
+//                   { key:'email', label:'Email Address', type:'email', placeholder:'jane@example.com' },
+//                   { key:'phone', label:'Phone Number',  type:'tel',   placeholder:'+254 700 000 000' },
+//                 ].map(f => (
+//                   <div key={f.key} style={{ marginBottom:20 }}>
+//                     <label style={{ display:'block', fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', color:'#999', marginBottom:8, fontWeight:600 }}>{f.label}</label>
+//                     <input type={f.type} required placeholder={f.placeholder}
+//                       value={formData[f.key]}
+//                       onChange={e => setFormData({...formData, [f.key]: e.target.value})}
+//                       style={{ width:'100%', padding:'13px 16px', fontSize:14, border:'1px solid #E8E4DF', background:'#FAFAFA', color:'#1a1a1a', fontFamily:'inherit', transition:'border-color .2s' }} />
+//                   </div>
+//                 ))}
+//                 <div style={{ marginBottom:28 }}>
+//                   <label style={{ display:'block', fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', color:'#999', marginBottom:8, fontWeight:600 }}>
+//                     Message <span style={{ color:'#ccc', fontWeight:400 }}>(optional)</span>
+//                   </label>
+//                   <textarea rows={3} placeholder="Tell us what you're looking for..."
+//                     value={formData.message}
+//                     onChange={e => setFormData({...formData, message: e.target.value})}
+//                     style={{ width:'100%', padding:'13px 16px', fontSize:14, border:'1px solid #E8E4DF', background:'#FAFAFA', color:'#1a1a1a', fontFamily:'inherit', resize:'vertical', transition:'border-color .2s' }} />
+//                 </div>
+//                 {formStatus === 'error' && (
+//                   <p style={{ fontSize:13, color:'#c0392b', marginBottom:16 }}>Something went wrong. Please try again or email us directly.</p>
+//                 )}
+//                 <button type="submit" disabled={formStatus==='sending' || !formData.role}
+//                   style={{ width:'100%', padding:'16px', background:formData.role?'#1a1a1a':'#ccc', color:'#fff', fontSize:12, letterSpacing:'.2em', textTransform:'uppercase', fontWeight:600, border:'none', cursor:formData.role?'pointer':'not-allowed', fontFamily:'inherit', transition:'background .2s' }}>
+//                   {formStatus==='sending' ? 'Sending…' : 'Send Enquiry →'}
+//                 </button>
+//                 <p style={{ fontSize:11, color:'#bbb', marginTop:14, textAlign:'center' }}>We respond within 24 hours</p>
+//               </form>
+//             )}
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* ══ NEWSLETTER ════════════════════════════════════════════ */}
+//       <section style={{ position:'relative', padding:'100px 6vw', overflow:'hidden' }}>
+//         <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1920&q=80" alt="Luxury home"
+//           style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }} />
+//         <div style={{ position:'absolute', inset:0, background:'rgba(10,8,6,.84)' }} />
+//         <div style={{ position:'relative', zIndex:10, maxWidth:640, margin:'0 auto', textAlign:'center' }}>
+//           <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:20, fontWeight:600 }}>Stay Updated</p>
+//           <h2 className="serif" style={{ fontSize:'clamp(32px,4vw,52px)', fontWeight:300, color:'#fff', lineHeight:1.1, letterSpacing:'-.02em', marginBottom:16 }}>
+//             Exclusive Listings<br /><em>Delivered to You</em>
+//           </h2>
+//           <p style={{ fontSize:14, color:'rgba(255,255,255,.5)', marginBottom:40, lineHeight:1.7 }}>
+//             Join 10,000+ subscribers and be first to hear about new properties and market insights.
+//           </p>
+//           <form onSubmit={e => e.preventDefault()} style={{ display:'flex', maxWidth:480, margin:'0 auto' }}>
+//             <input type="email" placeholder="Your email address" required
+//               style={{ flex:1, padding:'15px 20px', fontSize:14, background:'rgba(255,255,255,.08)', border:'1px solid rgba(255,255,255,.15)', borderRight:'none', color:'#fff', fontFamily:'inherit' }} />
+//             <button type="submit"
+//               style={{ padding:'15px 28px', background:'#8B7355', color:'#fff', fontSize:12, letterSpacing:'.15em', textTransform:'uppercase', fontWeight:600, border:'none', cursor:'pointer', fontFamily:'inherit', whiteSpace:'nowrap' }}>
+//               Subscribe
+//             </button>
+//           </form>
+//           <p style={{ fontSize:11, color:'rgba(255,255,255,.3)', marginTop:16 }}>Unsubscribe at any time. No spam.</p>
+//         </div>
+//       </section>
+
+//     </div>
+//   )
+// }
+
+// export default Home
+
+
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+
+const galleryImages = [
+  { id: 1, src: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80',  label: 'Lavington Villa',      cat: 'Villa'     },
+  { id: 2, src: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=700&q=80',  label: 'Kilimani Penthouse',   cat: 'Apartment' },
+  { id: 3, src: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80',     label: 'Westlands Loft',       cat: 'Apartment' },
+  { id: 4, src: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=700&q=80',  label: 'Runda Retreat',        cat: 'Villa'     },
+  { id: 5, src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80',  label: 'Karen Residence',      cat: 'House'     },
+  { id: 6, src: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80',     label: 'Luxury Interior',      cat: 'Interior'  },
+  { id: 7, src: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80',  label: 'Langata Home',         cat: 'House'     },
+  { id: 8, src: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=700&q=80',  label: 'Kileleshwa Bungalow',  cat: 'Bungalow'  },
+  { id: 9, src: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=700&q=80',  label: 'Waterfront Villa',     cat: 'Villa'     },
+]
+
+const galHeights = [320, 240, 260, 300, 240, 280, 260, 300, 240]
+
 const Home = () => {
-  const [searchFilters, setSearchFilters] = useState({
-    propertyType: '',
-    bedrooms: '',
-    location: '',
-    listingType: '',
-    budget: ''
-  })
-  const [activeLocationFilter, setActiveLocationFilter] = useState('all')
+  const [activeFilter, setActiveFilter] = useState('all')
+  const [formData, setFormData]         = useState({ role: '', name: '', email: '', phone: '', message: '' })
+  const [formStatus, setFormStatus]     = useState(null)
+  const [galleryTab, setGalleryTab]     = useState('All')
+  const [lightbox, setLightbox]         = useState(null)
 
   const properties = [
-    {
-      id: 1,
-      title: "Modern Waterfront Villa",
-      location: "Lavington",
-      price: "KSh 24,500,000",
-      beds: 4,
-      baths: 3,
-      sqm: 320,
-      image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
-      type: "for-sale",
-      featured: true,
-      propertyType: "Villa"
-    },
-    {
-      id: 2,
-      title: "Downtown Penthouse",
-      location: "Westlands",
-      price: "KSh 42,000,000",
-      beds: 3,
-      baths: 3,
-      sqm: 280,
-      image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
-      type: "for-sale",
-      featured: true,
-      propertyType: "Apartment"
-    },
-    {
-      id: 3,
-      title: "Suburban Family Home",
-      location: "Kileleshwa",
-      price: "KSh 8,750,000",
-      beds: 5,
-      baths: 4,
-      sqm: 410,
-      image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
-      type: "for-sale",
-      featured: false,
-      propertyType: "Bungalow"
-    },
-    {
-      id: 4,
-      title: "Contemporary Loft",
-      location: "Kilimani",
-      price: "KSh 11,500,000",
-      beds: 2,
-      baths: 2,
-      sqm: 185,
-      image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
-      type: "for-sale",
-      featured: false,
-      propertyType: "Apartment"
-    },
-    {
-      id: 5,
-      title: "Mountain Retreat",
-      location: "Runda",
-      price: "KSh 38,000,000",
-      beds: 6,
-      baths: 5,
-      sqm: 540,
-      image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80",
-      type: "for-sale",
-      featured: true,
-      propertyType: "Villa"
-    },
-    {
-      id: 6,
-      title: "Coastal Cottage",
-      location: "Langata",
-      price: "KSh 29,000,000",
-      beds: 3,
-      baths: 2,
-      sqm: 240,
-      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
-      type: "for-sale",
-      featured: false,
-      propertyType: "Townhouse"
-    }
+    { id: 1, title: 'Modern Waterfront Villa',  location: 'Lavington',  price: 'KSh 24,500,000', beds: 4, baths: 3, sqm: 320, image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80', tag: 'For Sale',  type: 'villa'     },
+    { id: 2, title: 'Downtown Penthouse',        location: 'Westlands',  price: 'KSh 42,000,000', beds: 3, baths: 3, sqm: 280, image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80', tag: 'Featured',  type: 'apartment' },
+    { id: 3, title: 'Suburban Family Home',      location: 'Kileleshwa', price: 'KSh 8,750,000',  beds: 5, baths: 4, sqm: 410, image: 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80', tag: 'For Sale',  type: 'house'     },
+    { id: 4, title: 'Contemporary Loft',         location: 'Kilimani',   price: 'KSh 11,500,000', beds: 2, baths: 2, sqm: 185, image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80', tag: 'New',       type: 'apartment' },
+    { id: 5, title: 'Mountain Retreat',          location: 'Runda',      price: 'KSh 38,000,000', beds: 6, baths: 5, sqm: 540, image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80', tag: 'Featured',  type: 'villa'     },
+    { id: 6, title: 'Coastal Cottage',           location: 'Langata',    price: 'KSh 29,000,000', beds: 3, baths: 2, sqm: 240, image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80', tag: 'For Sale',  type: 'house'     },
   ]
 
-  const locations = ['All', 'Kileleshwa', 'Lavington', 'Kilimani', 'Langata', 'Ngong', 'Runda', 'Westlands']
+  const propFilters = ['All', 'Villa', 'Apartment', 'House']
+  const galTabs     = ['All', 'Villa', 'Apartment', 'House', 'Interior', 'Bungalow']
+  const filtered    = activeFilter === 'all' ? properties : properties.filter(p => p.type === activeFilter)
+  const visibleGal  = galleryTab  === 'All'  ? galleryImages : galleryImages.filter(i => i.cat === galleryTab)
 
-  const filteredProperties = activeLocationFilter === 'all' 
-    ? properties 
-    : properties.filter(p => p.location.toLowerCase() === activeLocationFilter.toLowerCase())
-
-  const handleSearch = (e) => {
+  const handleForm = async (e) => {
     e.preventDefault()
-    console.log('Search filters:', searchFilters)
+    setFormStatus('sending')
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      if (res.ok) { setFormStatus('success'); setFormData({ role: '', name: '', email: '', phone: '', message: '' }) }
+      else setFormStatus('error')
+    } catch { setFormStatus('error') }
   }
 
   return (
-    <div className="bg-black">
-      {/* Hero Section with Background Image */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image with Parallax Effect */}
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80"
-            alt="Luxury home"
-            className="w-full h-full object-cover scale-105"
-          />
-          {/* Dark Overlay with Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
-          
-          {/* Animated Grid Overlay */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-              backgroundSize: '50px 50px'
-            }}></div>
+    <div style={{ fontFamily: "'DM Sans', sans-serif", background: '#F9F7F4', color: '#1a1a1a' }}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+        .fade-up { animation: fadeUp 0.8s ease both; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+        .prop-card:hover .prop-img { transform: scale(1.04); }
+        .prop-img { transition: transform 0.6s ease; }
+        .ulink { position:relative; display:inline-block; }
+        .ulink::after { content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:#1a1a1a; transition:width 0.3s; }
+        .ulink:hover::after { width:100%; }
+        .ulink-gold::after { background:#8B7355; }
+        input:focus, textarea:focus { outline:none; border-color:#8B7355 !important; }
+        .gal-item { cursor:zoom-in; overflow:hidden; position:relative; }
+        .gal-img-el { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.6s ease; }
+        .gal-item:hover .gal-img-el { transform:scale(1.06); }
+        .gal-ov { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,transparent 55%); opacity:0; transition:opacity 0.3s; display:flex; align-items:flex-end; padding:20px 22px; }
+        .gal-item:hover .gal-ov { opacity:1; }
+        .lbx { position:fixed; inset:0; background:rgba(0,0,0,0.94); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
+        .policy-row:not(:last-child) { border-bottom:1px solid rgba(255,255,255,0.07); }
+        .about-img-hover { transition: transform 0.6s ease; }
+        .about-img-wrap:hover .about-img-hover { transform: scale(1.03); }
+        @media(max-width:1024px) {
+          .about-grid { grid-template-columns: 1fr !important; }
+          .about-imgs { grid-template-columns: 1fr 1fr !important; height: 360px !important; }
+          .about-imgs-tall { display: none !important; }
+        }
+        @media(max-width:900px) {
+          .two-col { grid-template-columns:1fr !important; }
+          .four-stat { grid-template-columns:1fr 1fr !important; }
+          .loc-grid { grid-template-columns:1fr 1fr !important; grid-template-rows:auto !important; }
+          .loc-grid a:nth-child(2) { grid-row:auto !important; }
+          .pol-ben { grid-template-columns:1fr 1fr !important; }
+          .about-vals { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media(max-width:560px) {
+          .gal-cols { columns:1 !important; }
+          .four-stat { grid-template-columns:1fr !important; }
+          .pol-ben { grid-template-columns:1fr !important; }
+          .loc-grid { grid-template-columns:1fr !important; }
+          .about-imgs { grid-template-columns: 1fr !important; }
+          .about-vals { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+
+      {/* ══ HERO ══════════════════════════════════════════════════ */}
+      <section style={{ position:'relative', height:'100vh', minHeight:640, overflow:'hidden' }}>
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80" alt="Hero"
+          style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }} />
+        <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom,rgba(10,8,6,.55) 0%,rgba(10,8,6,.45) 60%,rgba(10,8,6,.72) 100%)' }} />
+        <div style={{ position:'relative', zIndex:10, height:'100%', display:'flex', flexDirection:'column', justifyContent:'flex-end', padding:'0 6vw 80px' }}>
+          <p className="fade-up serif" style={{ color:'rgba(255,255,255,.65)', fontSize:14, letterSpacing:'0.2em', textTransform:'uppercase', marginBottom:20, animationDelay:'.1s' }}>
+            Nairobi's Premier Real Estate
+          </p>
+          <h1 className="fade-up serif" style={{ fontSize:'clamp(52px,9vw,110px)', fontWeight:300, color:'#fff', lineHeight:.95, letterSpacing:'-.02em', animationDelay:'.2s' }}>
+            HavenRise<br /><em>Homes</em>
+          </h1>
+          <p className="fade-up" style={{ marginTop:28, fontSize:16, color:'rgba(255,255,255,.6)', maxWidth:420, lineHeight:1.6, fontWeight:300, animationDelay:'.35s' }}>
+            Extraordinary properties in Kenya's most exclusive neighbourhoods — curated for those who expect the finest.
+          </p>
+          <div className="fade-up" style={{ marginTop:44, display:'flex', gap:16, flexWrap:'wrap', animationDelay:'.5s' }}>
+            <Link to="/properties" style={{ display:'inline-flex', alignItems:'center', gap:10, background:'#fff', color:'#1a1a1a', padding:'14px 32px', fontSize:13, fontWeight:600, letterSpacing:'.1em', textTransform:'uppercase', textDecoration:'none' }}>
+              Browse Properties <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+            <a href="#contact" style={{ display:'inline-flex', alignItems:'center', background:'transparent', color:'#fff', padding:'14px 32px', fontSize:13, fontWeight:500, letterSpacing:'.1em', textTransform:'uppercase', border:'1px solid rgba(255,255,255,.35)', textDecoration:'none' }}>
+              Get in Touch
+            </a>
+          </div>
+        </div>
+        <div style={{ position:'absolute', bottom:36, right:'6vw', display:'flex', flexDirection:'column', alignItems:'center', gap:8, zIndex:10 }}>
+          <p style={{ color:'rgba(255,255,255,.4)', fontSize:10, letterSpacing:'.25em', textTransform:'uppercase', writingMode:'vertical-lr' }}>Scroll</p>
+          <div style={{ width:1, height:48, background:'rgba(255,255,255,.25)' }} />
+        </div>
+      </section>
+
+      {/* ══ MARQUEE ═══════════════════════════════════════════════ */}
+      <div style={{ background:'#1a1a1a', padding:'20px 0', borderBottom:'1px solid #2a2a2a', overflow:'hidden' }}>
+        <div style={{ display:'flex', gap:80, whiteSpace:'nowrap', paddingLeft:'6vw' }}>
+          {["500+ Properties Listed","1,000+ Happy Clients","15 Years of Excellence","98% Client Satisfaction","Nairobi's #1 Agency"].map((item,i) => (
+            <span key={i} style={{ fontSize:12, letterSpacing:'.2em', textTransform:'uppercase', color:'rgba(255,255,255,.45)' }}>
+              <span style={{ color:'#8B7355', marginRight:16 }}>◆</span>{item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ══ ABOUT — UPGRADED ══════════════════════════════════════ */}
+      <section style={{ background:'#F9F7F4', overflow:'hidden' }}>
+
+        {/* Top band — full width headline */}
+        <div style={{ padding:'80px 6vw 0', maxWidth:1400, margin:'0 auto' }}>
+          <div style={{ display:'flex', alignItems:'center', gap:20, marginBottom:40 }}>
+            <div style={{ width:40, height:1, background:'#8B7355' }} />
+            <p style={{ fontSize:10, letterSpacing:'.25em', textTransform:'uppercase', color:'#8B7355', fontWeight:600 }}>About HavenRise</p>
+          </div>
+          <h2 className="serif" style={{ fontSize:'clamp(44px,6vw,88px)', fontWeight:300, lineHeight:.95, letterSpacing:'-.03em', maxWidth:900 }}>
+            Redefining<br />Luxury Living<br /><em style={{ color:'#8B7355' }}>in Nairobi</em>
+          </h2>
+        </div>
+
+        {/* Main grid */}
+        <div className="about-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', maxWidth:1400, margin:'0 auto', padding:'60px 6vw 0' }}>
+
+          {/* LEFT — text + values */}
+          <div style={{ paddingRight:'6vw', paddingBottom:80 }}>
+            <p style={{ fontSize:17, lineHeight:1.85, color:'#555', fontWeight:300, marginBottom:28, maxWidth:520 }}>
+              HavenRise Homes is Nairobi's premier real estate agency, specialising in luxury properties and bespoke real estate solutions. For over 15 years we've been the quiet force behind thousands of life-changing property transactions.
+            </p>
+            <p style={{ fontSize:17, lineHeight:1.85, color:'#555', fontWeight:300, marginBottom:48, maxWidth:520 }}>
+              We don't just sell properties — we curate lifestyles. Every home we represent is a reflection of our commitment to exceptional quality, transparent dealings, and the belief that where you live shapes who you become.
+            </p>
+
+            {/* Pull quote */}
+            <div style={{ borderLeft:'2px solid #8B7355', paddingLeft:24, marginBottom:48 }}>
+              <p className="serif" style={{ fontSize:22, fontWeight:300, color:'#1a1a1a', lineHeight:1.55, fontStyle:'italic' }}>
+                "Your home is more than four walls — it's where your story unfolds."
+              </p>
+            </div>
+
+            {/* Core values */}
+            <div className="about-vals" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:1, marginBottom:52 }}>
+              {[
+                { icon:'◈', title:'Trust First',      desc:'Every relationship we build is grounded in transparency and integrity.' },
+                { icon:'◈', title:'Curated Quality',  desc:'We handpick only properties that meet our exacting standards.' },
+                { icon:'◈', title:'Client-Centred',   desc:'Your goals drive every decision our agents make on your behalf.' },
+                { icon:'◈', title:'Deep Local Roots',  desc:'15+ years of Nairobi market knowledge, neighbourhood by neighbourhood.' },
+              ].map(v => (
+                <div key={v.title} style={{ background:'#F0EDE8', padding:'24px 22px' }}>
+                  <span style={{ color:'#8B7355', fontSize:13, display:'block', marginBottom:10 }}>{v.icon}</span>
+                  <h4 style={{ fontSize:14, fontWeight:600, color:'#1a1a1a', marginBottom:8 }}>{v.title}</h4>
+                  <p style={{ fontSize:12, color:'#888', lineHeight:1.65, fontWeight:300 }}>{v.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <Link className="ulink ulink-gold" to="/about"
+              style={{ display:'inline-flex', alignItems:'center', gap:10, fontSize:12, letterSpacing:'.18em', textTransform:'uppercase', fontWeight:600, color:'#8B7355', textDecoration:'none' }}>
+              Discover Our Full Story
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+          </div>
+
+          {/* RIGHT — stacked images + stat cards */}
+          <div style={{ position:'relative' }}>
+            {/* Image mosaic */}
+            <div className="about-imgs" style={{ display:'grid', gridTemplateColumns:'1.1fr 0.9fr', gridTemplateRows:'280px 220px', gap:8, height:516 }}>
+              {/* Main large image */}
+              <div className="about-img-wrap" style={{ gridRow:'span 2', overflow:'hidden' }}>
+                <img className="about-img-hover"
+                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
+                  alt="Luxury interior"
+                  style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
+              </div>
+              {/* Top right */}
+              <div className="about-img-wrap" style={{ overflow:'hidden' }}>
+                <img className="about-img-hover"
+                  src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80"
+                  alt="Property"
+                  style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
+              </div>
+              {/* Bottom right — dark with team note */}
+              <div style={{ background:'#1a1a1a', display:'flex', flexDirection:'column', justifyContent:'flex-end', padding:'24px 22px' }}>
+                <p className="serif" style={{ fontSize:36, fontWeight:300, color:'#fff', lineHeight:1 }}>500+</p>
+                <p style={{ fontSize:10, letterSpacing:'.18em', textTransform:'uppercase', color:'#8B7355', marginTop:6, fontWeight:600 }}>Properties Sold</p>
+              </div>
+            </div>
+
+            {/* Floating stat card — bottom left, overlapping */}
+            <div style={{ position:'absolute', bottom:-36, left:-28, background:'#fff', padding:'28px 30px', border:'1px solid #E8E4DF', boxShadow:'0 8px 40px rgba(0,0,0,0.08)', zIndex:2 }}>
+              <div style={{ display:'flex', gap:28 }}>
+                {[['15+','Years'],['1K+','Clients'],['98%','Satisfaction']].map(([n,l]) => (
+                  <div key={l} style={{ textAlign:'center' }}>
+                    <p className="serif" style={{ fontSize:32, fontWeight:300, color:'#1a1a1a', lineHeight:1 }}>{n}</p>
+                    <p style={{ fontSize:10, letterSpacing:'.14em', textTransform:'uppercase', color:'#8B7355', marginTop:5, fontWeight:600 }}>{l}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Gold accent dot */}
+            <div style={{ position:'absolute', top:-16, right:-16, width:48, height:48, borderRadius:'50%', border:'1px solid #8B7355', opacity:.3 }} />
+            <div style={{ position:'absolute', top:-8, right:-8, width:16, height:16, borderRadius:'50%', background:'#8B7355' }} />
           </div>
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-32">
-          <div className="text-center mb-16">
-            {/* Animated Badge */}
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 backdrop-blur-xl rounded-full mb-8 border border-white/10 hover:bg-white/10 transition-all group">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-              </span>
-              <span className="text-white text-sm font-medium tracking-wide">Premium Real Estate in Nairobi</span>
-            </div>
-            
-            {/* Main Heading with Gradient */}
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tighter leading-none">
-              HavenRise
-              <br />
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent animate-gradient">
-                Homes
-              </span>
-            </h1>
-            
-            <p className="text-2xl md:text-3xl text-gray-300 mb-6 font-light tracking-wide">
-              Where Luxury Meets Lifestyle
-            </p>
-            <p className="text-gray-400 text-base max-w-2xl mx-auto leading-relaxed">
-              Discover extraordinary properties in Kenya's most exclusive neighborhoods
-            </p>
+        {/* Bottom awards/trust strip */}
+        <div style={{ borderTop:'1px solid #E8E4DF', marginTop:80 }}>
+          <div style={{ maxWidth:1400, margin:'0 auto', padding:'32px 6vw', display:'flex', alignItems:'center', gap:48, flexWrap:'wrap', justifyContent:'space-between' }}>
+            <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#aaa', fontWeight:500 }}>Recognised & Trusted</p>
+            {['Kenya Property Network','Nairobi Real Estate Board','Luxury Portfolio Intl.','EARB Member 2024'].map(award => (
+              <span key={award} style={{ fontSize:12, color:'#bbb', fontWeight:300, letterSpacing:'.04em', borderLeft:'1px solid #E8E4DF', paddingLeft:24 }}>{award}</span>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Modern Search Form */}
-          <form onSubmit={handleSearch} className="bg-black/40 backdrop-blur-2xl rounded-3xl shadow-2xl p-8 md:p-10 max-w-6xl mx-auto border border-white/10 hover:border-white/20 transition-all">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
-              {/* Property Type */}
-              <div className="text-left lg:col-span-1">
-                <label className="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest">
-                  Type
-                </label>
-                <select
-                  value={searchFilters.propertyType}
-                  onChange={(e) => setSearchFilters({...searchFilters, propertyType: e.target.value})}
-                  className="w-full px-4 py-4 border border-white/10 rounded-2xl text-white bg-white/5 backdrop-blur-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all hover:bg-white/10"
-                >
-                  <option value="" className="bg-gray-900">All</option>
-                  <option className="bg-gray-900">Apartment</option>
-                  <option className="bg-gray-900">Bungalow</option>
-                  <option className="bg-gray-900">Townhouse</option>
-                  <option className="bg-gray-900">Villa</option>
-                  <option className="bg-gray-900">Land</option>
-                </select>
-              </div>
-
-              {/* Bedrooms */}
-              <div className="text-left lg:col-span-1">
-                <label className="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest">
-                  Beds
-                </label>
-                <select
-                  value={searchFilters.bedrooms}
-                  onChange={(e) => setSearchFilters({...searchFilters, bedrooms: e.target.value})}
-                  className="w-full px-4 py-4 border border-white/10 rounded-2xl text-white bg-white/5 backdrop-blur-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all hover:bg-white/10"
-                >
-                  <option value="" className="bg-gray-900">Any</option>
-                  <option className="bg-gray-900">1</option>
-                  <option className="bg-gray-900">2</option>
-                  <option className="bg-gray-900">3</option>
-                  <option className="bg-gray-900">4</option>
-                  <option className="bg-gray-900">5+</option>
-                </select>
-              </div>
-
-              {/* Location */}
-              <div className="text-left lg:col-span-2">
-                <label className="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest">
-                  Location
-                </label>
-                <select
-                  value={searchFilters.location}
-                  onChange={(e) => setSearchFilters({...searchFilters, location: e.target.value})}
-                  className="w-full px-4 py-4 border border-white/10 rounded-2xl text-white bg-white/5 backdrop-blur-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all hover:bg-white/10"
-                >
-                  <option value="" className="bg-gray-900">All Locations</option>
-                  <option className="bg-gray-900">Westlands</option>
-                  <option className="bg-gray-900">Kilimani</option>
-                  <option className="bg-gray-900">Lavington</option>
-                  <option className="bg-gray-900">Kileleshwa</option>
-                  <option className="bg-gray-900">Runda</option>
-                  <option className="bg-gray-900">Langata</option>
-                </select>
-              </div>
-
-              {/* For Rent/Sale */}
-              <div className="text-left lg:col-span-1">
-                <label className="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest">
-                  Listing
-                </label>
-                <select
-                  value={searchFilters.listingType}
-                  onChange={(e) => setSearchFilters({...searchFilters, listingType: e.target.value})}
-                  className="w-full px-4 py-4 border border-white/10 rounded-2xl text-white bg-white/5 backdrop-blur-xl focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all hover:bg-white/10"
-                >
-                  <option value="" className="bg-gray-900">Any</option>
-                  <option className="bg-gray-900">For Sale</option>
-                  <option className="bg-gray-900">For Rent</option>
-                </select>
-              </div>
-
-              {/* Search Button */}
-              <div className="text-left lg:col-span-1">
-                <label className="block text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest opacity-0">
-                  Search
-                </label>
-                <button
-                  type="submit"
-                  className="w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-2xl hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/70 transform hover:scale-105 flex items-center justify-center gap-2 group"
-                >
-                  <svg className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                  Search
+      {/* ══ FEATURED PROPERTIES ═══════════════════════════════════ */}
+      <section style={{ background:'#F0EDE8', padding:'100px 6vw' }}>
+        <div style={{ maxWidth:1400, margin:'0 auto' }}>
+          <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:60, flexWrap:'wrap', gap:32 }}>
+            <div>
+              <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:16, fontWeight:600 }}>Our Collection</p>
+              <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,52px)', fontWeight:300, letterSpacing:'-.02em', lineHeight:1 }}>Featured Properties</h2>
+            </div>
+            <div style={{ display:'flex', gap:8, flexWrap:'wrap' }}>
+              {propFilters.map(f => (
+                <button key={f} onClick={() => setActiveFilter(f.toLowerCase())}
+                  style={{ padding:'9px 22px', fontSize:12, letterSpacing:'.1em', textTransform:'uppercase', fontWeight:500, cursor:'pointer', border:'1px solid', transition:'all .2s', fontFamily:'inherit', background:activeFilter===f.toLowerCase()?'#1a1a1a':'transparent', color:activeFilter===f.toLowerCase()?'#fff':'#555', borderColor:activeFilter===f.toLowerCase()?'#1a1a1a':'#ccc' }}>
+                  {f}
                 </button>
-              </div>
-            </div>
-          </form>
-        </div>
-
-        {/* Animated Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-          <div className="flex flex-col items-center gap-2 animate-bounce">
-            <span className="text-white/60 text-xs uppercase tracking-widest">Scroll</span>
-            <svg className="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Bar */}
-      <section className="py-16 bg-gradient-to-r from-gray-900 via-black to-gray-900 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {/* Stat 1 */}
-            <div className="text-center group">
-              <div className="mb-3">
-                <span className="text-5xl md:text-6xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  500+
-                </span>
-              </div>
-              <p className="text-gray-400 font-semibold uppercase tracking-wider text-sm">Properties Listed</p>
-            </div>
-
-            {/* Stat 2 */}
-            <div className="text-center group">
-              <div className="mb-3">
-                <span className="text-5xl md:text-6xl font-black bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-                  1K+
-                </span>
-              </div>
-              <p className="text-gray-400 font-semibold uppercase tracking-wider text-sm">Happy Clients</p>
-            </div>
-
-            {/* Stat 3 */}
-            <div className="text-center group">
-              <div className="mb-3">
-                <span className="text-5xl md:text-6xl font-black bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
-                  15+
-                </span>
-              </div>
-              <p className="text-gray-400 font-semibold uppercase tracking-wider text-sm">Years Experience</p>
-            </div>
-
-            {/* Stat 4 */}
-            <div className="text-center group">
-              <div className="mb-3">
-                <span className="text-5xl md:text-6xl font-black bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
-                  98%
-                </span>
-              </div>
-              <p className="text-gray-400 font-semibold uppercase tracking-wider text-sm">Satisfaction Rate</p>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Properties Section */}
-      <section className="py-24 bg-black relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 backdrop-blur-xl rounded-full mb-6 border border-white/10">
-              <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-              </svg>
-              <span className="text-white text-sm font-bold uppercase tracking-widest">Featured Collection</span>
-            </div>
-            
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-              Exclusive
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"> Properties</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-              Handpicked luxury estates and contemporary residences in Nairobi's premier locations
-            </p>
-          </div>
-
-          {/* Location Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-16">
-            {locations.map((location) => (
-              <button
-                key={location}
-                onClick={() => setActiveLocationFilter(location.toLowerCase())}
-                className={`px-6 py-3 rounded-2xl font-bold text-sm transition-all transform hover:scale-105 ${
-                  activeLocationFilter === location.toLowerCase()
-                    ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/50'
-                    : 'bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10 hover:border-white/20 backdrop-blur-xl'
-                }`}
-              >
-                {location}
-              </button>
-            ))}
-          </div>
-
-          {/* Property Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProperties.map((property, index) => (
-              <div 
-                key={property.id} 
-                className="group relative bg-white/5 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {/* Property Image */}
-                <div className="relative h-80 overflow-hidden">
-                  <img
-                    src={property.image}
-                    alt={property.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  
-                  {/* Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-70 group-hover:opacity-50 transition-opacity"></div>
-                  
-                  {/* Featured Badge */}
-                  {property.featured && (
-                    <div className="absolute top-5 left-5 px-4 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black text-xs font-black uppercase rounded-full shadow-lg flex items-center gap-2 backdrop-blur-sm">
-                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      Featured
-                    </div>
-                  )}
-
-                  {/* For Sale Badge */}
-                  <div className="absolute top-5 right-5 px-4 py-2 bg-emerald-500/90 backdrop-blur-sm text-white text-xs font-black uppercase rounded-full shadow-lg">
-                    For Sale
-                  </div>
-
-                  {/* Price Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <p className="text-white font-black text-3xl drop-shadow-2xl">{property.price}</p>
-                  </div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(320px,1fr))', gap:24 }}>
+            {filtered.map(p => (
+              <div key={p.id} className="prop-card" style={{ background:'#fff', overflow:'hidden' }}>
+                <div style={{ position:'relative', height:280, overflow:'hidden' }}>
+                  <img src={p.image} alt={p.title} className="prop-img" style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
+                  <span style={{ position:'absolute', top:20, left:20, background:'#1a1a1a', color:'#fff', fontSize:10, letterSpacing:'.15em', textTransform:'uppercase', padding:'6px 14px', fontWeight:600 }}>{p.tag}</span>
                 </div>
-
-                {/* Property Info */}
-                <div className="p-7">
-                  <div className="mb-5">
-                    <h3 className="font-black text-2xl text-white mb-3 group-hover:text-cyan-400 transition-colors line-clamp-1">
-                      {property.title}
-                    </h3>
-                    
-                    <p className="text-gray-400 text-sm flex items-center gap-2">
-                      <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                      </svg>
-                      {property.location}, Nairobi
-                    </p>
+                <div style={{ padding:'28px 28px 32px' }}>
+                  <h3 style={{ fontSize:18, fontWeight:500, lineHeight:1.3, marginBottom:8 }}>{p.title}</h3>
+                  <p style={{ fontSize:12, color:'#8B7355', letterSpacing:'.05em', marginBottom:20, display:'flex', alignItems:'center', gap:5 }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    {p.location}, Nairobi
+                  </p>
+                  <div style={{ height:1, background:'#F0EDE8', marginBottom:20 }} />
+                  <div style={{ display:'flex', gap:24, marginBottom:24 }}>
+                    {[{v:p.beds,l:'Beds'},{v:p.baths,l:'Baths'},{v:p.sqm,l:'Sq m'}].map(s => (
+                      <div key={s.l}>
+                        <p style={{ fontSize:16, fontWeight:600 }}>{s.v}</p>
+                        <p style={{ fontSize:11, color:'#999', marginTop:2 }}>{s.l}</p>
+                      </div>
+                    ))}
                   </div>
-
-                  {/* Property Stats */}
-                  <div className="flex items-center justify-between text-sm mb-6 pb-6 border-b border-white/10">
-                    <div className="flex items-center gap-2">
-                      <div className="p-2 bg-white/5 rounded-xl">
-                        <svg className="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">{property.beds}</p>
-                        <p className="text-gray-500 text-xs">Bedrooms</p>
-                      </div>
-                    </div>
-                    
-                    <div className="w-px h-12 bg-white/10"></div>
-                    
-                    <div className="flex items-center gap-2">
-                      <div className="p-2 bg-white/5 rounded-xl">
-                        <svg className="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">{property.baths}</p>
-                        <p className="text-gray-500 text-xs">Bathrooms</p>
-                      </div>
-                    </div>
-                    
-                    <div className="w-px h-12 bg-white/10"></div>
-                    
-                    <div className="flex items-center gap-2">
-                      <div className="p-2 bg-white/5 rounded-xl">
-                        <svg className="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2H4zm0 2h12v8H4V6z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-white font-bold text-lg">{property.sqm}</p>
-                        <p className="text-gray-500 text-xs">Sq M</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Property Type Badge & Button */}
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="text-xs font-bold text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-4 py-2 rounded-full">
-                      {property.propertyType}
-                    </span>
-                    
-                    <Link
-                      to={`/property/${property.id}`}
-                      className="flex-1 text-center px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-2xl hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/50 transform hover:scale-105 text-sm"
-                    >
-                      View Details
-                    </Link>
+                  <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+                    <p className="serif" style={{ fontSize:22, fontWeight:400 }}>{p.price}</p>
+                    <Link to={`/property/${p.id}`} className="ulink" style={{ fontSize:12, letterSpacing:'.12em', textTransform:'uppercase', fontWeight:600, color:'#1a1a1a', textDecoration:'none' }}>View →</Link>
                   </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* View All Button */}
-          <div className="text-center mt-20">
-            <Link
-              to="/properties"
-              className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black rounded-2xl hover:from-cyan-400 hover:to-blue-500 transition-all shadow-xl shadow-cyan-500/50 hover:shadow-2xl hover:shadow-cyan-500/70 transform hover:scale-105 group text-lg"
-            >
-              Explore All Properties
-              <svg className="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+          <div style={{ textAlign:'center', marginTop:60 }}>
+            <Link to="/properties" style={{ display:'inline-flex', alignItems:'center', gap:10, background:'#1a1a1a', color:'#fff', padding:'16px 40px', fontSize:12, fontWeight:600, letterSpacing:'.15em', textTransform:'uppercase', textDecoration:'none' }}>
+              View All Properties <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Locations Showcase */}
-      <section className="py-24 bg-black relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 backdrop-blur-xl rounded-full mb-6 border border-white/10">
-              <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-              </svg>
-              <span className="text-white text-sm font-bold uppercase tracking-widest">Prime Locations</span>
+      {/* ══ GALLERY ═══════════════════════════════════════════════ */}
+      <section style={{ padding:'100px 6vw', background:'#1a1a1a' }}>
+        <div style={{ maxWidth:1400, margin:'0 auto' }}>
+          <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:52, flexWrap:'wrap', gap:24 }}>
+            <div>
+              <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:16 }}>Our Portfolio</p>
+              <h2 className="serif" style={{ fontSize:'clamp(32px,4vw,52px)', fontWeight:300, color:'#fff', letterSpacing:'-.02em', lineHeight:1 }}>Property Gallery</h2>
             </div>
-            
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-              Nairobi's Most
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"> Prestigious Areas</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-              Discover properties in the city's most sought-after neighborhoods
-            </p>
-          </div>
-
-          {/* Locations Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Location 1 */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-500">
-              <img
-                src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80"
-                alt="Westlands"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-3xl font-black text-white mb-2">Westlands</h3>
-                <p className="text-gray-300 mb-4">45 Properties Available</p>
-                <Link
-                  to="/properties?location=westlands"
-                  className="inline-flex items-center gap-2 text-cyan-400 font-bold group-hover:gap-3 transition-all"
-                >
-                  Explore
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-
-            {/* Location 2 */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-500">
-              <img
-                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80"
-                alt="Kilimani"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-3xl font-black text-white mb-2">Kilimani</h3>
-                <p className="text-gray-300 mb-4">32 Properties Available</p>
-                <Link
-                  to="/properties?location=kilimani"
-                  className="inline-flex items-center gap-2 text-cyan-400 font-bold group-hover:gap-3 transition-all"
-                >
-                  Explore
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-
-            {/* Location 3 */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-500">
-              <img
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"
-                alt="Lavington"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-3xl font-black text-white mb-2">Lavington</h3>
-                <p className="text-gray-300 mb-4">28 Properties Available</p>
-                <Link
-                  to="/properties?location=lavington"
-                  className="inline-flex items-center gap-2 text-cyan-400 font-bold group-hover:gap-3 transition-all"
-                >
-                  Explore
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-
-            {/* Location 4 */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-500">
-              <img
-                src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80"
-                alt="Runda"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-3xl font-black text-white mb-2">Runda</h3>
-                <p className="text-gray-300 mb-4">18 Properties Available</p>
-                <Link
-                  to="/properties?location=runda"
-                  className="inline-flex items-center gap-2 text-cyan-400 font-bold group-hover:gap-3 transition-all"
-                >
-                  Explore
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-
-            {/* Location 5 */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-500">
-              <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
-                alt="Kileleshwa"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-3xl font-black text-white mb-2">Kileleshwa</h3>
-                <p className="text-gray-300 mb-4">25 Properties Available</p>
-                <Link
-                  to="/properties?location=kileleshwa"
-                  className="inline-flex items-center gap-2 text-cyan-400 font-bold group-hover:gap-3 transition-all"
-                >
-                  Explore
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-
-            {/* Location 6 */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden border border-white/10 hover:border-cyan-500/50 transition-all duration-500">
-              <img
-                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"
-                alt="Langata"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <h3 className="text-3xl font-black text-white mb-2">Langata</h3>
-                <p className="text-gray-300 mb-4">22 Properties Available</p>
-                <Link
-                  to="/properties?location=langata"
-                  className="inline-flex items-center gap-2 text-cyan-400 font-bold group-hover:gap-3 transition-all"
-                >
-                  Explore
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
-              </div>
+            <div style={{ display:'flex', gap:6, flexWrap:'wrap' }}>
+              {galTabs.map(tab => (
+                <button key={tab} onClick={() => setGalleryTab(tab)}
+                  style={{ padding:'8px 18px', fontSize:11, letterSpacing:'.12em', textTransform:'uppercase', fontWeight:500, cursor:'pointer', border:'1px solid', transition:'all .2s', fontFamily:'inherit', background:galleryTab===tab?'#8B7355':'transparent', color:galleryTab===tab?'#fff':'rgba(255,255,255,.4)', borderColor:galleryTab===tab?'#8B7355':'rgba(255,255,255,.15)' }}>
+                  {tab}
+                </button>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Features Section */}
-      <section className="py-24 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 backdrop-blur-xl rounded-full mb-6 border border-white/10">
-              <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859a4 4 0 10-4.954 0c.27.213.462.519.476.859h4.002z" />
-              </svg>
-              <span className="text-white text-sm font-bold uppercase tracking-widest">Why Choose Us</span>
-            </div>
-            
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-              Premium
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"> Services</span>
-            </h2>
-            <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-              Experience excellence at every step of your real estate journey
-            </p>
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Feature 1 */}
-            <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:bg-white/10">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-black text-white mb-3">Verified Listings</h3>
-              <p className="text-gray-400 leading-relaxed">Every property is thoroughly vetted and authenticated for your peace of mind</p>
-            </div>
-
-            {/* Feature 2 */}
-            <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:bg-white/10">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-black text-white mb-3">24/7 Support</h3>
-              <p className="text-gray-400 leading-relaxed">Round-the-clock assistance from our dedicated team of experts</p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:bg-white/10">
-              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-black text-white mb-3">Best Prices</h3>
-              <p className="text-gray-400 leading-relaxed">Competitive rates and transparent pricing with no hidden fees</p>
-            </div>
-
-            {/* Feature 4 */}
-            <div className="group relative bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:bg-white/10">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-black text-white mb-3">Quick Process</h3>
-              <p className="text-gray-400 leading-relaxed">Streamlined procedures for faster property acquisition and transactions</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-24 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 backdrop-blur-xl rounded-full mb-6 border border-white/10">
-              <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
-              </svg>
-              <span className="text-white text-sm font-bold uppercase tracking-widest">Client Stories</span>
-            </div>
-            
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-              Trusted by
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"> Thousands</span>
-            </h2>
-          </div>
-
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Testimonial 1 */}
-            <div className="group bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:bg-white/10">
-              <div className="flex items-center gap-4 mb-6">
-                <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80"
-                  alt="Client"
-                  className="w-16 h-16 rounded-full object-cover border-2 border-cyan-500"
-                />
-                <div>
-                  <h4 className="text-white font-bold text-lg">Sarah Mitchell</h4>
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
+          <div className="gal-cols" style={{ columns:'3 260px', gap:10 }}>
+            {visibleGal.map((img, i) => (
+              <div key={img.id} className="gal-item" onClick={() => setLightbox(img)}
+                style={{ marginBottom:10, breakInside:'avoid', height: galHeights[i % galHeights.length] }}>
+                <img src={img.src} alt={img.label} className="gal-img-el" style={{ height: galHeights[i % galHeights.length] }} />
+                <div className="gal-ov">
+                  <div>
+                    <p style={{ fontFamily:'Cormorant Garamond,serif', fontSize:18, fontWeight:400, color:'#fff', lineHeight:1 }}>{img.label}</p>
+                    <p style={{ fontSize:10, letterSpacing:'.18em', textTransform:'uppercase', color:'#8B7355', marginTop:5 }}>{img.cat}</p>
                   </div>
                 </div>
               </div>
-              <p className="text-gray-400 leading-relaxed">"HavenRise made finding our dream home effortless. Professional, responsive, and truly understanding of our needs!"</p>
-            </div>
+            ))}
+          </div>
 
-            {/* Testimonial 2 */}
-            <div className="group bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:bg-white/10">
-              <div className="flex items-center gap-4 mb-6">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
-                  alt="Client"
-                  className="w-16 h-16 rounded-full object-cover border-2 border-cyan-500"
-                />
-                <div>
-                  <h4 className="text-white font-bold text-lg">James Omondi</h4>
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <p className="text-gray-400 leading-relaxed">"Exceptional service from start to finish. The team's expertise and dedication exceeded all expectations!"</p>
-            </div>
+          <div style={{ textAlign:'center', marginTop:52 }}>
+            <Link to="/properties"
+              style={{ display:'inline-flex', alignItems:'center', gap:10, padding:'14px 38px', background:'transparent', color:'#fff', fontSize:11, fontWeight:600, letterSpacing:'.18em', textTransform:'uppercase', textDecoration:'none', border:'1px solid rgba(255,255,255,.2)', transition:'border-color .2s' }}
+              onMouseEnter={e => e.currentTarget.style.borderColor='#8B7355'}
+              onMouseLeave={e => e.currentTarget.style.borderColor='rgba(255,255,255,.2)'}>
+              View All Properties <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+          </div>
+        </div>
 
-            {/* Testimonial 3 */}
-            <div className="group bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-cyan-500/50 transition-all duration-500 hover:bg-white/10">
-              <div className="flex items-center gap-4 mb-6">
-                <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80"
-                  alt="Client"
-                  className="w-16 h-16 rounded-full object-cover border-2 border-cyan-500"
-                />
+        {lightbox && (
+          <div className="lbx" onClick={() => setLightbox(null)}>
+            <div style={{ position:'relative', maxWidth:'90vw' }} onClick={e => e.stopPropagation()}>
+              <img src={lightbox.src} alt={lightbox.label} style={{ maxWidth:'88vw', maxHeight:'80vh', objectFit:'contain', display:'block' }} />
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginTop:20 }}>
                 <div>
-                  <h4 className="text-white font-bold text-lg">Amina Hassan</h4>
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
+                  <p style={{ fontFamily:'Cormorant Garamond,serif', fontSize:20, fontWeight:400, color:'#fff' }}>{lightbox.label}</p>
+                  <p style={{ fontSize:10, letterSpacing:'.18em', textTransform:'uppercase', color:'#8B7355', marginTop:4 }}>{lightbox.cat}</p>
                 </div>
+                <button onClick={() => setLightbox(null)}
+                  style={{ background:'none', border:'1px solid rgba(255,255,255,.2)', color:'#fff', cursor:'pointer', padding:'8px 20px', fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', fontFamily:'inherit' }}>
+                  Close ✕
+                </button>
               </div>
-              <p className="text-gray-400 leading-relaxed">"Best real estate experience ever! They found the perfect property within our budget and handled everything seamlessly."</p>
             </div>
           </div>
+        )}
+      </section>
+
+      {/* ══ LOCATIONS ═════════════════════════════════════════════ */}
+      <section style={{ padding:'100px 6vw', maxWidth:1400, margin:'0 auto' }}>
+        <div style={{ marginBottom:60 }}>
+          <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:16, fontWeight:600 }}>Where We Operate</p>
+          <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,52px)', fontWeight:300, letterSpacing:'-.02em' }}>Prime Nairobi Neighbourhoods</h2>
+        </div>
+        <div className="loc-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gridTemplateRows:'repeat(2,260px)', gap:12 }}>
+          {[
+            { name:'Westlands',  count:45, img:'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80' },
+            { name:'Kilimani',   count:32, img:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', tall:true },
+            { name:'Lavington',  count:28, img:'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80' },
+            { name:'Runda',      count:18, img:'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80' },
+            { name:'Kileleshwa', count:25, img:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80' },
+          ].map(loc => (
+            <Link key={loc.name} to={`/properties?location=${loc.name.toLowerCase()}`}
+              style={{ position:'relative', overflow:'hidden', display:'block', textDecoration:'none', ...(loc.tall ? { gridRow:'span 2' } : {}) }}>
+              <img src={loc.img} alt={loc.name}
+                style={{ width:'100%', height:'100%', objectFit:'cover', display:'block', transition:'transform .6s ease' }}
+                onMouseEnter={e => e.currentTarget.style.transform='scale(1.05)'}
+                onMouseLeave={e => e.currentTarget.style.transform='scale(1)'} />
+              <div style={{ position:'absolute', inset:0, background:'linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 50%,transparent 100%)' }} />
+              <div style={{ position:'absolute', bottom:0, left:0, right:0, padding:'24px 28px' }}>
+                <h3 style={{ fontFamily:'Cormorant Garamond,serif', fontSize:loc.tall?32:24, fontWeight:400, color:'#fff', marginBottom:4 }}>{loc.name}</h3>
+                <p style={{ fontSize:11, color:'rgba(255,255,255,.65)', letterSpacing:'.1em', textTransform:'uppercase' }}>{loc.count} Properties</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1920&q=80"
-            alt="Luxury home interior"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-transparent"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-xl rounded-full mb-8 border border-white/20">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
-              </span>
-              <span className="text-white text-sm font-bold uppercase tracking-widest">Start Your Journey</span>
-            </div>
-
-            <h2 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Ready to Find Your
-              <br />
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Dream Home?</span>
+      {/* ══ FULL-BLEED QUOTE ══════════════════════════════════════ */}
+      <section style={{ position:'relative', height:520, overflow:'hidden' }}>
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1920&q=80" alt="Interior"
+          style={{ width:'100%', height:'100%', objectFit:'cover' }} />
+        <div style={{ position:'absolute', inset:0, background:'rgba(10,8,6,.62)' }} />
+        <div style={{ position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center', textAlign:'center', padding:'0 6vw' }}>
+          <div>
+            <p style={{ fontSize:12, letterSpacing:'.25em', textTransform:'uppercase', color:'rgba(255,255,255,.55)', marginBottom:20 }}>Our Promise</p>
+            <h2 className="serif" style={{ fontSize:'clamp(28px,5vw,60px)', fontWeight:300, color:'#fff', lineHeight:1.15, letterSpacing:'-.02em', maxWidth:760 }}>
+              "Every home we represent reflects our commitment to <em>exceptional quality</em>"
             </h2>
-
-            <p className="text-gray-300 text-xl mb-10 leading-relaxed">
-              Let our expert team guide you through every step of your real estate journey. From luxury estates to cozy apartments, we have the perfect property waiting for you.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/properties"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-2xl hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/70 transform hover:scale-105 group"
-              >
-                Browse Properties
-                <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-xl text-white font-bold rounded-2xl border-2 border-white/20 hover:bg-white/20 transition-all group"
-              >
-                Contact Us
-                <svg className="w-5 h-5 group-hover:rotate-45 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `linear-gradient(to right, rgba(6, 182, 212, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(6, 182, 212, 0.1) 1px, transparent 1px)`,
-            backgroundSize: '80px 80px'
-          }}></div>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 backdrop-blur-xl rounded-3xl p-12 border border-cyan-500/20 shadow-2xl shadow-cyan-500/20">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl mb-6">
-                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-
-              <h3 className="text-4xl font-black text-white mb-4">
-                Stay <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Updated</span>
-              </h3>
-              <p className="text-gray-400 text-lg">
-                Get exclusive property listings and market insights delivered to your inbox
-              </p>
-            </div>
-
-            <form className="flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-6 py-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all"
-              />
-              <button
-                type="submit"
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-2xl hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/70 transform hover:scale-105 whitespace-nowrap"
-              >
-                Subscribe Now
-              </button>
-            </form>
-
-            <p className="text-gray-500 text-sm text-center mt-6">
-              Join 10,000+ subscribers. Unsubscribe anytime.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-24 relative overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80"
-            alt="Modern architecture"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-black/90"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Text Content */}
-            <div className="order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 backdrop-blur-xl rounded-full mb-8 border border-white/10">
-                <svg className="w-4 h-4 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                </svg>
-                <span className="text-white text-sm font-bold uppercase tracking-widest">About HavenRise</span>
-              </div>
-
-              <h2 className="text-5xl md:text-6xl font-black text-white mb-6 leading-tight">
-                Redefining
-                <br />
-                <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  Luxury Living
-                </span>
+      {/* ══ VIEWING POLICY ════════════════════════════════════════ */}
+      <section style={{ background:'#111010', padding:'100px 6vw' }}>
+        <div style={{ height:1, background:'linear-gradient(to right,transparent,#8B7355,transparent)', marginBottom:80 }} />
+        <div style={{ maxWidth:1400, margin:'0 auto' }}>
+          <div className="two-col" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:80, alignItems:'flex-start', marginBottom:72 }}>
+            <div>
+              <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:20 }}>HavenRise Realty</p>
+              <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,56px)', fontWeight:300, color:'#fff', lineHeight:1.05, letterSpacing:'-.02em', marginBottom:28 }}>
+                Our Viewing<br /><em>Policy</em>
               </h2>
-
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                HavenRise Homes is Nairobi's premier real estate agency, specializing in luxury properties and bespoke real estate solutions. We don't just sell properties—we craft lifestyles.
+              <div style={{ width:40, height:1, background:'#8B7355', marginBottom:28 }} />
+              <p className="serif" style={{ fontSize:20, fontWeight:300, color:'rgba(255,255,255,.5)', lineHeight:1.7, fontStyle:'italic', maxWidth:460 }}>
+                "We value both our clients' time and property owners' privacy — every viewing is a curated, purposeful experience."
               </p>
-
-              <p className="text-gray-400 leading-relaxed mb-10">
-                With decades of combined industry experience, our team has cultivated lasting relationships built on trust, expertise, and unparalleled service. We understand that your home is more than four walls—it's where your story unfolds.
+            </div>
+            <div style={{ background:'#1a1a1a', padding:'44px 40px', borderTop:'2px solid #8B7355' }}>
+              <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:20 }}>Commitment Fee</p>
+              <p className="serif" style={{ fontSize:52, fontWeight:300, color:'#fff', lineHeight:1 }}>KES 3,000</p>
+              <p style={{ fontSize:13, color:'rgba(255,255,255,.3)', margin:'6px 0', fontWeight:300 }}>— to —</p>
+              <p className="serif" style={{ fontSize:52, fontWeight:300, color:'#fff', lineHeight:1, marginBottom:24 }}>5,000</p>
+              <div style={{ height:1, background:'rgba(255,255,255,.07)', marginBottom:20 }} />
+              <p style={{ fontSize:13, color:'rgba(255,255,255,.45)', lineHeight:1.75, fontWeight:300 }}>
+                Fully refundable or deductible from commission upon successful purchase. Fee varies by property value.
               </p>
+            </div>
+          </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-10">
-                <div className="text-center p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:bg-white/10 transition-all group">
-                  <p className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">500+</p>
-                  <p className="text-sm text-gray-400 font-semibold">Properties Listed</p>
-                </div>
-                <div className="text-center p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:bg-white/10 transition-all group">
-                  <p className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">1K+</p>
-                  <p className="text-sm text-gray-400 font-semibold">Happy Clients</p>
-                </div>
-                <div className="text-center p-6 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:bg-white/10 transition-all group">
-                  <p className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">15+</p>
-                  <p className="text-sm text-gray-400 font-semibold">Years Excellence</p>
+          <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:28 }}>Before Scheduling a Viewing</p>
+          <div style={{ marginBottom:64 }}>
+            {[
+              { n:'01', title:'Client Intake Form', desc:'A completed client intake form helps us understand your property needs, preferences, and lifestyle requirements so we can curate the most relevant viewings for you.' },
+              { n:'02', title:'Budget & Timeline Confirmation', desc:'Confirmation of your budget range and intended purchase or lease timeline allows our agents to prioritise the most suitable properties for your schedule.' },
+              { n:'03', title:'Viewing Commitment Fee (KES 3,000 – 5,000)', desc:'Required prior to scheduling. Refundable or deductible from commission upon purchase — ensuring all parties engage seriously and respectfully.' },
+            ].map(item => (
+              <div key={item.n} className="policy-row" style={{ display:'grid', gridTemplateColumns:'56px 1fr', gap:28, padding:'32px 0' }}>
+                <p className="serif" style={{ fontSize:38, fontWeight:300, color:'rgba(255,255,255,.1)', lineHeight:1 }}>{item.n}</p>
+                <div>
+                  <h3 style={{ fontSize:16, fontWeight:600, color:'#fff', marginBottom:10 }}>{item.title}</h3>
+                  <p style={{ fontSize:14, color:'rgba(255,255,255,.45)', lineHeight:1.75, fontWeight:300 }}>{item.desc}</p>
                 </div>
               </div>
+            ))}
+          </div>
 
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-2xl hover:from-cyan-400 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/50 transform hover:scale-105 group"
-              >
-                Discover Our Story
-                <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-            </div>
-
-            {/* Image Side */}
-            <div className="order-1 lg:order-2 relative">
-              <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
-                  alt="Luxury interior"
-                  className="w-full h-[600px] object-cover"
-                />
-                
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-
-                {/* Floating Stats Cards */}
-                <div className="absolute bottom-8 left-8 right-8 grid grid-cols-2 gap-4">
-                  <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
-                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-white font-black text-lg">Expert Team</p>
-                        <p className="text-gray-300 text-xs">Licensed Professionals</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl flex items-center justify-center">
-                        <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <div>
-                        <p className="text-white font-black text-lg">Verified</p>
-                        <p className="text-gray-300 text-xs">100% Authentic Listings</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <p style={{ fontSize:10, letterSpacing:'.22em', textTransform:'uppercase', color:'#8B7355', fontWeight:600, marginBottom:24 }}>This Policy Ensures</p>
+          <div className="pol-ben" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12, marginBottom:64 }}>
+            {[
+              { title:'Serious Buyer Engagement',          desc:'Every viewing is attended by a financially ready, committed client.' },
+              { title:'Structured Property Tours',          desc:'Organised, guided viewings with full documentation prepared.' },
+              { title:'Efficient Time Management',         desc:"Respecting everyone's schedule through disciplined, planned appointments." },
+              { title:'Professional Seller Representation', desc:'Sellers confident their property is shown only to vetted buyers.' },
+            ].map(item => (
+              <div key={item.title} style={{ background:'#1a1a1a', padding:'28px 24px 32px', borderTop:'1px solid rgba(139,115,85,.4)' }}>
+                <span style={{ color:'#8B7355', fontSize:14, display:'block', marginBottom:14 }}>✦</span>
+                <h3 style={{ fontSize:14, fontWeight:600, color:'#fff', marginBottom:10, lineHeight:1.35 }}>{item.title}</h3>
+                <p style={{ fontSize:13, color:'rgba(255,255,255,.4)', lineHeight:1.7, fontWeight:300 }}>{item.desc}</p>
               </div>
+            ))}
+          </div>
 
-              {/* Decorative Elements */}
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-cyan-500/20 rounded-full filter blur-3xl"></div>
-              <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-blue-500/20 rounded-full filter blur-3xl"></div>
+          <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', gap:32, flexWrap:'wrap' }}>
+            <div style={{ display:'flex', gap:20, alignItems:'flex-start', flex:1 }}>
+              <div style={{ width:2, background:'#8B7355', flexShrink:0, alignSelf:'stretch', minHeight:40 }} />
+              <p className="serif" style={{ fontSize:19, fontWeight:300, color:'rgba(255,255,255,.55)', lineHeight:1.65, fontStyle:'italic' }}>
+                "We appreciate your understanding as we maintain the highest standards of service for all our clients." — The HavenRise Team
+              </p>
             </div>
+            <a href="#contact" style={{ display:'inline-flex', alignItems:'center', gap:10, padding:'15px 32px', background:'#8B7355', color:'#fff', fontSize:11, fontWeight:600, letterSpacing:'.18em', textTransform:'uppercase', textDecoration:'none', whiteSpace:'nowrap', flexShrink:0 }}>
+              Book a Viewing →
+            </a>
           </div>
         </div>
       </section>
 
-      <style jsx>{`
-        @keyframes gradient {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-        
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 5s ease infinite;
-        }
-      `}</style>
+      {/* ══ WHY US ════════════════════════════════════════════════ */}
+      <section style={{ padding:'100px 6vw', maxWidth:1400, margin:'0 auto' }}>
+        <div style={{ marginBottom:72 }}>
+          <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:16, fontWeight:600 }}>Why Choose Us</p>
+          <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,52px)', fontWeight:300, letterSpacing:'-.02em' }}>The HavenRise Difference</h2>
+        </div>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))', gap:40 }}>
+          {[
+            { n:'01', title:'Verified Listings',  desc:'Every property is thoroughly vetted and authenticated before listing.' },
+            { n:'02', title:'24/7 Support',        desc:'Round-the-clock assistance from our dedicated team of licensed professionals.' },
+            { n:'03', title:'Transparent Pricing', desc:'Competitive, honest rates with zero hidden fees or surprise costs.' },
+            { n:'04', title:'Seamless Process',    desc:'Streamlined procedures to make your acquisition smooth and stress-free.' },
+          ].map(f => (
+            <div key={f.n} style={{ borderTop:'1px solid #E8E4DF', paddingTop:32 }}>
+              <p className="serif" style={{ fontSize:44, fontWeight:300, color:'#E8E4DF', lineHeight:1, marginBottom:20 }}>{f.n}</p>
+              <h3 style={{ fontSize:17, fontWeight:600, marginBottom:12 }}>{f.title}</h3>
+              <p style={{ fontSize:14, color:'#777', lineHeight:1.7, fontWeight:300 }}>{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ TESTIMONIALS ══════════════════════════════════════════ */}
+      <section style={{ background:'#1a1a1a', padding:'100px 6vw' }}>
+        <div style={{ maxWidth:1400, margin:'0 auto' }}>
+          <div style={{ marginBottom:60 }}>
+            <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:16, fontWeight:600 }}>Client Stories</p>
+            <h2 className="serif" style={{ fontSize:'clamp(34px,4vw,52px)', fontWeight:300, color:'#fff', letterSpacing:'-.02em' }}>Trusted by Thousands</h2>
+          </div>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))', gap:24 }}>
+            {[
+              { name:'Sarah Mitchell', role:'Homeowner',        img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80', text:'HavenRise made finding our dream home effortless. Professional, responsive, and truly understanding of our needs from day one.' },
+              { name:'James Omondi',   role:'Property Investor', img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80', text:"Exceptional service from start to finish. The team's expertise and dedication exceeded every expectation I had." },
+              { name:'Amina Hassan',   role:'Tenant',            img:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80', text:'Found the perfect property within our budget in record time. They handled everything seamlessly and professionally.' },
+            ].map(t => (
+              <div key={t.name} style={{ background:'#242424', padding:'36px', borderTop:'2px solid #8B7355' }}>
+                <div style={{ display:'flex', gap:4, marginBottom:24 }}>
+                  {[...Array(5)].map((_,i) => <span key={i} style={{ color:'#8B7355', fontSize:14 }}>★</span>)}
+                </div>
+                <p style={{ fontSize:15, color:'rgba(255,255,255,.7)', lineHeight:1.8, fontWeight:300, marginBottom:28, fontStyle:'italic' }}>"{t.text}"</p>
+                <div style={{ display:'flex', alignItems:'center', gap:14 }}>
+                  <img src={t.img} alt={t.name} style={{ width:44, height:44, borderRadius:'50%', objectFit:'cover' }} />
+                  <div>
+                    <p style={{ fontSize:14, fontWeight:600, color:'#fff' }}>{t.name}</p>
+                    <p style={{ fontSize:11, color:'#8B7355', letterSpacing:'.05em', marginTop:2 }}>{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ STATS ═════════════════════════════════════════════════ */}
+      <section style={{ borderBottom:'1px solid #E8E4DF' }}>
+        <div className="four-stat" style={{ maxWidth:1400, margin:'0 auto', display:'grid', gridTemplateColumns:'repeat(4,1fr)' }}>
+          {[['500+','Properties Listed'],['1,000+','Happy Clients'],['15+','Years Experience'],['98%','Satisfaction Rate']].map(([num,label]) => (
+            <div key={label} style={{ padding:'60px 40px', textAlign:'center', borderRight:'1px solid #E8E4DF' }}>
+              <p className="serif" style={{ fontSize:52, fontWeight:300, lineHeight:1 }}>{num}</p>
+              <p style={{ fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', color:'#8B7355', marginTop:10, fontWeight:600 }}>{label}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══ CONTACT FORM ══════════════════════════════════════════ */}
+      <section id="contact" style={{ background:'#F0EDE8', padding:'100px 6vw' }}>
+        <div className="two-col" style={{ maxWidth:1000, margin:'0 auto', display:'grid', gridTemplateColumns:'1fr 1fr', gap:80, alignItems:'start' }}>
+          <div>
+            <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:20, fontWeight:600 }}>Let's Talk</p>
+            <h2 className="serif" style={{ fontSize:'clamp(32px,4vw,48px)', fontWeight:300, lineHeight:1.1, letterSpacing:'-.02em', marginBottom:24 }}>
+              Find Your<br /><em>Perfect Home</em>
+            </h2>
+            <div style={{ width:40, height:1, background:'#8B7355', marginBottom:28 }} />
+            <p style={{ fontSize:14, color:'#666', lineHeight:1.8, fontWeight:300, marginBottom:40 }}>
+              Whether you're buying, renting, or listing — our expert team is ready to guide you. Tell us about yourself and we'll be in touch shortly.
+            </p>
+            <div style={{ display:'flex', flexDirection:'column', gap:20 }}>
+              {[
+                { svg:<svg width="14" height="14" fill="none" stroke="#8B7355" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>, label:'Phone',  val:'+254 700 000 000' },
+                { svg:<svg width="14" height="14" fill="none" stroke="#8B7355" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>, label:'Email',  val:'hello@havenrise.co.ke' },
+                { svg:<svg width="14" height="14" fill="none" stroke="#8B7355" strokeWidth="1.5" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>, label:'Office', val:'Westlands, Nairobi' },
+              ].map(c => (
+                <div key={c.label} style={{ display:'flex', gap:16, alignItems:'flex-start' }}>
+                  <span style={{ marginTop:2 }}>{c.svg}</span>
+                  <div>
+                    <p style={{ fontSize:10, letterSpacing:'.15em', textTransform:'uppercase', color:'#8B7355', fontWeight:600 }}>{c.label}</p>
+                    <p style={{ fontSize:14, marginTop:3 }}>{c.val}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ background:'#fff', padding:'48px 44px' }}>
+            {formStatus === 'success' ? (
+              <div style={{ textAlign:'center', padding:'40px 0' }}>
+                <div style={{ width:56, height:56, borderRadius:'50%', background:'#f0fdf4', border:'1px solid #86efac', display:'flex', alignItems:'center', justifyContent:'center', margin:'0 auto 20px', fontSize:24 }}>✓</div>
+                <h3 className="serif" style={{ fontSize:28, fontWeight:300, marginBottom:12 }}>Message Sent</h3>
+                <p style={{ fontSize:14, color:'#777', lineHeight:1.7 }}>Thank you for reaching out. Our team will contact you within 24 hours.</p>
+                <button onClick={() => setFormStatus(null)} style={{ marginTop:28, fontSize:12, letterSpacing:'.15em', textTransform:'uppercase', fontWeight:600, color:'#8B7355', background:'none', border:'none', cursor:'pointer', fontFamily:'inherit' }}>
+                  Send Another →
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handleForm}>
+                <div style={{ marginBottom:28 }}>
+                  <p style={{ fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', color:'#999', marginBottom:14, fontWeight:600 }}>I am a</p>
+                  <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:8 }}>
+                    {['Buyer','Tenant','Agent','Other'].map(role => (
+                      <button key={role} type="button" onClick={() => setFormData({...formData, role})}
+                        style={{ padding:'11px 8px', fontSize:12, letterSpacing:'.1em', textTransform:'uppercase', fontWeight:500, cursor:'pointer', border:'1px solid', fontFamily:'inherit', transition:'all .15s', background:formData.role===role?'#1a1a1a':'transparent', color:formData.role===role?'#fff':'#999', borderColor:formData.role===role?'#1a1a1a':'#ddd' }}>
+                        {role}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {[
+                  { key:'name',  label:'Full Name',     type:'text',  placeholder:'Jane Doe' },
+                  { key:'email', label:'Email Address', type:'email', placeholder:'jane@example.com' },
+                  { key:'phone', label:'Phone Number',  type:'tel',   placeholder:'+254 700 000 000' },
+                ].map(f => (
+                  <div key={f.key} style={{ marginBottom:20 }}>
+                    <label style={{ display:'block', fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', color:'#999', marginBottom:8, fontWeight:600 }}>{f.label}</label>
+                    <input type={f.type} required placeholder={f.placeholder}
+                      value={formData[f.key]}
+                      onChange={e => setFormData({...formData, [f.key]: e.target.value})}
+                      style={{ width:'100%', padding:'13px 16px', fontSize:14, border:'1px solid #E8E4DF', background:'#FAFAFA', color:'#1a1a1a', fontFamily:'inherit', transition:'border-color .2s' }} />
+                  </div>
+                ))}
+                <div style={{ marginBottom:28 }}>
+                  <label style={{ display:'block', fontSize:11, letterSpacing:'.15em', textTransform:'uppercase', color:'#999', marginBottom:8, fontWeight:600 }}>
+                    Message <span style={{ color:'#ccc', fontWeight:400 }}>(optional)</span>
+                  </label>
+                  <textarea rows={3} placeholder="Tell us what you're looking for..."
+                    value={formData.message}
+                    onChange={e => setFormData({...formData, message: e.target.value})}
+                    style={{ width:'100%', padding:'13px 16px', fontSize:14, border:'1px solid #E8E4DF', background:'#FAFAFA', color:'#1a1a1a', fontFamily:'inherit', resize:'vertical', transition:'border-color .2s' }} />
+                </div>
+                {formStatus === 'error' && (
+                  <p style={{ fontSize:13, color:'#c0392b', marginBottom:16 }}>Something went wrong. Please try again or email us directly.</p>
+                )}
+                <button type="submit" disabled={formStatus==='sending' || !formData.role}
+                  style={{ width:'100%', padding:'16px', background:formData.role?'#1a1a1a':'#ccc', color:'#fff', fontSize:12, letterSpacing:'.2em', textTransform:'uppercase', fontWeight:600, border:'none', cursor:formData.role?'pointer':'not-allowed', fontFamily:'inherit', transition:'background .2s' }}>
+                  {formStatus==='sending' ? 'Sending…' : 'Send Enquiry →'}
+                </button>
+                <p style={{ fontSize:11, color:'#bbb', marginTop:14, textAlign:'center' }}>We respond within 24 hours</p>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ NEWSLETTER ════════════════════════════════════════════ */}
+      <section style={{ position:'relative', padding:'100px 6vw', overflow:'hidden' }}>
+        <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1920&q=80" alt="Luxury home"
+          style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }} />
+        <div style={{ position:'absolute', inset:0, background:'rgba(10,8,6,.84)' }} />
+        <div style={{ position:'relative', zIndex:10, maxWidth:640, margin:'0 auto', textAlign:'center' }}>
+          <p style={{ fontSize:11, letterSpacing:'.2em', textTransform:'uppercase', color:'#8B7355', marginBottom:20, fontWeight:600 }}>Stay Updated</p>
+          <h2 className="serif" style={{ fontSize:'clamp(32px,4vw,52px)', fontWeight:300, color:'#fff', lineHeight:1.1, letterSpacing:'-.02em', marginBottom:16 }}>
+            Exclusive Listings<br /><em>Delivered to You</em>
+          </h2>
+          <p style={{ fontSize:14, color:'rgba(255,255,255,.5)', marginBottom:40, lineHeight:1.7 }}>
+            Join 10,000+ subscribers and be first to hear about new properties and market insights.
+          </p>
+          <form onSubmit={e => e.preventDefault()} style={{ display:'flex', maxWidth:480, margin:'0 auto' }}>
+            <input type="email" placeholder="Your email address" required
+              style={{ flex:1, padding:'15px 20px', fontSize:14, background:'rgba(255,255,255,.08)', border:'1px solid rgba(255,255,255,.15)', borderRight:'none', color:'#fff', fontFamily:'inherit' }} />
+            <button type="submit"
+              style={{ padding:'15px 28px', background:'#8B7355', color:'#fff', fontSize:12, letterSpacing:'.15em', textTransform:'uppercase', fontWeight:600, border:'none', cursor:'pointer', fontFamily:'inherit', whiteSpace:'nowrap' }}>
+              Subscribe
+            </button>
+          </form>
+          <p style={{ fontSize:11, color:'rgba(255,255,255,.3)', marginTop:16 }}>Unsubscribe at any time. No spam.</p>
+        </div>
+      </section>
+
     </div>
   )
 }
