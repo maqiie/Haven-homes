@@ -150,8 +150,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p style={{ fontSize: 10, letterSpacing: '.18em', textTransform: 'uppercase', color: '#8B7355', fontWeight: 600, marginBottom: 6 }}>Call Us</p>
-                    <a href="tel:+254123456789" className="ulink" style={{ fontSize: 16, fontWeight: 500, color: '#1a1a1a', textDecoration: 'none', display: 'block', marginBottom: 4 }}>+254 123 456 789</a>
-                    <p style={{ fontSize: 12, color: '#aaa', fontWeight: 300 }}>Mon–Fri, 9am–6pm EAT</p>
+                    <a href="tel:+254728686089" className="ulink" style={{ fontSize: 16, fontWeight: 500, color: '#1a1a1a', textDecoration: 'none', display: 'block', marginBottom: 4 }}>0728 686 089 / 0732 866 432</a>
+                    <p style={{ fontSize: 12, color: '#aaa', fontWeight: 300 }}>Mon–Fri, 9:00am – 6:00pm EAT</p>
                   </div>
                 </div>
               </div>
@@ -166,7 +166,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p style={{ fontSize: 10, letterSpacing: '.18em', textTransform: 'uppercase', color: '#8B7355', fontWeight: 600, marginBottom: 6 }}>Email Us</p>
-                    <a href="mailto:info@havenrise.co.ke" className="ulink" style={{ fontSize: 15, fontWeight: 500, color: '#1a1a1a', textDecoration: 'none', display: 'block', marginBottom: 4 }}>info@havenrise.co.ke</a>
+                    <a href="mailto:havenrise.realty25@gmail.com" className="ulink" style={{ fontSize: 15, fontWeight: 500, color: '#1a1a1a', textDecoration: 'none', display: 'block', marginBottom: 4 }}>havenrise.realty25@gmail.com</a>
                     <p style={{ fontSize: 12, color: '#aaa', fontWeight: 300 }}>Reply within 24 hours</p>
                   </div>
                 </div>
@@ -298,7 +298,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <label htmlFor="c-phone" style={{ display: 'block', fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: '#999', marginBottom: 8, fontWeight: 600 }}>Phone Number</label>
-                      <input id="c-phone" type="tel" placeholder="+254 123 456 789" autoComplete="tel"
+                      <input id="c-phone" type="tel" placeholder="0728 686 089 / 0732 866 432" autoComplete="tel"
                         value={formData.phone}
                         onChange={e => handleField('phone', e.target.value)}
                         style={{ width: '100%', padding: '13px 16px', fontSize: 14, border: '1px solid #E8E4DF', background: '#fff', color: '#1a1a1a', fontFamily: 'inherit', transition: 'border-color .2s' }} />
@@ -319,7 +319,7 @@ const Contact = () => {
 
                   {formStatus === 'error' && (
                     <p role="alert" style={{ fontSize: 13, color: '#b94040', marginBottom: 20, padding: '12px 16px', background: '#fdf2f2', border: '1px solid #f5c6c6' }}>
-                      Something went wrong. Please try again or email us directly at info@havenrise.co.ke
+                      Something went wrong. Please try again or email us directly at havenrise.realty25@gmail.com
                     </p>
                   )}
 
