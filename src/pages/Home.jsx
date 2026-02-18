@@ -647,7 +647,7 @@ const Home = () => {
           >
             HavenRise
             <br />
-            <em>Homes</em>
+            <em>Realty</em>
           </h1>
           <p
             className="fade-up hero-subtitle"

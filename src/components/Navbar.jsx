@@ -171,7 +171,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link to="/" style={{ textDecoration:'none', display:'flex', alignItems:'baseline', gap:2, flexShrink:0 }}>
               <span className="logo-word" style={{ fontFamily:'Cormorant Garamond, Georgia, serif', fontSize:26, fontWeight:600, color: transparent ? '#fff' : '#1a1a1a', letterSpacing:'-0.02em', lineHeight:1, transition:'color 0.35s' }}>HavenRise</span>
-              <span className="logo-tag"  style={{ fontFamily:'DM Sans, sans-serif', fontSize:10, fontWeight:400, letterSpacing:'0.25em', textTransform:'uppercase', color:'#8B7355', marginLeft:7 }}>Homes</span>
+              <span className="logo-tag"  style={{ fontFamily:'DM Sans, sans-serif', fontSize:10, fontWeight:400, letterSpacing:'0.25em', textTransform:'uppercase', color:'#8B7355', marginLeft:7 }}>Realty</span>
             </Link>
 
             {/* Desktop links — hidden ≤1024px */}
