@@ -7,6 +7,9 @@ import PropertyDetail from './pages/PropertyDetail'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import FloatingChat from './components/FloatingChat'
+import SellProperty from './pages/SellProperty'
+import Developers from './pages/Developers'
+import Services from './pages/Services'
 
 function App() {
   return (
@@ -22,6 +25,10 @@ function App() {
             <Route path="/property/:id" element={<PropertyDetail />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path='/developer' element={<Developers/>} />
+            <Route path='/services' element={<Services/>} />
+            <Route path='/sellproperty' element={<SellProperty/>} />
+
           </Routes>
         </main>
         <Footer />
