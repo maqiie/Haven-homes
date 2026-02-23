@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
-
 const Arrow = () => (
   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 )
-
 const SERVICES = [
   {
     num:'01', color:'#8B7355',
@@ -48,7 +46,7 @@ const SERVICES = [
     desc:'We design and execute full off-plan sales programmes for residential developers — from show-unit fit-out through to final unit handover. Our buyer network and digital reach ensure faster absorption at better prices.',
     features:['Sales strategy & unit pricing','Show unit design & management','Buyer sourcing, qualification & reservation','Digital marketing & PR campaigns'],
     img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80',
-    cta:'Partner With Us', link:'/developers',
+    cta:'Partner With Us', link:'/contact',
   },
   {
     num:'06', color:'#8B7355',
@@ -59,8 +57,23 @@ const SERVICES = [
     img:'https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=900&q=80',
     cta:'Talk to an Advisor', link:'/contact',
   },
+  {
+    num:'07', color:'#8B7355',
+    title:'Chauffeur & Airport Transfers',
+    sub:'Arrive in Style',
+    desc:'First impressions matter. Our premium chauffeur service ensures you travel in comfort and punctuality — whether you\'re landing at JKIA, Moi International, Wilson, or any airport across Kenya. We cater to clients, investors, and corporate guests with the discretion and polish they deserve.',
+    features:[
+      'Meet & greet at JKIA, Moi International (Mombasa), Wilson & all Kenya airports',
+      'Flight tracking — we adjust for early or delayed arrivals',
+      'Luxury vehicles: executive saloons & spacious SUVs',
+      'Corporate, VIP & group transfer packages available',
+      'Property viewing tours & city transfers on request',
+      'Advance booking & 24 / 7 availability',
+    ],
+    img:'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=900&q=80',
+    cta:'Book a Transfer', link:'/contact',
+  },
 ]
-
 const WHY = [
   { icon:'🏆', title:'Award-Winning Agency',   desc:'Recognised as one of Nairobi\'s top boutique real estate firms for client satisfaction and transaction integrity.' },
   { icon:'🔑', title:'Off-Market Access',       desc:'Our exclusive network gives you access to properties that are never publicly listed.' },
@@ -69,7 +82,6 @@ const WHY = [
   { icon:'🌍', title:'Diaspora Specialists',    desc:'We handle the entire process remotely — so you can buy or sell from anywhere in the world.' },
   { icon:'🤝', title:'No Hidden Fees',          desc:'Transparent fee structure disclosed upfront. No surprises, no commissions buried in the fine print.' },
 ]
-
 const Services = () => (
   <div style={{ fontFamily:"'DM Sans',sans-serif", background:'#F9F7F4', color:'#1a1a1a' }}>
     <style>{`
@@ -108,7 +120,6 @@ const Services = () => (
       @media(max-width:420px){.why-grid{grid-template-columns:1fr!important;}}
       @media(prefers-reduced-motion:reduce){.fade,.svc-img,.why-card{animation:none!important;transition:none!important;}}
     `}</style>
-
     {/* HERO */}
     <header className="hero-pad" style={{ position:'relative', padding:'168px 6vw 96px', background:'#1a1a1a', overflow:'hidden' }}>
       <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=80" alt="" aria-hidden="true" fetchpriority="high" decoding="sync"
@@ -140,7 +151,6 @@ const Services = () => (
         <div style={{ width:1, height:40, background:'rgba(255,255,255,.12)' }} />
       </div>
     </header>
-
     {/* SERVICES — alternating layout */}
     {SERVICES.map((svc, i) => {
       const rev = i % 2 === 1
@@ -155,6 +165,13 @@ const Services = () => (
                 <div style={{ position:'absolute', top:24, left:24 }}>
                   <span style={{ background:'#1a1a1a', color:'#fff', padding:'5px 14px', fontSize:9, letterSpacing:'.18em', textTransform:'uppercase', fontWeight:700 }}>{svc.sub}</span>
                 </div>
+                {/* Car icon badge for chauffeur service */}
+                {svc.num === '07' && (
+                  <div style={{ position:'absolute', bottom:24, left:24, background:'#8B7355', color:'#fff', padding:'8px 16px', fontSize:10, fontWeight:600, letterSpacing:'.15em', textTransform:'uppercase', display:'flex', alignItems:'center', gap:8 }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5S16.67 13 17.5 13s1.5.67 1.5 1.5S18.33 16 17.5 16zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+                    All Kenya Airports
+                  </div>
+                )}
               </div>
               {/* Content */}
               <div className="svc-content" style={{ flex:1, padding:'56px 60px', display:'flex', flexDirection:'column', justifyContent:'center' }}>
@@ -162,6 +179,16 @@ const Services = () => (
                 <h2 className="serif" style={{ fontSize:'clamp(28px,3.5vw,48px)', fontWeight:300, lineHeight:1.05, letterSpacing:'-.02em', marginTop:-16, marginBottom:16, color:'#1a1a1a' }}>
                   {svc.title}
                 </h2>
+                {/* Airport tags for chauffeur service */}
+                {svc.num === '07' && (
+                  <div style={{ display:'flex', flexWrap:'wrap', gap:8, marginBottom:20 }}>
+                    {['JKIA – Nairobi','Moi Intl – Mombasa','Wilson Airport','Kisumu Intl','Eldoret Intl','All Kenya Airports'].map(airport => (
+                      <span key={airport} style={{ padding:'4px 12px', border:'1px solid #8B7355', color:'#8B7355', fontSize:10, fontWeight:600, letterSpacing:'.1em', textTransform:'uppercase' }}>
+                        {airport}
+                      </span>
+                    ))}
+                  </div>
+                )}
                 <p style={{ fontSize:14, color:'#666', lineHeight:1.8, fontWeight:300, marginBottom:28, maxWidth:480 }}>{svc.desc}</p>
                 <ul className="feat-list" style={{ columns:2, columnGap:24, listStyle:'none', padding:0, marginBottom:36 }}>
                   {svc.features.map(f => (
@@ -181,7 +208,6 @@ const Services = () => (
         </section>
       )
     })}
-
     {/* WHY HAVENRISE */}
     <section className="sec-pad" style={{ padding:'96px 6vw', background:'#1a1a1a' }} aria-labelledby="why-heading">
       <div style={{ maxWidth:1400, margin:'0 auto' }}>
@@ -203,7 +229,6 @@ const Services = () => (
         </div>
       </div>
     </section>
-
     {/* CTA STRIP */}
     <section style={{ background:'#F0EDE8', padding:'64px 6vw', borderTop:'1px solid #E8E4DF' }}>
       <div className="cta-bar" style={{ maxWidth:1400, margin:'0 auto', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:28 }}>
@@ -221,5 +246,4 @@ const Services = () => (
     </section>
   </div>
 )
-
 export default Services

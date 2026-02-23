@@ -310,8 +310,13 @@ const ArrowRight = () => (
 // ─── Home Component ────────────────────────────────────────────────────────────
 const Home = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  // ── CHANGED: added intent, bedrooms, priceMin, priceMax to formData ──────────
   const [formData, setFormData] = useState({
     role: "",
+    intent: "",
+    bedrooms: "",
+    priceMin: "",
+    priceMax: "",
     name: "",
     email: "",
     phone: "",
@@ -384,8 +389,13 @@ const Home = () => {
         });
         if (res.ok) {
           setFormStatus("success");
+          // ── CHANGED: reset includes new fields ───────────────────────────────
           setFormData({
             role: "",
+            intent: "",
+            bedrooms: "",
+            priceMin: "",
+            priceMax: "",
             name: "",
             email: "",
             phone: "",
@@ -444,7 +454,7 @@ const Home = () => {
         .ulink-gold::after { background:#8B7355; }
 
         /* ── Form focus ───────────────────── */
-        input:focus, textarea:focus { outline:none; border-color:#8B7355 !important; }
+        input:focus, textarea:focus, select:focus { outline:none; border-color:#8B7355 !important; }
 
         /* ── Gallery ──────────────────────── */
         .gal-item { cursor:zoom-in; overflow:hidden; position:relative; }
@@ -538,6 +548,7 @@ const Home = () => {
           .two-col { gap:32px !important; }
           .four-stat div { padding:40px 20px !important; border-right:none !important; border-bottom:1px solid #E8E4DF; }
           .lbx img { max-height:65vh !important; }
+          .form-price-grid { grid-template-columns:1fr !important; }
         }
 
         /* ── xs: 420px ────────────────────── */
@@ -2700,8 +2711,10 @@ const Home = () => {
               </div>
             ) : (
               <form onSubmit={handleForm} noValidate>
+
+                {/* ── I am a ────────────────────────────────────────────────── */}
                 <fieldset
-                  style={{ border: "none", marginBottom: 28, padding: 0 }}
+                  style={{ border: "none", marginBottom: 24, padding: 0 }}
                 >
                   <legend
                     style={{
@@ -2751,6 +2764,239 @@ const Home = () => {
                   </div>
                 </fieldset>
 
+                {/* ── I want to: Buy or Rent ─────────────────────────────────── */}
+                <fieldset
+                  style={{ border: "none", marginBottom: 24, padding: 0 }}
+                >
+                  <legend
+                    style={{
+                      fontSize: 11,
+                      letterSpacing: ".15em",
+                      textTransform: "uppercase",
+                      color: "#999",
+                      marginBottom: 14,
+                      fontWeight: 600,
+                      display: "block",
+                    }}
+                  >
+                    I want to
+                  </legend>
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: 8,
+                    }}
+                  >
+                    {[
+                      { v: "Buy",  label: "🏠  Buy"  },
+                      { v: "Rent", label: "🔑  Rent" },
+                    ].map(({ v, label }) => (
+                      <button
+                        key={v}
+                        type="button"
+                        onClick={() =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            intent: v,
+                            priceMin: "",
+                            priceMax: "",
+                          }))
+                        }
+                        aria-pressed={formData.intent === v}
+                        style={{
+                          padding: "12px 8px",
+                          fontSize: 13,
+                          letterSpacing: ".06em",
+                          textTransform: "uppercase",
+                          fontWeight: 600,
+                          cursor: "pointer",
+                          border: "2px solid",
+                          fontFamily: "inherit",
+                          transition: "all .15s",
+                          background:
+                            formData.intent === v
+                              ? v === "Buy"
+                                ? "#8B7355"
+                                : "#1a1a1a"
+                              : "transparent",
+                          color: formData.intent === v ? "#fff" : "#888",
+                          borderColor:
+                            formData.intent === v
+                              ? v === "Buy"
+                                ? "#8B7355"
+                                : "#1a1a1a"
+                              : "#ddd",
+                        }}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </div>
+                </fieldset>
+
+                {/* ── Bedrooms ──────────────────────────────────────────────── */}
+                <div style={{ marginBottom: 24 }}>
+                  <p
+                    style={{
+                      fontSize: 11,
+                      letterSpacing: ".15em",
+                      textTransform: "uppercase",
+                      color: "#999",
+                      marginBottom: 12,
+                      fontWeight: 600,
+                    }}
+                  >
+                    Bedrooms
+                  </p>
+                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                    {["Any", "1", "2", "3", "4", "5", "6+"].map((b) => (
+                      <button
+                        key={b}
+                        type="button"
+                        onClick={() =>
+                          handleFormField(
+                            "bedrooms",
+                            formData.bedrooms === b ? "" : b,
+                          )
+                        }
+                        aria-pressed={formData.bedrooms === b}
+                        style={{
+                          minWidth: 42,
+                          padding: "8px 10px",
+                          fontSize: 12,
+                          fontWeight: 500,
+                          cursor: "pointer",
+                          border: "1px solid",
+                          fontFamily: "inherit",
+                          transition: "all .15s",
+                          textAlign: "center",
+                          lineHeight: 1,
+                          background:
+                            formData.bedrooms === b ? "#1a1a1a" : "transparent",
+                          color: formData.bedrooms === b ? "#fff" : "#888",
+                          borderColor:
+                            formData.bedrooms === b ? "#1a1a1a" : "#ddd",
+                        }}
+                      >
+                        {b}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* ── Price range — only shown after Buy/Rent selected ───────── */}
+                {formData.intent && (() => {
+                  const isBuy = formData.intent === "Buy";
+                  const buyMins  = ["", "Under KES 5M", "KES 5M", "KES 10M", "KES 20M", "KES 40M", "KES 80M"];
+                  const buyMaxs  = ["", "KES 5M", "KES 10M", "KES 20M", "KES 40M", "KES 80M", "KES 150M", "No limit"];
+                  const rentMins = ["", "Under KES 25K/mo", "KES 25K/mo", "KES 50K/mo", "KES 100K/mo", "KES 200K/mo", "KES 400K/mo"];
+                  const rentMaxs = ["", "KES 25K/mo", "KES 50K/mo", "KES 100K/mo", "KES 200K/mo", "KES 400K/mo", "No limit"];
+                  const mins = isBuy ? buyMins : rentMins;
+                  const maxs = isBuy ? buyMaxs : rentMaxs;
+                  const selStyle = {
+                    width: "100%",
+                    padding: "11px 28px 11px 13px",
+                    fontSize: 13,
+                    border: "1px solid #E8E4DF",
+                    background: "#FAFAFA",
+                    color: "#1a1a1a",
+                    fontFamily: "inherit",
+                    cursor: "pointer",
+                    appearance: "none",
+                    backgroundImage:
+                      "url(\"data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23aaa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "right 10px center",
+                  };
+                  return (
+                    <div style={{ marginBottom: 24 }}>
+                      <p
+                        style={{
+                          fontSize: 11,
+                          letterSpacing: ".15em",
+                          textTransform: "uppercase",
+                          color: "#999",
+                          marginBottom: 12,
+                          fontWeight: 600,
+                        }}
+                      >
+                        {isBuy ? "Purchase Budget" : "Monthly Rent Budget"}
+                      </p>
+                      <div
+                        className="form-price-grid"
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: "1fr 1fr",
+                          gap: 8,
+                        }}
+                      >
+                        <div>
+                          <label
+                            htmlFor="form-price-min"
+                            style={{
+                              display: "block",
+                              fontSize: 10,
+                              color: "#bbb",
+                              marginBottom: 5,
+                              letterSpacing: ".1em",
+                              textTransform: "uppercase",
+                              fontWeight: 500,
+                            }}
+                          >
+                            From
+                          </label>
+                          <select
+                            id="form-price-min"
+                            value={formData.priceMin}
+                            onChange={(e) =>
+                              handleFormField("priceMin", e.target.value)
+                            }
+                            style={selStyle}
+                          >
+                            {mins.map((v) => (
+                              <option key={v} value={v}>
+                                {v || "Min…"}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                        <div>
+                          <label
+                            htmlFor="form-price-max"
+                            style={{
+                              display: "block",
+                              fontSize: 10,
+                              color: "#bbb",
+                              marginBottom: 5,
+                              letterSpacing: ".1em",
+                              textTransform: "uppercase",
+                              fontWeight: 500,
+                            }}
+                          >
+                            To
+                          </label>
+                          <select
+                            id="form-price-max"
+                            value={formData.priceMax}
+                            onChange={(e) =>
+                              handleFormField("priceMax", e.target.value)
+                            }
+                            style={selStyle}
+                          >
+                            {maxs.map((v) => (
+                              <option key={v} value={v}>
+                                {v || "Max…"}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {/* ── Contact fields (unchanged) ────────────────────────────── */}
                 {[
                   {
                     key: "name",
