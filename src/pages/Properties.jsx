@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { properties } from '../data/propertyData'
 
-const LOCATIONS = ['All', 'Westlands', 'Kilimani', 'Lavington', 'Kileleshwa', 'Runda', 'Langata']
+const LOCATIONS = ['All', 'Westlands', 'Kilimani', 'Lavington', 'Kileleshwa', 'Runda', 'Langata','Kiambu Road', 'Karen', 'Ruiru']
 const EMPTY_FILTERS = { search: '', propertyType: 'all', listingType: 'all', bedrooms: 'all', location: 'all' }
 
 const LocationPin = () => (
