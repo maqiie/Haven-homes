@@ -89,8 +89,10 @@ const galleryImages = [
   { id: 8,  src: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.jpeg",               label: "Amethyst Springs",       cat: "Apartment" },
   { id: 9,  src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.jpeg",                          label: "Lesto Residences",       cat: "Apartment" },
   { id: 10, src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.jpeg",                          label: "Lesto Residences",       cat: "Apartment" },
-  { id: 11, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.jpeg",         label: "Runda Residence",        cat: "House"     },
-  { id: 12, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM.jpeg",         label: "Runda Residence",        cat: "House"     },
+  { id: 11, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.jpeg",                               label: "Runda Residence",        cat: "House"     },
+  { id: 12, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM.jpeg",                               label: "Runda Residence",        cat: "House"     },
+  { id: 13, src: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.jpeg",                      label: "Gigiri Residence",       cat: "House"     },
+  { id: 14, src: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.00 PM.jpeg",                      label: "Gigiri Residence",       cat: "House"     },
 ];
 
 const galHeights = [320, 240, 260, 300, 240, 280, 260, 300, 240, 260, 300, 240];
@@ -129,6 +131,12 @@ const locationCards = [
     name: "Runda",
     description: "Premium Rentals",
     img: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.jpeg",
+    tall: false,
+  },
+  {
+    name: "Gigiri",
+    description: "Diplomatic Residences",
+    img: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.jpeg",
     tall: false,
   },
 ];
@@ -365,7 +373,7 @@ const Home = () => {
       {/* ══ MARQUEE ═══════════════════════════════════════════════════════════ */}
       <div className="marquee-bar" style={{ background: "#1a1a1a", padding: "20px 0", borderBottom: "1px solid #2a2a2a", overflow: "hidden" }} aria-hidden="true">
         <div className="marquee-inner" style={{ display: "flex", gap: 80, whiteSpace: "nowrap", paddingLeft: "6vw" }}>
-          {["19 Premium Listings", "5 Prime Locations", "Off-Plan & Ready Units", "Lavington · Westlands · Kilimani · Riverside · Runda", "Flexible Payment Plans Available"].map((item, i) => (
+          {["20 Premium Listings", "5 Prime Locations", "Off-Plan & Ready Units", "Lavington · Westlands · Kilimani · Riverside · Runda · Gigiri", "Flexible Payment Plans Available"].map((item, i) => (
             <span key={i} style={{ fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(255,255,255,.45)" }}>
               <span style={{ color: "#8B7355", marginRight: 16 }}>◆</span>{item}
             </span>
@@ -431,7 +439,7 @@ const Home = () => {
             </div>
             <div className="about-stat-card" style={{ position: "absolute", bottom: -36, left: -28, background: "#fff", padding: "28px 30px", border: "1px solid #E8E4DF", boxShadow: "0 8px 40px rgba(0,0,0,0.08)", zIndex: 2 }}>
               <div className="about-stat-nums" style={{ display: "flex", gap: 28 }}>
-                {[["5", "Locations"], ["19+", "Listings"], ["5", "Projects"]].map(([n, l]) => (
+                {[["6", "Locations"], ["20+", "Listings"], ["5", "Projects"]].map(([n, l]) => (
                   <div key={l} style={{ textAlign: "center" }}>
                     <p className="serif" style={{ fontSize: 32, fontWeight: 300, color: "#1a1a1a", lineHeight: 1 }}>{n}</p>
                     <p style={{ fontSize: 10, letterSpacing: ".14em", textTransform: "uppercase", color: "#8B7355", marginTop: 5, fontWeight: 600 }}>{l}</p>
@@ -734,7 +742,7 @@ const Home = () => {
       {/* ══ STATS ════════════════════════════════════════════════════════════ */}
       <section aria-label="Company statistics" style={{ borderBottom: "1px solid #E8E4DF" }}>
         <dl className="four-stat" style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}>
-          {[["19+", "Active Listings"], ["5", "Prime Locations"], ["5", "Landmark Projects"], ["KSh 6.9M", "Starting Price"]].map(([num, label]) => (
+          {[["20+", "Active Listings"], ["6", "Prime Locations"], ["5", "Landmark Projects"], ["KSh 6.9M", "Starting Price"]].map(([num, label]) => (
             <div key={label} style={{ padding: "60px 40px", textAlign: "center", borderRight: "1px solid #E8E4DF" }}>
               <dd className="serif" style={{ fontSize: 52, fontWeight: 300, lineHeight: 1 }}>{num}</dd>
               <dt style={{ fontSize: 11, letterSpacing: ".15em", textTransform: "uppercase", color: "#8B7355", marginTop: 10, fontWeight: 600 }}>{label}</dt>
