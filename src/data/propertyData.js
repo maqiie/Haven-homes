@@ -1,7 +1,5 @@
 export const properties = [
-
   // ── A-ONE PANDORA ─────────────────────────────────────────────────────────
-
   {
     id: 1,
     title: "A-One Pandora — 3 Bed + Study (160sqm)",
@@ -30,24 +28,29 @@ export const properties = [
       "Coffee Bar", "24-Hour Security & CCTV", "Borehole Water with Purifier",
       "Full Backup Generator"
     ],
-    images: [
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.22 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM (1).jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.24 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.26 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.27 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.28 PM.jpeg"
+    // previewImages: 2 images shown on cards/listings (load eagerly)
+    // images: full gallery loaded only when user opens the property detail page
+    previewImages: [
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.webp",
     ],
-    image: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.jpeg",
+    images: [
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.22 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM (1).webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.24 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.26 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.27 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.28 PM.webp"
+    ],
+    image: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
     brochure: "/pandora/Pandora Brochure Final - Web (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2780, lng: 36.7870 }
   },
-
   {
     id: 2,
     title: "A-One Pandora — 3 Bed + Study (155sqm)",
@@ -76,24 +79,27 @@ export const properties = [
       "Coffee Bar", "24-Hour Security & CCTV", "Borehole Water with Purifier",
       "Full Backup Generator"
     ],
-    images: [
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.22 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM (1).jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.24 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.26 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.27 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.28 PM.jpeg"
+    previewImages: [
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.22 PM.webp",
     ],
-    image: "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.jpeg",
+    images: [
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.22 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM (1).webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.24 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.26 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.27 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.28 PM.webp"
+    ],
+    image: "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.webp",
     brochure: "/pandora/Pandora Brochure Final - Web (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2780, lng: 36.7870 }
   },
-
   {
     id: 3,
     title: "A-One Pandora — 4 Bedroom + DSQ (213sqm)",
@@ -122,26 +128,28 @@ export const properties = [
       "Coffee Bar", "24-Hour Security & CCTV", "Borehole Water with Purifier",
       "Full Backup Generator"
     ],
-    images: [
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.24 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.26 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.27 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.28 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.22 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM.jpeg",
-      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM (1).jpeg"
+    previewImages: [
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.24 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.webp",
     ],
-    image: "/pandora/WhatsApp Image 2026-03-03 at 6.30.24 PM.jpeg",
+    images: [
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.24 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.26 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.27 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.28 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.21 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.22 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM.webp",
+      "/pandora/WhatsApp Image 2026-03-03 at 6.30.23 PM (1).webp"
+    ],
+    image: "/pandora/WhatsApp Image 2026-03-03 at 6.30.24 PM.webp",
     brochure: "/pandora/Pandora Brochure Final - Web (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2780, lng: 36.7870 }
   },
-
   // ── PANORAMA WEST RESIDENCE ───────────────────────────────────────────────
-
   {
     id: 4,
     title: "Panorama West — Standard 1BR (69sqm)",
@@ -167,33 +175,36 @@ export const properties = [
       "Recreation Club", "Yoga Room", "Reading Lounge", "Coffee Bar",
       "24-Hour Security & CCTV", "Borehole Water with Purifier", "Full Backup Generator"
     ],
-    images: [
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.47 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.49 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.51 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.53 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.56 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.58 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.00 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.02 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.06 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.08 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.09 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.12 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.14 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.16 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.18 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.20 PM.jpeg"
+    previewImages: [
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.webp",
     ],
-    image: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.jpeg",
+    images: [
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.47 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.49 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.51 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.53 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.56 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.58 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.00 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.02 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.06 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.08 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.09 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.12 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.14 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.16 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.18 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.20 PM.webp"
+    ],
+    image: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.webp",
     brochure: null,
     floorPlan: null,
     coordinates: { lat: -1.2676, lng: 36.8070 }
   },
-
   {
     id: 5,
     title: "Panorama West — Standard 1BR (74sqm)",
@@ -219,33 +230,36 @@ export const properties = [
       "Recreation Club", "Yoga Room", "Reading Lounge", "Coffee Bar",
       "24-Hour Security & CCTV", "Borehole Water with Purifier", "Full Backup Generator"
     ],
-    images: [
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.47 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.49 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.51 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.53 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.56 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.58 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.00 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.02 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.06 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.08 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.09 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.12 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.14 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.16 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.18 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.20 PM.jpeg"
+    previewImages: [
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.47 PM.webp",
     ],
-    image: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.jpeg",
+    images: [
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.47 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.49 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.51 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.53 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.56 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.58 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.00 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.02 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.06 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.08 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.09 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.12 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.14 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.16 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.18 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.20 PM.webp"
+    ],
+    image: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.webp",
     brochure: null,
     floorPlan: null,
     coordinates: { lat: -1.2676, lng: 36.8070 }
   },
-
   {
     id: 6,
     title: "Panorama West — 2 Bedroom (111sqm)",
@@ -271,35 +285,37 @@ export const properties = [
       "Recreation Club", "Yoga Room", "Reading Lounge", "Coffee Bar",
       "24-Hour Security & CCTV", "Borehole Water with Purifier", "Full Backup Generator"
     ],
-    images: [
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.06 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.08 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.09 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.12 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.14 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.16 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.18 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.20 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.47 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.49 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.51 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.53 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.56 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.58 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.00 PM.jpeg",
-      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.02 PM.jpeg"
+    previewImages: [
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.06 PM.webp",
     ],
-    image: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.jpeg",
+    images: [
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.06 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.08 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.09 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.12 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.14 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.16 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.18 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.20 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.45 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.47 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.49 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.51 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.53 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.56 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.58 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.00 PM.webp",
+      "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.02 PM.webp"
+    ],
+    image: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.webp",
     brochure: null,
     floorPlan: null,
     coordinates: { lat: -1.2676, lng: 36.8070 }
   },
-
   // ── BALKIS RESIDENCES RIVERSIDE ───────────────────────────────────────────
-
   {
     id: 7,
     title: "Balkis Residences — 1 Bedroom (66-69sqm)",
@@ -327,32 +343,35 @@ export const properties = [
       "Hotel-Style Lobby", "Convenience Store", "Full Backup Generator",
       "High Rental Demand Location", "Near Embassies & Expat Community"
     ],
-    images: [
-      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.jpeg"
+    previewImages: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.webp",
     ],
-    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
+    images: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.webp"
+    ],
+    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
     brochure: "/Riverside/Balkis Residences Riverside E-brochure 2026 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2640, lng: 36.8000 }
   },
-
   {
     id: 8,
     title: "Balkis Residences — 2 Bedroom (109-114sqm)",
@@ -380,32 +399,35 @@ export const properties = [
       "Hotel-Style Lobby", "Convenience Store", "Full Backup Generator",
       "High Rental Demand Location", "Near Embassies & Expat Community"
     ],
-    images: [
-      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.jpeg"
+    previewImages: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.webp",
     ],
-    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
+    images: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.webp"
+    ],
+    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
     brochure: "/Riverside/Balkis Residences Riverside E-brochure 2026 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2640, lng: 36.8000 }
   },
-
   {
     id: 9,
     title: "Balkis Residences — 2 Bed + DSQ (128-133sqm)",
@@ -433,32 +455,35 @@ export const properties = [
       "Hotel-Style Lobby", "Convenience Store", "Full Backup Generator",
       "High Rental Demand Location", "Near Embassies & Expat Community"
     ],
-    images: [
-      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.jpeg"
+    previewImages: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.webp",
     ],
-    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
+    images: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.webp"
+    ],
+    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
     brochure: "/Riverside/Balkis Residences Riverside E-brochure 2026 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2640, lng: 36.8000 }
   },
-
   {
     id: 10,
     title: "Balkis Residences — 2 Bed + Study + DSQ (149-155sqm)",
@@ -486,32 +511,35 @@ export const properties = [
       "Hotel-Style Lobby", "Convenience Store", "Full Backup Generator",
       "High Rental Demand Location", "Near Embassies & Expat Community"
     ],
-    images: [
-      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.jpeg"
+    previewImages: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp",
     ],
-    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
+    images: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.webp"
+    ],
+    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
     brochure: "/Riverside/Balkis Residences Riverside E-brochure 2026 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2640, lng: 36.8000 }
   },
-
   {
     id: 11,
     title: "Balkis Residences — 3 Bedroom + DSQ (200-210sqm)",
@@ -540,34 +568,36 @@ export const properties = [
       "High Rental Demand Location", "Near Embassies & Expat Community",
       "Strong Capital Appreciation Potential"
     ],
-    images: [
-      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.jpeg",
-      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.jpeg"
+    previewImages: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.webp",
     ],
-    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
+    images: [
+      "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.40 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.14 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.17 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.19 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.21 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.23 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.26 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.28 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.34 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.35 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.37 PM.webp",
+      "/Riverside/WhatsApp Image 2026-03-04 at 10.18.38 PM.webp"
+    ],
+    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
     brochure: "/Riverside/Balkis Residences Riverside E-brochure 2026 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2640, lng: 36.8000 }
   },
-
   // ── AMETHYST SPRINGS – KILIMANI ───────────────────────────────────────────
-
   {
     id: 12,
     title: "Amethyst Springs — 1 Bedroom (58sqm)",
@@ -596,21 +626,24 @@ export const properties = [
       "Co-working Spaces", "Creatives Room", "Laundry Service",
       "24-Hour Security", "High Rental & Airbnb Demand"
     ],
-    images: [
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.48 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.jpeg"
+    previewImages: [
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.webp",
     ],
-    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.jpeg",
+    images: [
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.48 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.webp"
+    ],
+    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
     brochure: "/Amethyst-springs/AMETHYST SPRINGS PRICE LIST (1) DEC copy (4).pdf",
     floorPlan: "/Amethyst-springs/FLOOR PLAN A FINAL (1).pdf",
     coordinates: { lat: -1.2980, lng: 36.7880 }
   },
-
   {
     id: 13,
     title: "Amethyst Springs — 1 Bedroom (62sqm)",
@@ -639,21 +672,24 @@ export const properties = [
       "Co-working Spaces", "Creatives Room", "Laundry Service",
       "24-Hour Security", "High Rental & Airbnb Demand"
     ],
-    images: [
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.48 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.jpeg"
+    previewImages: [
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.webp",
     ],
-    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.jpeg",
+    images: [
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.48 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.webp"
+    ],
+    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.webp",
     brochure: "/Amethyst-springs/AMETHYST SPRINGS PRICE LIST (1) DEC copy (4).pdf",
     floorPlan: "/Amethyst-springs/FLOOR PLAN A FINAL (1).pdf",
     coordinates: { lat: -1.2980, lng: 36.7880 }
   },
-
   {
     id: 14,
     title: "Amethyst Springs — 2 Bedroom (88-95sqm)",
@@ -682,21 +718,24 @@ export const properties = [
       "Residents Lounge", "Games Hall", "Rooftop Garden",
       "Co-working Spaces", "Creatives Room", "Laundry Service", "24-Hour Security"
     ],
-    images: [
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.48 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.jpeg"
+    previewImages: [
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.webp",
     ],
-    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.jpeg",
+    images: [
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.48 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.webp"
+    ],
+    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
     brochure: "/Amethyst-springs/AMETHYST SPRINGS PRICE LIST (1) DEC copy (4).pdf",
     floorPlan: "/Amethyst-springs/FLOOR PLAN A FINAL (1).pdf",
     coordinates: { lat: -1.2980, lng: 36.7880 }
   },
-
   {
     id: 15,
     title: "Amethyst Springs — 2 Bedroom Premium (110sqm)",
@@ -725,23 +764,25 @@ export const properties = [
       "Residents Lounge", "Games Hall", "Rooftop Garden",
       "Co-working Spaces", "Creatives Room", "Laundry Service", "24-Hour Security"
     ],
-    images: [
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.48 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.jpeg",
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.jpeg"
+    previewImages: [
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.webp",
     ],
-    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.jpeg",
+    images: [
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.48 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.webp"
+    ],
+    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.webp",
     brochure: "/Amethyst-springs/AMETHYST SPRINGS PRICE LIST (1) DEC copy (4).pdf",
     floorPlan: "/Amethyst-springs/FLOOR PLAN A FINAL (1).pdf",
     coordinates: { lat: -1.2980, lng: 36.7880 }
   },
-
   // ── LESTO RESIDENCES – WESTLANDS ──────────────────────────────────────────
-
   {
     id: 16,
     title: "Lesto Residences — 1 Bedroom (67sqm)",
@@ -770,27 +811,30 @@ export const properties = [
       "Low-Density Development (96 Units)", "14-Floor High-Rise",
       "Easy Access to GTC & Malls"
     ],
-    images: [
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.34 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.36 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.37 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.38 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM (1).jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.40 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.41 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.43 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.44 PM.jpeg"
+    previewImages: [
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.webp",
     ],
-    image: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.jpeg",
+    images: [
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.34 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.36 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.37 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.38 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM (1).webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.40 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.41 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.43 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.44 PM.webp"
+    ],
+    image: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",
     brochure: "/Lesto/LESTO BROCHURE-1 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2650, lng: 36.8100 }
   },
-
   {
     id: 17,
     title: "Lesto Residences — 1 Bedroom (83sqm)",
@@ -819,27 +863,30 @@ export const properties = [
       "Low-Density Development (96 Units)", "14-Floor High-Rise",
       "Easy Access to GTC & Malls"
     ],
-    images: [
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.34 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.36 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.37 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.38 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM (1).jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.40 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.41 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.43 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.44 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.jpeg"
+    previewImages: [
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.34 PM.webp",
     ],
-    image: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.jpeg",
+    images: [
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.34 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.36 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.37 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.38 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM (1).webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.40 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.41 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.43 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.44 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp"
+    ],
+    image: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.webp",
     brochure: "/Lesto/LESTO BROCHURE-1 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2650, lng: 36.8100 }
   },
-
   {
     id: 18,
     title: "Lesto Residences — 2 Bedroom (105sqm)",
@@ -868,29 +915,31 @@ export const properties = [
       "Low-Density Development (96 Units)", "14-Floor High-Rise",
       "Easy Access to GTC & Malls", "Near Sports Club & Hospitals"
     ],
-    images: [
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.40 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.41 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.43 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.44 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.34 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.36 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.37 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.38 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM.jpeg",
-      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM (1).jpeg"
+    previewImages: [
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.40 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp",
     ],
-    image: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.40 PM.jpeg",
+    images: [
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.40 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.41 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.43 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.44 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.34 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.36 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.37 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.38 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM.webp",
+      "/Lesto/WhatsApp Image 2026-03-04 at 10.41.39 PM (1).webp"
+    ],
+    image: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.40 PM.webp",
     brochure: "/Lesto/LESTO BROCHURE-1 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2650, lng: 36.8100 }
   },
-
   // ── RENTALS ───────────────────────────────────────────────────────────────
-
   {
     id: 19,
     title: "Runda — 5 Bedroom All En-Suite Home",
@@ -925,28 +974,31 @@ export const properties = [
       "Well-Maintained Property",
       "Prime Runda Location"
     ],
-    images: [
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM (1).jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.10 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.11 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.12 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.13 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.14 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.16 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.17 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.18 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.20 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM (1).jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.23 PM.jpeg",
-      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.24 PM.jpeg"
+    previewImages: [
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.10 PM.webp",
     ],
-    image: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.jpeg",
+    images: [
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM (1).webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.10 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.11 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.12 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.13 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.14 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.16 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.17 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.18 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.20 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM (1).webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.23 PM.webp",
+      "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.24 PM.webp"
+    ],
+    image: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.webp",
     brochure: null,
     coordinates: { lat: -1.2154, lng: 36.7833 }
   },
-
   {
     id: 20,
     title: "6 Bedroom Master En-Suite Home Near United Nations",
@@ -980,58 +1032,66 @@ export const properties = [
       "Ideal for Diplomats & Expatriates",
       "Privacy & Tranquility"
     ],
-    images: [
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.43 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.45 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.46 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.48 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.50 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.51 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.53 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.54 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.56 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.57 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.59 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.00 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.02 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.03 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.05 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.06 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.08 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.10 PM.jpeg",
-      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.11 PM.jpeg"
+    previewImages: [
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.45 PM.webp",
     ],
-    image: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.jpeg",
+    images: [
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.43 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.45 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.46 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.48 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.50 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.51 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.53 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.54 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.56 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.57 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.59 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.00 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.02 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.03 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.05 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.06 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.08 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.10 PM.webp",
+      "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.11 PM.webp"
+    ],
+    image: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.webp",
     brochure: null,
     coordinates: { lat: -1.2290, lng: 36.8060 }
   }
-
 ]
 
-export const getPropertyById = (id) => {
-  return properties.find(property => property.id === parseInt(id))
-}
+// ─── Helper Functions ─────────────────────────────────────────────────────────
 
-export const getFeaturedProperties = () => {
-  return properties.filter(p => p.featured)
-}
+export const getPropertyById = (id) =>
+  properties.find(p => p.id === parseInt(id))
 
-export const getPropertiesByProject = (projectName) => {
-  return properties.filter(p => p.project === projectName)
-}
+export const getFeaturedProperties = () =>
+  properties.filter(p => p.featured)
 
-export const getPropertiesForSale = () => {
-  return properties.filter(p => p.type === 'for-sale')
-}
+export const getPropertiesByProject = (projectName) =>
+  properties.filter(p => p.project === projectName)
 
-export const getPropertiesForRent = () => {
-  return properties.filter(p => p.type === 'for-rent')
-}
+export const getPropertiesForSale = () =>
+  properties.filter(p => p.type === 'for-sale')
 
-export const getPropertiesByLocation = (location) => {
-  return properties.filter(p => p.location.toLowerCase() === location.toLowerCase())
-}
+export const getPropertiesForRent = () =>
+  properties.filter(p => p.type === 'for-rent')
+
+export const getPropertiesByLocation = (location) =>
+  properties.filter(p => p.location.toLowerCase() === location.toLowerCase())
+
+// Returns the primary thumbnail — use this on cards with loading="eager" for
+// above-the-fold cards, loading="lazy" for everything else.
+export const getPreviewImage = (property) =>
+  property.previewImages?.[0] ?? property.image
+
+// Returns the 2-image preview pair — useful for hover crossfade on cards.
+export const getPreviewImages = (property) =>
+  property.previewImages ?? [property.image]
 
 export const locations = [...new Set(properties.map(p => p.location))].sort()
-export const projects = [...new Set(properties.map(p => p.project))].sort()
+export const projects  = [...new Set(properties.map(p => p.project).filter(Boolean))].sort()
