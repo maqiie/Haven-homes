@@ -209,7 +209,7 @@ const Properties = () => {
               value={filters.bedrooms}
               onChange={e => setFilter('bedrooms', e.target.value)}
               style={{ padding: '10px 32px 10px 12px', fontSize: 13, border: '1px solid #E8E4DF', background: '#fff', color: filters.bedrooms !== 'all' ? '#1a1a1a' : '#888', fontFamily: 'inherit', transition: 'border-color 0.2s' }}>
-              <option value="all">Any Bedrooms</option>
+              <option value="all">No of Bedrooms</option>
               <option value="1">1 Bedroom</option>
               <option value="2">2 Bedrooms</option>
               <option value="3">3 Bedrooms</option>
