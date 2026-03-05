@@ -13,7 +13,6 @@ const Footer = () => (
   <footer style={{ background: '#111010', color: 'rgba(255,255,255,0.55)', fontFamily: "'DM Sans', sans-serif" }}>
     <style>{`
       @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap');
-      /* ── Links ────────────────────────── */
       .footer-link {
         color: rgba(255,255,255,0.45);
         text-decoration: none;
@@ -24,7 +23,6 @@ const Footer = () => (
         display: inline-block;
       }
       .footer-link:hover { color: #8B7355; }
-      /* ── Social ───────────────────────── */
       .footer-social {
         display: flex;
         align-items: center;
@@ -42,7 +40,6 @@ const Footer = () => (
         color: #8B7355;
         background: rgba(139,115,85,0.08);
       }
-      /* ── Column label ─────────────────── */
       .footer-col-label {
         font-size: 10px;
         letter-spacing: 0.22em;
@@ -52,28 +49,17 @@ const Footer = () => (
         margin-bottom: 20px;
         display: block;
       }
-      /* ══════════════════════════════════════════════════
-         RESPONSIVE BREAKPOINTS
-         xl  : ≤ 1200px  (4-col gets tighter)
-         lg  : ≤ 1024px  (collapse to 2 + 2 grid)
-         md  : ≤  768px  (2-col grid, reduce padding)
-         sm  : ≤  600px  (single column stacked)
-         xs  : ≤  420px  (minimal padding, tighter type)
-      ══════════════════════════════════════════════════ */
-      /* ── xl ───────────────────────────── */
       @media (max-width: 1200px) {
         .footer-grid    { grid-template-columns: 1.5fr 1fr 1fr 1.2fr !important; gap: 40px !important; }
         .footer-main    { padding: 72px 6vw 52px !important; }
       }
-      /* ── lg: 2×2 grid ─────────────────── */
       @media (max-width: 1024px) {
         .footer-grid    { grid-template-columns: 1fr 1fr !important; gap: 48px 40px !important; }
         .footer-main    { padding: 64px 6vw 48px !important; }
-        .footer-brand   { grid-column: 1 / -1 !important; }   /* brand spans full width */
+        .footer-brand   { grid-column: 1 / -1 !important; }
         .footer-brand-inner { max-width: 480px; }
         .footer-bottom  { flex-direction: row !important; }
       }
-      /* ── md ───────────────────────────── */
       @media (max-width: 768px) {
         .footer-grid    { grid-template-columns: 1fr 1fr !important; gap: 40px 28px !important; }
         .footer-main    { padding: 56px 5vw 44px !important; }
@@ -82,7 +68,6 @@ const Footer = () => (
         .footer-copy    { font-size: 11px !important; }
         .footer-link    { font-size: 12px !important; }
       }
-      /* ── sm: single column ────────────── */
       @media (max-width: 600px) {
         .footer-grid    { grid-template-columns: 1fr !important; gap: 40px !important; }
         .footer-brand   { grid-column: auto !important; }
@@ -95,7 +80,6 @@ const Footer = () => (
         .footer-contact-item a { font-size: 12px !important; }
         .footer-col-label { margin-bottom: 14px !important; }
       }
-      /* ── xs ───────────────────────────── */
       @media (max-width: 420px) {
         .footer-main    { padding: 44px 4vw 36px !important; }
         .footer-bottom  { padding: 18px 4vw !important; }
@@ -105,18 +89,12 @@ const Footer = () => (
         .footer-bottom-links { gap: 12px 16px !important; }
         .footer-social  { width: 34px !important; height: 34px !important; }
       }
-      /* ── Print ────────────────────────── */
-      @media print {
-        footer { display: none !important; }
-      }
-      /* ── Reduced motion ───────────────── */
+      @media print { footer { display: none !important; } }
       @media (prefers-reduced-motion: reduce) {
         .footer-link, .footer-social { transition: none !important; }
       }
     `}</style>
-    {/* Top accent line */}
     <div style={{ height: 1, background: 'linear-gradient(to right, transparent, #8B7355, transparent)' }} aria-hidden="true" />
-    {/* ── MAIN GRID ─────────────────────────────────────────── */}
     <div className="footer-main" style={{ maxWidth: 1400, margin: '0 auto', padding: '80px 6vw 60px' }}>
       <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.8fr 1fr 1fr 1.2fr', gap: 60 }}>
         {/* ── Brand ── */}
@@ -173,7 +151,8 @@ const Footer = () => (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
               </svg>
               <p style={{ fontSize: 13, fontWeight: 300, lineHeight: 1.65, color: 'rgba(255,255,255,0.4)' }}>
-                123 Estate Avenue<br />Westlands, Nairobi
+                Ciata City Mall, Ridgeways<br />
+                Block A, 3rd Floor, Nairobi
               </p>
             </div>
             {/* Phone */}
@@ -205,7 +184,7 @@ const Footer = () => (
         </address>
       </div>
     </div>
-    {/* ── BOTTOM BAR ──────────────────────────────────────── */}
+    {/* ── BOTTOM BAR ── */}
     <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <div className="footer-bottom" style={{ maxWidth: 1400, margin: '0 auto', padding: '24px 6vw', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
         <p className="footer-copy" style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', fontWeight: 300, letterSpacing: '0.03em' }}>

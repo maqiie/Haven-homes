@@ -47,39 +47,23 @@ const Contact = () => {
         .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
         .fade-up { animation: fadeUp 0.8s ease both; }
         @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
-
-        /* Input focus */
         input:focus, textarea:focus { outline: none; border-color: #8B7355 !important; }
-
-        /* Contact info card hover */
         .info-card { transition: border-color .3s, box-shadow .3s; }
         .info-card:hover { border-color: rgba(139,115,85,.45) !important; box-shadow: 0 8px 40px rgba(139,115,85,.08); }
-
-        /* Underline link */
         .ulink { position: relative; display: inline-block; }
         .ulink::after { content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:#8B7355; transition:width .3s; }
         .ulink:hover::after { width:100%; }
-
-        /* Interest pill */
         .interest-btn { transition: all .18s ease; }
         .interest-btn:hover { border-color: #8B7355 !important; color: #8B7355 !important; }
-
-        /* Social icon */
         .soc-icon { transition: background .25s, transform .25s; }
         .soc-icon:hover { background: #8B7355 !important; transform: translateY(-2px); }
         .soc-icon:hover svg { color: #fff !important; }
-
-        /* Map overlay */
         .map-wrap { position: relative; overflow: hidden; }
         .map-wrap::after { content:''; position:absolute; inset:0; border:1px solid #E8E4DF; pointer-events:none; }
-
-        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
           .fade-up { animation: none !important; }
           .info-card, .interest-btn, .soc-icon { transition: none !important; }
         }
-
-        /* ── Responsive ─────────────────── */
         @media (max-width: 1024px) {
           .contact-layout { grid-template-columns: 1fr !important; }
           .info-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -104,14 +88,12 @@ const Contact = () => {
       <header style={{ position: 'relative', height: '72vh', minHeight: 520, overflow: 'hidden' }}>
         <img
           src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80"
-          alt="HavenRise Homes office — Westlands, Nairobi"
+          alt="HavenRise Realty office — Ciata City Mall, Ridgeways, Nairobi"
           fetchpriority="high"
           decoding="sync"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
         />
-        {/* Gradient overlay — warm-toned to match home brand */}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,8,6,.60) 0%, rgba(10,8,6,.50) 55%, rgba(249,247,244,1) 100%)' }} aria-hidden="true" />
-
         <div className="section-px" style={{ position: 'relative', zIndex: 10, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '0 6vw 72px' }}>
           <div className="fade-up" style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24, animationDelay: '.1s' }}>
             <div style={{ width: 32, height: 1, background: '#8B7355' }} aria-hidden="true" />
@@ -124,8 +106,6 @@ const Contact = () => {
             Our team of experts is standing by — whether you're buying, renting, or simply curious.
           </p>
         </div>
-
-        {/* Scroll hint */}
         <div style={{ position: 'absolute', bottom: 80, right: '6vw', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, zIndex: 10 }} aria-hidden="true">
           <p style={{ color: 'rgba(255,255,255,.35)', fontSize: 9, letterSpacing: '.25em', textTransform: 'uppercase', writingMode: 'vertical-lr' }}>Scroll</p>
           <div style={{ width: 1, height: 40, background: 'rgba(255,255,255,.2)' }} />
@@ -172,7 +152,7 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Address */}
+              {/* Address ── UPDATED */}
               <div className="info-card" style={{ background: '#fff', border: '1px solid #E8E4DF', padding: '32px 28px' }}>
                 <div style={{ display: 'flex', gap: 20, alignItems: 'flex-start' }}>
                   <div style={{ width: 44, height: 44, background: '#F0EDE8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -184,7 +164,7 @@ const Contact = () => {
                   <address style={{ fontStyle: 'normal' }}>
                     <p style={{ fontSize: 10, letterSpacing: '.18em', textTransform: 'uppercase', color: '#8B7355', fontWeight: 600, marginBottom: 6 }}>Visit Us</p>
                     <p style={{ fontSize: 14, color: '#1a1a1a', fontWeight: 400, lineHeight: 1.65 }}>
-                      123 Estate Avenue<br />Westlands, Nairobi<br />Kenya
+                      Ciata City Mall, Ridgeways<br />Block A, 3rd Floor<br />Nairobi, Kenya
                     </p>
                   </address>
                 </div>
@@ -231,7 +211,6 @@ const Contact = () => {
 
             {/* ── FORM ────────────────────────────────────────────────────── */}
             <div>
-              {/* Section label */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 40 }}>
                 <div style={{ width: 32, height: 1, background: '#8B7355' }} aria-hidden="true" />
                 <p style={{ fontSize: 10, letterSpacing: '.25em', textTransform: 'uppercase', color: '#8B7355', fontWeight: 600 }}>Send a Message</p>
@@ -254,7 +233,6 @@ const Contact = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
-                  {/* Interest selector */}
                   <fieldset style={{ border: 'none', padding: 0, marginBottom: 32 }}>
                     <legend style={{ fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: '#999', marginBottom: 14, fontWeight: 600, display: 'block' }}>
                       I'm interested in
@@ -278,7 +256,6 @@ const Contact = () => {
                     </div>
                   </fieldset>
 
-                  {/* Name */}
                   <div style={{ marginBottom: 20 }}>
                     <label htmlFor="c-name" style={{ display: 'block', fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: '#999', marginBottom: 8, fontWeight: 600 }}>Full Name *</label>
                     <input id="c-name" type="text" required placeholder="Jane Doe" autoComplete="name"
@@ -287,7 +264,6 @@ const Contact = () => {
                       style={{ width: '100%', padding: '13px 16px', fontSize: 14, border: '1px solid #E8E4DF', background: '#fff', color: '#1a1a1a', fontFamily: 'inherit', transition: 'border-color .2s' }} />
                   </div>
 
-                  {/* Email + Phone */}
                   <div className="form-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 20 }}>
                     <div>
                       <label htmlFor="c-email" style={{ display: 'block', fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: '#999', marginBottom: 8, fontWeight: 600 }}>Email Address *</label>
@@ -305,7 +281,6 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  {/* Message */}
                   <div style={{ marginBottom: 32 }}>
                     <label htmlFor="c-msg" style={{ display: 'block', fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', color: '#999', marginBottom: 8, fontWeight: 600 }}>
                       Your Message *
@@ -323,7 +298,6 @@ const Contact = () => {
                     </p>
                   )}
 
-                  {/* Submit */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: 32, flexWrap: 'wrap' }}>
                     <button type="submit" disabled={formStatus === 'sending' || !formData.interest}
                       style={{
@@ -357,13 +331,11 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* ══ DIVIDER ═══════════════════════════════════════════════════════ */}
         <div style={{ height: 1, background: 'linear-gradient(to right, transparent, #8B7355, transparent)', margin: '0 6vw' }} aria-hidden="true" />
 
-        {/* ══ MAP ══════════════════════════════════════════════════════════ */}
+        {/* ══ MAP ══ UPDATED ════════════════════════════════════════════════ */}
         <section aria-labelledby="map-heading" style={{ background: '#1a1a1a', padding: '96px 6vw' }}>
           <div style={{ maxWidth: 1400, margin: '0 auto' }}>
-            {/* Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 52, flexWrap: 'wrap', gap: 24 }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
@@ -371,31 +343,31 @@ const Contact = () => {
                   <p style={{ fontSize: 10, letterSpacing: '.25em', textTransform: 'uppercase', color: '#8B7355', fontWeight: 600 }}>Find Us</p>
                 </div>
                 <h2 id="map-heading" className="serif" style={{ fontSize: 'clamp(32px,4vw,52px)', fontWeight: 300, color: '#fff', lineHeight: .95, letterSpacing: '-.03em' }}>
-                  Our Office<br /><em>in Westlands</em>
+                  Our Office<br /><em>in Ridgeways</em>
                 </h2>
               </div>
               <address style={{ fontStyle: 'normal', textAlign: 'right' }}>
                 <p style={{ fontSize: 13, color: 'rgba(255,255,255,.4)', lineHeight: 1.8, fontWeight: 300 }}>
-                  123 Estate Avenue<br />Westlands, Nairobi, Kenya
+                  Ciata City Mall, Ridgeways<br />Block A, 3rd Floor<br />Nairobi, Kenya
                 </p>
-                <a href="https://maps.google.com/?q=Westlands+Nairobi" target="_blank" rel="noopener noreferrer"
+                <a href="https://maps.google.com/?q=Ciata+City+Mall+Ridgeways+Nairobi" target="_blank" rel="noopener noreferrer"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 12, fontSize: 11, letterSpacing: '.15em', textTransform: 'uppercase', fontWeight: 600, color: '#8B7355', textDecoration: 'none' }}>
                   Open in Maps <ArrowRight />
                 </a>
               </address>
             </div>
 
-            {/* Map frame */}
+            {/* Map frame — centred on Ridgeways, Nairobi */}
             <div className="map-wrap" style={{ height: 480 }}>
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.202063174595!2d36.807222!3d-1.286389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d675d20bb1%3A0x26e6c463164d7!2sWestlands%2C%20Nairobi!5e0!3m2!1sen!2ske!4v1234567890"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.729!2d36.8219!3d-1.2225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3f7b7b7b7b7b%3A0x0!2sCiata+City+Mall%2C+Ridgeways%2C+Nairobi!5e0!3m2!1sen!2ske!4v1234567890"
                 width="100%"
                 height="100%"
                 style={{ border: 0, display: 'block', filter: 'grayscale(20%) contrast(1.05)', opacity: .9 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="HavenRise Homes office location — Westlands, Nairobi"
+                title="HavenRise Realty office location — Ciata City Mall, Ridgeways, Nairobi"
               />
             </div>
           </div>
