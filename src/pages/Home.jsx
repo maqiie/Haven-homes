@@ -79,20 +79,25 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnjbzqjn";
 
 // Gallery images pulled from real project assets
 const galleryImages = [
-  { id: 1,  src: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.jpeg",                         label: "A-One Pandora",          cat: "Apartment" },
-  { id: 2,  src: "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.jpeg",                         label: "A-One Pandora",          cat: "Apartment" },
-  { id: 3,  src: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.jpeg",         label: "Panorama West",          cat: "Apartment" },
-  { id: 4,  src: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.jpeg",         label: "Panorama West",          cat: "Apartment" },
-  { id: 5,  src: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",                         label: "Balkis Riverside",       cat: "Apartment" },
-  { id: 6,  src: "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.jpeg",                      label: "Balkis Riverside",       cat: "Apartment" },
-  { id: 7,  src: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.jpeg",               label: "Amethyst Springs",       cat: "Apartment" },
-  { id: 8,  src: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.jpeg",               label: "Amethyst Springs",       cat: "Apartment" },
-  { id: 9,  src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.jpeg",                          label: "Lesto Residences",       cat: "Apartment" },
-  { id: 10, src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.jpeg",                          label: "Lesto Residences",       cat: "Apartment" },
-  { id: 11, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.jpeg",                               label: "Runda Residence",        cat: "House"     },
-  { id: 12, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM.jpeg",                               label: "Runda Residence",        cat: "House"     },
-  { id: 13, src: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.jpeg",                      label: "Gigiri Residence",       cat: "House"     },
-  { id: 14, src: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.00 PM.jpeg",                      label: "Gigiri Residence",       cat: "House"     },
+  { id: 1,  src: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",                                    label: "A-One Pandora",          cat: "Apartment" },
+  { id: 2,  src: "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.webp",                                    label: "A-One Pandora",          cat: "Apartment" },
+  { id: 3,  src: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.webp",                    label: "Panorama West",          cat: "Apartment" },
+  { id: 4,  src: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.webp",                    label: "Panorama West",          cat: "Apartment" },
+  { id: 5,  src: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",                                    label: "Balkis Riverside",       cat: "Apartment" },
+  { id: 6,  src: "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp",                                 label: "Balkis Riverside",       cat: "Apartment" },
+  { id: 7,  src: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",                          label: "Amethyst Springs",       cat: "Apartment" },
+  { id: 8,  src: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.webp",                          label: "Amethyst Springs",       cat: "Apartment" },
+  { id: 9,  src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",                                     label: "Lesto Residences",       cat: "Apartment" },
+  { id: 10, src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp",                                     label: "Lesto Residences",       cat: "Apartment" },
+  { id: 11, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.webp",                    label: "Runda Residence",        cat: "House"     },
+  { id: 12, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM.webp",                    label: "Runda Residence",        cat: "House"     },
+  { id: 13, src: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.webp",           label: "Gigiri Residence",       cat: "House"     },
+  { id: 14, src: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.00 PM.webp",           label: "Gigiri Residence",       cat: "House"     },
+  { id: 15, src: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.17 PM.webp",                       label: "Runda Kiambu Home",      cat: "House"     },
+  { id: 16, src: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.31 PM.webp",                       label: "Runda Kiambu Home",      cat: "House"     },
+  { id: 17, src: "/7-bedroom-runda/WhatsApp Image 2026-03-05 at 7.51.21 PM.webp",                            label: "Runda Acacia 7BR",       cat: "House"     },
+  { id: 18, src: "/4-bedroom-townhouse/WhatsApp Image 2026-03-05 at 7.53.53 PM.webp",                        label: "4BR Townhouse",          cat: "House"     },
+  { id: 19, src: "/4-bedroom-townhouse/WhatsApp Image 2026-03-05 at 7.54.05 PM.webp",                        label: "4BR Townhouse",          cat: "House"     },
 ];
 
 const galHeights = [320, 240, 260, 300, 240, 280, 260, 300, 240, 260, 300, 240];
@@ -106,37 +111,43 @@ const locationCards = [
   {
     name: "Westlands",
     description: "Lesto Residences & Panorama West",
-    img: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.jpeg",
+    img: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",
     tall: false,
   },
   {
     name: "Kilimani",
     description: "Amethyst Springs",
-    img: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.jpeg",
+    img: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
     tall: true,
   },
   {
     name: "Lavington",
     description: "A-One Pandora",
-    img: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.jpeg",
+    img: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
     tall: false,
   },
   {
     name: "Riverside",
     description: "Balkis Residences",
-    img: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.jpeg",
+    img: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
     tall: false,
   },
   {
     name: "Runda",
-    description: "Premium Rentals",
-    img: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.jpeg",
+    description: "Premium Residences & Rentals",
+    img: "/7-bedroom-runda/WhatsApp Image 2026-03-05 at 7.51.21 PM.webp",
     tall: false,
   },
   {
     name: "Gigiri",
     description: "Diplomatic Residences",
-    img: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.jpeg",
+    img: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.webp",
+    tall: false,
+  },
+  {
+    name: "Kiambu",
+    description: "Gated Family Homes",
+    img: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.17 PM.webp",
     tall: false,
   },
 ];
@@ -183,9 +194,9 @@ const Home = () => {
 
   useSEO({
     title: "HavenRise Homes | Luxury Real Estate in Nairobi, Kenya",
-    description: "Nairobi's premier luxury real estate agency. Browse exclusive off-plan and ready properties in Lavington, Westlands, Kilimani, Riverside and more.",
+    description: "Nairobi's premier luxury real estate agency. Browse exclusive off-plan and ready properties in Lavington, Westlands, Kilimani, Riverside, Runda, Gigiri and Kiambu.",
     keywords: "luxury real estate Nairobi, apartments for sale Nairobi, Westlands apartments, Lavington off-plan, Kilimani homes, Riverside apartments, Kenya real estate, HavenRise Homes",
-    ogImage: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.jpeg",
+    ogImage: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
     canonical: "https://havenrise.co.ke",
   });
 
@@ -338,7 +349,7 @@ const Home = () => {
       {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
       <header style={{ position: "relative", height: "100vh", minHeight: 600, overflow: "hidden" }}>
         <img
-          src="/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.jpeg"
+          src="/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp"
           alt="A-One Pandora — Lavington luxury apartments hero"
           fetchpriority="high"
           decoding="sync"
@@ -373,7 +384,7 @@ const Home = () => {
       {/* ══ MARQUEE ═══════════════════════════════════════════════════════════ */}
       <div className="marquee-bar" style={{ background: "#1a1a1a", padding: "20px 0", borderBottom: "1px solid #2a2a2a", overflow: "hidden" }} aria-hidden="true">
         <div className="marquee-inner" style={{ display: "flex", gap: 80, whiteSpace: "nowrap", paddingLeft: "6vw" }}>
-          {["20 Premium Listings", "5 Prime Locations", "Off-Plan & Ready Units", "Lavington · Westlands · Kilimani · Riverside · Runda · Gigiri", "Flexible Payment Plans Available"].map((item, i) => (
+          {["23 Premium Listings", "7 Prime Locations", "Off-Plan & Ready Units", "Lavington · Westlands · Kilimani · Riverside · Runda · Gigiri · Kiambu", "Flexible Payment Plans Available"].map((item, i) => (
             <span key={i} style={{ fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(255,255,255,.45)" }}>
               <span style={{ color: "#8B7355", marginRight: 16 }}>◆</span>{item}
             </span>
@@ -427,19 +438,19 @@ const Home = () => {
           <div className="about-right" style={{ position: "relative" }}>
             <div className="about-imgs" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gridTemplateRows: "280px 220px", gap: 8, height: 516 }}>
               <div className="about-img-wrap" style={{ gridRow: "span 2", overflow: "hidden" }}>
-                <img className="about-img-hover" src="/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.jpeg" alt="Amethyst Springs Kilimani — premium apartments" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                <img className="about-img-hover" src="/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp" alt="Amethyst Springs Kilimani — premium apartments" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
               <div className="about-img-wrap" style={{ overflow: "hidden" }}>
-                <img className="about-img-hover" src="/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.jpeg" alt="Balkis Residences Riverside" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                <img className="about-img-hover" src="/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp" alt="Balkis Residences Riverside" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
               <div style={{ background: "#1a1a1a", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "24px 22px" }}>
-                <p className="serif" style={{ fontSize: 36, fontWeight: 300, color: "#fff", lineHeight: 1 }}>19+</p>
+                <p className="serif" style={{ fontSize: 36, fontWeight: 300, color: "#fff", lineHeight: 1 }}>23+</p>
                 <p style={{ fontSize: 10, letterSpacing: ".18em", textTransform: "uppercase", color: "#8B7355", marginTop: 6, fontWeight: 600 }}>Active Listings</p>
               </div>
             </div>
             <div className="about-stat-card" style={{ position: "absolute", bottom: -36, left: -28, background: "#fff", padding: "28px 30px", border: "1px solid #E8E4DF", boxShadow: "0 8px 40px rgba(0,0,0,0.08)", zIndex: 2 }}>
               <div className="about-stat-nums" style={{ display: "flex", gap: 28 }}>
-                {[["6", "Locations"], ["20+", "Listings"], ["5", "Projects"]].map(([n, l]) => (
+                {[["7", "Locations"], ["23+", "Listings"], ["6", "Projects"]].map(([n, l]) => (
                   <div key={l} style={{ textAlign: "center" }}>
                     <p className="serif" style={{ fontSize: 32, fontWeight: 300, color: "#1a1a1a", lineHeight: 1 }}>{n}</p>
                     <p style={{ fontSize: 10, letterSpacing: ".14em", textTransform: "uppercase", color: "#8B7355", marginTop: 5, fontWeight: 600 }}>{l}</p>
@@ -454,7 +465,7 @@ const Home = () => {
         <div style={{ borderTop: "1px solid #E8E4DF", marginTop: 80 }}>
           <div className="stats-strip" style={{ maxWidth: 1400, margin: "0 auto", padding: "32px 6vw", display: "flex", alignItems: "center", gap: 48, flexWrap: "wrap", justifyContent: "space-between" }}>
             <p style={{ fontSize: 11, letterSpacing: ".2em", textTransform: "uppercase", color: "#aaa", fontWeight: 500 }}>Our Projects</p>
-            {["A-One Pandora", "Panorama West Residence", "Balkis Residences Riverside", "Amethyst Springs", "Lesto Residences"].map(award => (
+            {["A-One Pandora", "Panorama West Residence", "Balkis Residences Riverside", "Amethyst Springs", "Lesto Residences", "Premium Residences"].map(award => (
               <span key={award} style={{ fontSize: 12, color: "#bbb", fontWeight: 300, letterSpacing: ".04em", borderLeft: "1px solid #E8E4DF", paddingLeft: 24 }}>{award}</span>
             ))}
           </div>
@@ -586,10 +597,10 @@ const Home = () => {
           <p style={{ fontSize: 11, letterSpacing: ".2em", textTransform: "uppercase", color: "#8B7355", marginBottom: 16, fontWeight: 600 }}>Where We Operate</p>
           <h2 id="locations-heading" className="serif" style={{ fontSize: "clamp(34px,4vw,52px)", fontWeight: 300, letterSpacing: "-.02em" }}>Prime Nairobi Neighbourhoods</h2>
         </div>
-        <div className="loc-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gridTemplateRows: "repeat(2,260px)", gap: 12 }}>
+        <div className="loc-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gridTemplateRows: "auto", gap: 12 }}>
           {locationCards.map(loc => (
-            <Link key={loc.name} to={`/properties?location=${loc.name.toLowerCase()}`} className="loc-card" data-tall={loc.tall || undefined}
-              style={{ position: "relative", overflow: "hidden", display: "block", textDecoration: "none", ...(loc.tall ? { gridRow: "span 2" } : {}) }}>
+            <Link key={loc.name} to={`/properties?location=${encodeURIComponent(loc.name.toLowerCase())}`} className="loc-card" data-tall={loc.tall || undefined}
+              style={{ position: "relative", overflow: "hidden", display: "block", textDecoration: "none", height: loc.tall ? 532 : 260, ...(loc.tall ? { gridRow: "span 2" } : {}) }}>
               <img src={loc.img} alt={`${loc.name} — ${loc.description}`} loading="lazy" decoding="async" width="800" height="520" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 50%,transparent 100%)" }} aria-hidden="true" />
               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: "24px 28px" }}>
@@ -603,7 +614,7 @@ const Home = () => {
 
       {/* ══ FULL-BLEED QUOTE ══════════════════════════════════════════════════ */}
       <section style={{ position: "relative", height: 520, overflow: "hidden" }} aria-labelledby="quote-heading">
-        <img src="/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.jpeg" alt="Lesto Residences Westlands — HavenRise commitment to quality" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <img src="/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp" alt="Lesto Residences Westlands — HavenRise commitment to quality" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(10,8,6,.62)" }} aria-hidden="true" />
         <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 6vw" }}>
           <blockquote>
@@ -742,7 +753,7 @@ const Home = () => {
       {/* ══ STATS ════════════════════════════════════════════════════════════ */}
       <section aria-label="Company statistics" style={{ borderBottom: "1px solid #E8E4DF" }}>
         <dl className="four-stat" style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}>
-          {[["20+", "Active Listings"], ["6", "Prime Locations"], ["5", "Landmark Projects"], ["KSh 6.9M", "Starting Price"]].map(([num, label]) => (
+          {[["23+", "Active Listings"], ["7", "Prime Locations"], ["6", "Landmark Projects"], ["KSh 6.9M", "Starting Price"]].map(([num, label]) => (
             <div key={label} style={{ padding: "60px 40px", textAlign: "center", borderRight: "1px solid #E8E4DF" }}>
               <dd className="serif" style={{ fontSize: 52, fontWeight: 300, lineHeight: 1 }}>{num}</dd>
               <dt style={{ fontSize: 11, letterSpacing: ".15em", textTransform: "uppercase", color: "#8B7355", marginTop: 10, fontWeight: 600 }}>{label}</dt>
@@ -875,7 +886,7 @@ const Home = () => {
 
       {/* ══ NEWSLETTER ════════════════════════════════════════════════════════ */}
       <section className="newsletter-section section-pad" aria-labelledby="newsletter-heading" style={{ position: "relative", padding: "100px 6vw", overflow: "hidden" }}>
-        <img src="/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.jpeg" alt="Amethyst Springs Kilimani — newsletter background" loading="lazy" decoding="async" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+        <img src="/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.webp" alt="Amethyst Springs Kilimani — newsletter background" loading="lazy" decoding="async" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(10,8,6,.84)" }} aria-hidden="true" />
         <div style={{ position: "relative", zIndex: 10, maxWidth: 640, margin: "0 auto", textAlign: "center" }}>
           <p style={{ fontSize: 11, letterSpacing: ".2em", textTransform: "uppercase", color: "#8B7355", marginBottom: 20, fontWeight: 600 }}>Stay Updated</p>
