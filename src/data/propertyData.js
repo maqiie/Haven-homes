@@ -1093,7 +1093,7 @@ export const properties = [
     "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.02.29 PM.webp",
     "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.02.31 PM.webp"
   ],
-  image: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.webp",
+  image: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.jpeg",
   brochure: null,
   coordinates: { lat: -1.2290, lng: 36.8060 }
 },
@@ -1153,7 +1153,7 @@ export const properties = [
       "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.43 PM.webp",
       "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.44 PM.webp"
     ],
-    image: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.17 PM.webp",
+    image: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.43 PM.webp",
     brochure: null,
     coordinates: { lat: -1.2000, lng: 36.8200 }
   },
