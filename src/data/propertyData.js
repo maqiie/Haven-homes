@@ -1344,7 +1344,7 @@ export const properties = [
       "/Rentals/Runda/WhatsApp Image 2026-03-08 at 6.38.45 PM.jpeg",
       "/Rentals/Runda/WhatsApp Image 2026-03-08 at 6.39.08 PM.jpeg"
     ],
-    image: "/Rentals/Runda/WhatsApp Image 2026-03-08 at 6.29.51 PM.jpeg",
+    image: "/Rentals/Runda/WhatsApp Image 2026-03-08 at 6.39.08 PM.jpeg",
     brochure: null,
     coordinates: { lat: -1.2154, lng: 36.7833 }
   },
