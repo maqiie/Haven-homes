@@ -535,7 +535,7 @@ export const properties = [
       "/Riverside/WhatsApp Image 2026-03-04 at 10.18.30 PM.webp",
       "/Riverside/WhatsApp Image 2026-03-04 at 10.18.31 PM.webp"
     ],
-    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+    image: "/Riverside/WhatsApp Image 2026-03-18 at 11.59.44.jpeg",
     brochure: "/Riverside/Balkis Residences Riverside E-brochure 2026 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2640, lng: 36.8000 }
@@ -639,7 +639,7 @@ export const properties = [
       "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.webp",
       "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.webp"
     ],
-    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
+    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.41 PM.jpeg",
     brochure: "/Amethyst-springs/AMETHYST SPRINGS PRICE LIST (1) DEC copy (4).pdf",
     floorPlan: "/Amethyst-springs/FLOOR PLAN A FINAL (1).pdf",
     coordinates: { lat: -1.2980, lng: 36.7880 }
@@ -719,7 +719,7 @@ export const properties = [
       "Co-working Spaces", "Creatives Room", "Laundry Service", "24-Hour Security"
     ],
     previewImages: [
-      "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
+      "/Amethyst-springs/WhatsApp Image 2026-03-18 at 12.07.25 (1).jpeg",
       "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.45 PM.webp",
     ],
     images: [
@@ -731,7 +731,7 @@ export const properties = [
       "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.52 PM.webp",
       "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.54 PM.webp"
     ],
-    image: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
+    image: "/Amethyst-springs/WhatsApp Image 2026-03-18 at 12.07.25 (1).jpeg",
     brochure: "/Amethyst-springs/AMETHYST SPRINGS PRICE LIST (1) DEC copy (4).pdf",
     floorPlan: "/Amethyst-springs/FLOOR PLAN A FINAL (1).pdf",
     coordinates: { lat: -1.2980, lng: 36.7880 }
