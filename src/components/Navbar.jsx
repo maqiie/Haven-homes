@@ -1,23 +1,26 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
+// ── These map exactly to propertyType + type values in properties.js ──────────
 const forSaleTypes = [
-  'Apartments For Sale',
-  'Bungalows For Sale',
-  'Townhouses For Sale',
-  'Land For Sale',
-  'Commercial Property For Sale',
+  { label: 'All Properties For Sale', to: '/properties?type=for-sale' },
+  { label: 'Apartments For Sale',     to: '/properties?type=for-sale&propertyType=apartment' },
+  { label: 'Villas For Sale',         to: '/properties?type=for-sale&propertyType=villa' },
+  { label: 'Houses For Sale',         to: '/properties?type=for-sale&propertyType=house' },
+  { label: 'Townhouses For Sale',     to: '/properties?type=for-sale&propertyType=townhouse' },
 ]
+
 const forRentTypes = [
-  'Apartments For Rent',
-  'Townhouses For Rent',
-  'Office Spaces For Rent',
+  { label: 'All Properties To Let',  to: '/properties?type=for-rent' },
+  { label: 'Houses To Let',          to: '/properties?type=for-rent&propertyType=house' },
+  { label: 'Villas To Let',          to: '/properties?type=for-rent&propertyType=villa' },
 ]
+
 const moreLinks = [
-  { label: 'Our Services',          to: '/services',      desc: 'Everything we offer' },
-  { label: 'Sell Your Property',    to: '/sellproperty',  desc: 'Free valuation & sale' },
-  { label: 'Developer Partnerships',to: '/developer',     desc: 'Land & JV opportunities' },
-  { label: 'About Us',              to: '/about',         desc: 'Our story & team' },
+  { label: 'Our Services',           to: '/services',     desc: 'Everything we offer' },
+  { label: 'Sell Your Property',     to: '/sellproperty', desc: 'Free valuation & sale' },
+  { label: 'Developer Partnerships', to: '/developer',    desc: 'Land & JV opportunities' },
+  { label: 'About Us',               to: '/about',        desc: 'Our story & team' },
 ]
 
 const Navbar = () => {
@@ -25,7 +28,6 @@ const Navbar = () => {
   const [openDropdown,  setOpenDropdown]  = useState(null)
   const [mobileSection, setMobileSection] = useState(null)
   const [scrolled,      setScrolled]      = useState(false)
-
   const location = useLocation()
   const isHome   = location.pathname === '/'
   const navRef   = useRef(null)
@@ -38,7 +40,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setMobileOpen(false); setMobileSection(null); setOpenDropdown(null)
-  }, [location.pathname])
+  }, [location.pathname, location.search])
 
   useEffect(() => {
     if (!openDropdown) return
@@ -65,7 +67,6 @@ const Navbar = () => {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap');
-
         .nav-link {
           font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
           letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
@@ -76,8 +77,6 @@ const Navbar = () => {
           width: 0; height: 1px; background: #8B7355; transition: width 0.25s ease;
         }
         .nav-link:hover::after { width: 100%; }
-
-        /* ── Standard dropdown ── */
         .dd-wrap  { position: relative; }
         .dd-panel {
           position: absolute; top: calc(100% + 12px); left: 50%;
@@ -99,8 +98,6 @@ const Navbar = () => {
         }
         .dd-item:last-child  { border-bottom: none; }
         .dd-item:hover       { color: #8B7355; background: #FAFAF8; }
-
-        /* ── "More" mega-style dropdown — wider, shows desc ── */
         .dd-more-panel {
           position: absolute; top: calc(100% + 12px); right: 0;
           background: #fff; border: 1px solid #E8E4DF;
@@ -129,11 +126,8 @@ const Navbar = () => {
           font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 300;
           color: #aaa; letter-spacing: 0.02em; display: block;
         }
-
         .dd-caret         { width: 10px; height: 10px; transition: transform 0.2s; flex-shrink: 0; }
         .dd-caret.is-open { transform: rotate(180deg); }
-
-        /* ── Mobile links ── */
         .mob-link {
           display: flex; align-items: center; justify-content: space-between;
           width: 100%; font-family: 'DM Sans', sans-serif; font-size: 13px;
@@ -154,8 +148,6 @@ const Navbar = () => {
         .mob-sub:last-child { border-bottom: none; }
         .mob-sub:hover { color: #8B7355; border-left-color: #8B7355; }
         .mob-acc { overflow: hidden; transition: max-height 0.32s ease, opacity 0.28s ease; }
-
-        /* ═══════ RESPONSIVE ═══════ */
         @media (max-width: 1280px) {
           .nav-desktop-row { gap: 20px !important; }
           .nav-cta         { padding: 9px 16px !important; }
@@ -196,7 +188,6 @@ const Navbar = () => {
         boxShadow: shadow,
         transition: 'background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease',
       }}>
-        {/* ── TOP BAR ─────────────────────────────────────── */}
         <div style={{ maxWidth: 1400, margin: '0 auto' }}>
           <div className="nav-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: 72, padding: '0 6vw' }}>
 
@@ -206,13 +197,13 @@ const Navbar = () => {
               <span className="logo-tag"  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, fontWeight: 400, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8B7355', marginLeft: 7 }}>Realty</span>
             </Link>
 
-            {/* ── DESKTOP NAV — hidden ≤1024px ── */}
+            {/* ── DESKTOP NAV ── */}
             <div className="nav-desktop" style={{ display: 'flex' }}>
               <div className="nav-desktop-row" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
 
                 <Link to="/" className="nav-link" style={{ color: navText }}>Home</Link>
 
-                {/* For Sale */}
+                {/* For Sale dropdown */}
                 <div className="dd-wrap">
                   <button className="nav-link" onClick={() => toggleDropdown('sale')}
                     aria-expanded={openDropdown === 'sale'} aria-haspopup="true"
@@ -223,16 +214,24 @@ const Navbar = () => {
                     </svg>
                   </button>
                   {openDropdown === 'sale' && (
-                    <div className="dd-panel" style={{ width: 248 }} role="menu">
+                    <div className="dd-panel" style={{ width: 260 }} role="menu">
                       <div className="dd-pip" aria-hidden="true" />
-                      {forSaleTypes.map(t => (
-                        <Link key={t} to="/properties" className="dd-item" role="menuitem" onClick={() => setOpenDropdown(null)}>{t}</Link>
+                      {forSaleTypes.map(item => (
+                        <Link
+                          key={item.to}
+                          to={item.to}
+                          className="dd-item"
+                          role="menuitem"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          {item.label}
+                        </Link>
                       ))}
                     </div>
                   )}
                 </div>
 
-                {/* To Let */}
+                {/* To Let dropdown */}
                 <div className="dd-wrap">
                   <button className="nav-link" onClick={() => toggleDropdown('rent')}
                     aria-expanded={openDropdown === 'rent'} aria-haspopup="true"
@@ -243,19 +242,26 @@ const Navbar = () => {
                     </svg>
                   </button>
                   {openDropdown === 'rent' && (
-                    <div className="dd-panel" style={{ width: 228 }} role="menu">
+                    <div className="dd-panel" style={{ width: 240 }} role="menu">
                       <div className="dd-pip" aria-hidden="true" />
-                      {forRentTypes.map(t => (
-                        <Link key={t} to="/properties" className="dd-item" role="menuitem" onClick={() => setOpenDropdown(null)}>{t}</Link>
+                      {forRentTypes.map(item => (
+                        <Link
+                          key={item.to}
+                          to={item.to}
+                          className="dd-item"
+                          role="menuitem"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          {item.label}
+                        </Link>
                       ))}
                     </div>
                   )}
                 </div>
 
-                {/* Sell — direct link, visually distinct */}
                 <Link to="/sellproperty" className="nav-link" style={{ color: navText }}>Sell</Link>
 
-                {/* More dropdown — Services, Developers, About */}
+                {/* More dropdown */}
                 <div className="dd-wrap">
                   <button className="nav-link" onClick={() => toggleDropdown('more')}
                     aria-expanded={openDropdown === 'more'} aria-haspopup="true"
@@ -290,7 +296,7 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Hamburger — hidden on desktop ── */}
+            {/* Hamburger */}
             <button className="nav-burger"
               onClick={() => { setMobileOpen(o => !o); setMobileSection(null) }}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
@@ -303,7 +309,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* ── MOBILE DRAWER ─────────────────────────────────── */}
+        {/* ── MOBILE DRAWER ── */}
         <div className="nav-drawer"
           style={{ display: 'none', background: '#F9F7F4', borderTop: '1px solid #E8E4DF', overflow: 'hidden', maxHeight: mobileOpen ? 'calc(100dvh - 72px)' : 0, overflowY: mobileOpen ? 'auto' : 'hidden', transition: 'max-height 0.4s ease', WebkitOverflowScrolling: 'touch' }}>
           <div className="nav-drawer-pad" style={{ padding: '8px 6vw 32px' }}>
@@ -319,7 +325,9 @@ const Navbar = () => {
                 </svg>
               </button>
               <div className="mob-acc" style={{ maxHeight: mobileSection === 'sale' ? 400 : 0, opacity: mobileSection === 'sale' ? 1 : 0, marginBottom: mobileSection === 'sale' ? 4 : 0 }}>
-                {forSaleTypes.map(t => <Link key={t} to="/properties" onClick={closeMobile} className="mob-sub">{t}</Link>)}
+                {forSaleTypes.map(item => (
+                  <Link key={item.to} to={item.to} onClick={closeMobile} className="mob-sub">{item.label}</Link>
+                ))}
               </div>
             </div>
 
@@ -332,11 +340,12 @@ const Navbar = () => {
                 </svg>
               </button>
               <div className="mob-acc" style={{ maxHeight: mobileSection === 'rent' ? 240 : 0, opacity: mobileSection === 'rent' ? 1 : 0, marginBottom: mobileSection === 'rent' ? 4 : 0 }}>
-                {forRentTypes.map(t => <Link key={t} to="/properties" onClick={closeMobile} className="mob-sub">{t}</Link>)}
+                {forRentTypes.map(item => (
+                  <Link key={item.to} to={item.to} onClick={closeMobile} className="mob-sub">{item.label}</Link>
+                ))}
               </div>
             </div>
 
-            {/* Sell — direct */}
             <Link to="/sellproperty" onClick={closeMobile} className="mob-link">Sell Your Property</Link>
 
             {/* More accordion */}
@@ -356,7 +365,6 @@ const Navbar = () => {
 
             <Link to="/contact" onClick={closeMobile} className="mob-link">Contact</Link>
 
-            {/* Mobile CTA */}
             <Link to="/sellproperty" onClick={closeMobile}
               style={{ display: 'block', marginTop: 24, fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', textAlign: 'center', padding: '14px', background: '#8B7355', color: '#fff' }}>
               Free Property Valuation
@@ -369,7 +377,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Page spacer — non-home pages only */}
       {!isHome && (
         <>
           <div className="nav-spacer" style={{ height: 72 }} />

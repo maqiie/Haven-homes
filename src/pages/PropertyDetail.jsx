@@ -48,7 +48,6 @@ const LandHero = ({ location }) => (
     alignItems: 'center', justifyContent: 'center',
     position: 'relative', overflow: 'hidden',
   }}>
-    {/* Topo grid */}
     <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.1 }} aria-hidden="true">
       <defs>
         <pattern id="topo-hero" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
@@ -59,12 +58,10 @@ const LandHero = ({ location }) => (
       </defs>
       <rect width="100%" height="100%" fill="url(#topo-hero)"/>
     </svg>
-    {/* Radial glow */}
     <div style={{
       position: 'absolute', inset: 0,
       background: 'radial-gradient(ellipse 55% 55% at 50% 50%, rgba(139,115,85,0.18) 0%, transparent 70%)',
     }} aria-hidden="true"/>
-    {/* Pin */}
     <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
       style={{ color: '#8B7355', marginBottom: 20 }} aria-hidden="true">
       <path fillRule="evenodd" clipRule="evenodd"
@@ -80,26 +77,52 @@ const LandHero = ({ location }) => (
   </div>
 )
 
+// ── Map toggle button ──────────────────────────────────────────────────────
+const MapToggle = ({ shown, onToggle }) => (
+  <button
+    onClick={onToggle}
+    style={{
+      display: 'inline-flex', alignItems: 'center', gap: 8,
+      padding: '10px 20px',
+      background: shown ? '#1a1a1a' : '#fff',
+      color: shown ? '#fff' : '#1a1a1a',
+      border: '1px solid #1a1a1a',
+      fontSize: 11, fontWeight: 600,
+      letterSpacing: '0.14em', textTransform: 'uppercase',
+      cursor: 'pointer', transition: 'background 0.2s, color 0.2s',
+      fontFamily: 'inherit',
+    }}
+  >
+    <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true">
+      {shown
+        ? <><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></>
+        : <><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></>
+      }
+    </svg>
+    {shown ? 'Hide Map' : 'Show Map'}
+  </button>
+)
+
 // ── Main component ─────────────────────────────────────────────────────────
 const PropertyDetail = () => {
   const { id } = useParams()
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     message: `I'm interested in this property and would like to schedule a viewing.`
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [selectedImage, setSelectedImage]   = useState(0)
-  const [lightboxOpen, setLightboxOpen]     = useState(false)
+  const [isSubmitting, setIsSubmitting]   = useState(false)
+  const [selectedImage, setSelectedImage] = useState(0)
+  const [lightboxOpen, setLightboxOpen]   = useState(false)
+  const [mapVisible, setMapVisible]       = useState(false)   // ← hidden by default
 
   // ── Scroll to top on every navigation ─────────────────────────────────
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [id])
 
-  // ── Resolve property — check propertyData first, then land listings ────
+  // ── Resolve property ──────────────────────────────────────────────────
   const numericId = parseInt(id, 10)
   const property  =
     getPropertyById(id) ||
@@ -159,7 +182,12 @@ const PropertyDetail = () => {
         .inp:focus { outline: none; border-color: #8B7355 !important; }
         .inp { transition: border-color 0.2s; }
         .feature-row:last-child { border-bottom: none !important; }
-        input[type=search]::-webkit-search-cancel-button { display: none; }
+        .map-reveal {
+          overflow: hidden;
+          transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;
+        }
+        .map-reveal.open  { max-height: 440px; opacity: 1; }
+        .map-reveal.closed { max-height: 0;    opacity: 0; }
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #F8F6F3; }
         ::-webkit-scrollbar-thumb { background: #D4CEBF; border-radius: 3px; }
@@ -200,7 +228,6 @@ const PropertyDetail = () => {
       {hasImages && (
         <section style={{ background: '#fff', borderBottom: '1px solid #ECEAE6' }}>
           <div style={{ maxWidth: 1400, margin: '0 auto', padding: '32px 6vw' }}>
-            {/* Main image */}
             <div className="gallery-main" style={{ position: 'relative', height: 520, background: '#F0EDE8', overflow: 'hidden', marginBottom: 10, cursor: 'zoom-in' }}
               onClick={() => setLightboxOpen(true)}>
               <img
@@ -208,9 +235,7 @@ const PropertyDetail = () => {
                 alt={`${property.title} — view ${selectedImage + 1}`}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
-              {/* Gradient overlay */}
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,14,12,0.45) 0%, transparent 40%)', pointerEvents: 'none' }} aria-hidden="true"/>
-              {/* Badges */}
               <div style={{ position: 'absolute', top: 20, left: 20, display: 'flex', gap: 8 }}>
                 {property.featured && (
                   <span style={{ padding: '5px 12px', background: 'rgba(255,255,255,0.95)', color: '#1a1a1a', fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 700 }}>
@@ -221,7 +246,6 @@ const PropertyDetail = () => {
                   {property.type === 'for-sale' ? 'For Sale' : 'For Rent'}
                 </span>
               </div>
-              {/* Nav arrows */}
               <button
                 onClick={e => { e.stopPropagation(); setSelectedImage(i => (i - 1 + property.images.length) % property.images.length) }}
                 style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', width: 44, height: 44, background: 'rgba(255,255,255,0.9)', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }}
@@ -236,7 +260,6 @@ const PropertyDetail = () => {
                 onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.9)'}>
                 <svg width="18" height="18" fill="none" stroke="#1a1a1a" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
               </button>
-              {/* Counter + zoom hint */}
               <div style={{ position: 'absolute', bottom: 18, right: 18, display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase' }}>Click to expand</span>
                 <span style={{ padding: '4px 12px', background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)', color: '#fff', fontSize: 11, letterSpacing: '0.1em' }}>
@@ -244,7 +267,6 @@ const PropertyDetail = () => {
                 </span>
               </div>
             </div>
-            {/* Thumbnails */}
             <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(property.images.length, 6)}, 1fr)`, gap: 8 }}>
               {property.images.slice(0, 6).map((img, idx) => (
                 <button key={idx}
@@ -265,7 +287,6 @@ const PropertyDetail = () => {
           <div style={{ maxWidth: 1400, margin: '0 auto', padding: '32px 6vw' }}>
             <div className="land-hero-wrap" style={{ height: 420, position: 'relative', overflow: 'hidden' }}>
               <LandHero location={property.location} />
-              {/* Land badge */}
               <div style={{ position: 'absolute', top: 20, left: 20 }}>
                 <span style={{ padding: '5px 12px', background: '#5C4A32', color: '#fff', fontSize: 9, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 700 }}>
                   Land for Sale
@@ -350,7 +371,7 @@ const PropertyDetail = () => {
                   </div>
                 </div>
 
-                {/* Quick stats — only for non-land properties */}
+                {/* Quick stats — non-land only */}
                 {!isLand && (
                   <div className="stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', borderTop: '1px solid #ECEAE6', borderBottom: '1px solid #ECEAE6', marginTop: 24 }}>
                     {[
@@ -359,11 +380,7 @@ const PropertyDetail = () => {
                       { v: property.sqm ? `${property.sqm} m²` : '—', l: 'Floor Area' },
                       { v: property.parking ?? '—', l: 'Parking'    },
                     ].map((s, i) => (
-                      <div key={s.l} style={{
-                        padding: '20px 16px',
-                        borderRight: i < 3 ? '1px solid #ECEAE6' : 'none',
-                        textAlign: 'center',
-                      }}>
+                      <div key={s.l} style={{ padding: '20px 16px', borderRight: i < 3 ? '1px solid #ECEAE6' : 'none', textAlign: 'center' }}>
                         <p className="serif" style={{ fontSize: 32, fontWeight: 300, color: '#1a1a1a', lineHeight: 1 }}>{s.v}</p>
                         <p style={{ fontSize: 9, color: '#aaa', marginTop: 6, letterSpacing: '0.2em', textTransform: 'uppercase' }}>{s.l}</p>
                       </div>
@@ -394,7 +411,7 @@ const PropertyDetail = () => {
                 <p style={{ fontSize: 14, color: '#666', lineHeight: 1.9, fontWeight: 300 }}>{property.description}</p>
               </div>
 
-              {/* Payment Plan — off-plan properties only */}
+              {/* Payment Plan */}
               {property.paymentPlan && (
                 <div>
                   <h2 className="serif" style={{ fontSize: 28, fontWeight: 400, color: '#1a1a1a', marginBottom: 16, letterSpacing: '-0.01em' }}>
@@ -421,7 +438,7 @@ const PropertyDetail = () => {
                 </div>
               )}
 
-              {/* Property details grid */}
+              {/* Property details */}
               <div>
                 <h2 className="serif" style={{ fontSize: 28, fontWeight: 400, color: '#1a1a1a', marginBottom: 16, letterSpacing: '-0.01em' }}>
                   Property Details
@@ -482,31 +499,72 @@ const PropertyDetail = () => {
                 </div>
               )}
 
-              {/* Map */}
+              {/* ── MAP (hidden by default) ────────────────────────────── */}
               <div>
-                <h2 className="serif" style={{ fontSize: 28, fontWeight: 400, color: '#1a1a1a', marginBottom: 16, letterSpacing: '-0.01em' }}>Location</h2>
-                <div style={{ width: 32, height: 1, background: '#8B7355', marginBottom: 24 }} aria-hidden="true"/>
-                <div style={{ height: 380, background: '#ECEAE6', overflow: 'hidden', border: '1px solid #ECEAE6' }}>
-                  <iframe
-                    src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.202063174595!2d${property.coordinates.lng}!3d${property.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTcnMzEuNiJTIDM2wrA0OSczMC44IkU!5e0!3m2!1sen!2ske!4v1234567890`}
-                    width="100%" height="100%"
-                    style={{ border: 0, display: 'block' }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={`${property.title} location`}
-                  />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16, flexWrap: 'wrap', gap: 12 }}>
+                  <h2 className="serif" style={{ fontSize: 28, fontWeight: 400, color: '#1a1a1a', letterSpacing: '-0.01em' }}>
+                    Location
+                  </h2>
+                  <MapToggle shown={mapVisible} onToggle={() => setMapVisible(v => !v)} />
                 </div>
+                <div style={{ width: 32, height: 1, background: '#8B7355', marginBottom: 24 }} aria-hidden="true"/>
+
+                {/* Collapsed placeholder — visible when map is hidden */}
+                {!mapVisible && (
+                  <div style={{
+                    height: 120,
+                    background: '#fff',
+                    border: '1px solid #ECEAE6',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 14,
+                    cursor: 'pointer',
+                  }}
+                    onClick={() => setMapVisible(true)}
+                    role="button"
+                    aria-label="Show map"
+                  >
+                    <svg width="20" height="20" fill="none" stroke="#C4B99A" strokeWidth="1.5" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16"/><path d="M16 6v16"/>
+                    </svg>
+                    <div>
+                      <p style={{ fontSize: 13, color: '#888', fontWeight: 400, marginBottom: 2 }}>{property.fullAddress}</p>
+                      <p style={{ fontSize: 11, color: '#C4B99A', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+                        Click "Show Map" to reveal exact location
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {/* Animated map reveal */}
+                <div className={`map-reveal ${mapVisible ? 'open' : 'closed'}`}
+                  style={{ border: mapVisible ? '1px solid #ECEAE6' : 'none' }}>
+                  {/* Only render the iframe once revealed to avoid a pre-load */}
+                  {mapVisible && (
+                    <iframe
+                      src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.202063174595!2d${property.coordinates.lng}!3d${property.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTcnMzEuNiJTIDM2wrA0OSczMC44IkU!5e0!3m2!1sen!2ske!4v1234567890`}
+                      width="100%"
+                      height="380"
+                      style={{ border: 0, display: 'block' }}
+                      allowFullScreen=""
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title={`${property.title} location`}
+                    />
+                  )}
+                </div>
+
                 <p style={{ marginTop: 12, fontSize: 12, color: '#888', letterSpacing: '0.04em' }}>
                   {property.fullAddress}
                 </p>
               </div>
+
             </div>
 
             {/* ── RIGHT SIDEBAR ────────────────────────────────────────── */}
             <div>
               <div className="sidebar-inner" style={{ position: 'sticky', top: 88, display: 'flex', flexDirection: 'column', gap: 16 }}>
-
                 {/* Contact form */}
                 <div style={{ background: '#fff', border: '1px solid #ECEAE6', padding: '36px 32px' }}>
                   <h3 className="serif" style={{ fontSize: 26, fontWeight: 400, color: '#1a1a1a', marginBottom: 8, letterSpacing: '-0.01em' }}>
@@ -515,12 +573,11 @@ const PropertyDetail = () => {
                   <p style={{ fontSize: 13, color: '#aaa', marginBottom: 28, lineHeight: 1.6, fontWeight: 300 }}>
                     Fill out the form and we'll get back to you shortly.
                   </p>
-
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                     {[
-                      { label: 'Full Name',      name: 'name',    type: 'text',  placeholder: 'John Doe'              },
-                      { label: 'Email Address',  name: 'email',   type: 'email', placeholder: 'john@example.com'      },
-                      { label: 'Phone Number',   name: 'phone',   type: 'tel',   placeholder: '+254 123 456 789'      },
+                      { label: 'Full Name',     name: 'name',  type: 'text',  placeholder: 'John Doe'          },
+                      { label: 'Email Address', name: 'email', type: 'email', placeholder: 'john@example.com'  },
+                      { label: 'Phone Number',  name: 'phone', type: 'tel',   placeholder: '+254 123 456 789'  },
                     ].map(f => (
                       <div key={f.name}>
                         <label style={{ display: 'block', fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#888', marginBottom: 7, fontWeight: 600 }}>
@@ -574,7 +631,6 @@ const PropertyDetail = () => {
                       )}
                     </button>
                   </div>
-
                   {/* Contact info */}
                   <div style={{ marginTop: 28, paddingTop: 24, borderTop: '1px solid #ECEAE6', display: 'flex', flexDirection: 'column', gap: 12 }}>
                     {[
@@ -617,11 +673,12 @@ const PropertyDetail = () => {
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* ══ SIMILAR PROPERTIES — only for non-land pages ═════════════════ */}
+      {/* ══ SIMILAR PROPERTIES ════════════════════════════════════════════ */}
       {!isLand && similarProperties.length > 0 && (
         <section style={{ background: '#fff', borderTop: '1px solid #ECEAE6', padding: '72px 6vw' }}>
           <div style={{ maxWidth: 1400, margin: '0 auto' }}>

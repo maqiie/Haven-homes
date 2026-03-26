@@ -200,7 +200,7 @@ export const properties = [
       "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.18 PM.webp",
       "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.20 PM.webp"
     ],
-    image: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.webp",
+    image: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.02 PM.jpeg",
     brochure: null,
     floorPlan: null,
     coordinates: { lat: -1.2676, lng: 36.8070 }
@@ -367,7 +367,7 @@ export const properties = [
       "/Riverside/WhatsApp Image 2026-03-04 at 10.18.42 PM.webp",
       "/Riverside/WhatsApp Image 2026-03-04 at 10.18.45 PM.webp"
     ],
-    image: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
+    image: "/Riverside/WhatsApp Image 2026-03-25 at 19.45.38.jpeg",
     brochure: "/Riverside/Balkis Residences Riverside E-brochure 2026 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2640, lng: 36.8000 }
@@ -830,7 +830,7 @@ export const properties = [
       "/Lesto/WhatsApp Image 2026-03-04 at 10.41.43 PM.webp",
       "/Lesto/WhatsApp Image 2026-03-04 at 10.41.44 PM.webp"
     ],
-    image: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",
+    image: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.33 PM.jpeg",
     brochure: "/Lesto/LESTO BROCHURE-1 (1).pdf",
     floorPlan: null,
     coordinates: { lat: -1.2650, lng: 36.8100 }
@@ -2040,6 +2040,215 @@ export const properties = [
   brochure: null,
   coordinates: { lat: -1.2833, lng: 36.8167 }
 },
+{
+  id: 35,
+  title: "4 Bedroom All En-Suite in Gated Community",
+  location: "Runda",
+  fullAddress: "Runda-Kiambu Road Area, Runda, Nairobi",
+  price: "KSh 330,000/month",
+  priceValue: 330000,
+  beds: 4,
+  baths: 4,
+  sqm: null,
+  yearBuilt: null,
+  parking: 2,
+  type: "for-rent",
+  featured: true,
+  propertyType: "apartment",
+  project: null,
+  completionDate: null,
+  paymentPlan: null,
+  priceRange: null,
+  earlyBirdDiscount: null,
+  floorPlan: null,
+
+  description: "Modern 4-bedroom apartment with all bedrooms en-suite, located in a secure gated community accessible via both Kiambu Road and Runda Road. Just 10-15 minutes drive to UN Offices. Includes backup generator and borehole water. Service charge included.",
+
+  features: [
+    "4 Bedrooms, All En-Suite",
+    "Gated Community",
+    "Full Backup Generator",
+    "Borehole Water Supply",
+    "Service Charge Included",
+    "24/7 Security",
+    "Modern Finishes",
+    "Ample Parking"
+  ],
+
+  previewImages: [
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.34 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.37 PM.jpeg"
+  ],
+
+  images: [
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.34 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.37 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.38 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.40 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.41 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.42 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.43 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.44 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.45 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.46 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.47 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.48 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.49 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.50 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.51 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.52 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.53 PM.jpeg",
+    "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.55 PM.jpeg"
+  ],
+
+  image: "/Rentals/kiambu-road-runda road/WhatsApp Unknown 2026-03-25 at 7.21.22 PM/WhatsApp Image 2026-03-25 at 7.18.58 PM.jpeg",
+
+  brochure: null,
+
+  coordinates: { lat: -1.2154, lng: 36.7833 }
+},
+{
+  id: 36,
+  title: "7 Bedroom All En-Suite Ambassadorial Home",
+  location: "Runda",
+  fullAddress: "Runda Estate, Nairobi",
+  price: "KSh 700,000/month",
+  priceValue: 700000,
+  beds: 7,
+  baths: 7,
+  sqm: null,
+  yearBuilt: null,
+  parking: 4,
+  type: "for-rent",
+  featured: true,
+  propertyType: "villa",
+  project: null,
+  completionDate: null,
+  paymentPlan: null,
+  priceRange: null,
+  earlyBirdDiscount: null,
+  floorPlan: null,
+
+  description: "Luxurious 7-bedroom all en-suite ambassadorial residence located in the prestigious Runda estate. Ideal for diplomats and embassy use, this property offers expansive living spaces, high-end finishes, and a secure, serene environment. Perfect for official residences with ample parking, privacy, and top-tier security.",
+
+  features: [
+    "7 Bedrooms, All En-Suite",
+    "Ambassadorial Residence",
+    "Ideal for Embassy/Diplomats",
+    "Spacious Living Areas",
+    "Large Compound",
+    "Ample Parking",
+    "High-End Finishes",
+    "Secure Neighborhood",
+    "24/7 Security",
+    "Quiet & Serene Environment",
+    "Prime Runda Location"
+  ],
+
+  previewImages: [
+    "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.37 PM.jpeg",
+    "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.38 PM.jpeg"
+  ],
+
+  images: [
+    "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.37 PM.jpeg",
+    "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.38 PM.jpeg",
+    "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.38 PM (1).jpeg",
+    "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.39 PM.jpeg",
+    "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.39 PM (1).jpeg",
+    "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.39 PM (2).jpeg",
+    "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.39 PM (3).jpeg"
+  ],
+
+  image: "/Rentals/7-bedroom-runda/WhatsApp Image 2026-03-25 at 7.39.37 PM.jpeg",
+
+  brochure: null,
+
+  coordinates: { lat: -1.2154, lng: 36.7833 } // Runda
+},
+{
+  id: 37,
+  title: "5 Bedroom All En-Suite Villa with Pool in Rosslyn",
+  location: "Rosslyn",
+  fullAddress: "Rosslyn Estate, Nairobi",
+  price: "KSh 750,000/month",
+  priceValue: 750000,
+  beds: 5,
+  baths: 5,
+  sqm: null,
+  yearBuilt: null,
+  parking: 4,
+  type: "for-rent",
+  featured: true,
+  propertyType: "villa",
+  project: null,
+  completionDate: null,
+  paymentPlan: null,
+  priceRange: null,
+  earlyBirdDiscount: null,
+  floorPlan: null,
+
+  description: "Spacious 5-bedroom all en-suite villa located in the prestigious Rosslyn area, set within a secure gated community on its own private compound. This elegant home features a swimming pool, a large well-maintained garden, and generous living spaces, making it ideal for families, diplomats, or expatriates seeking comfort, privacy, and security in a serene environment.",
+
+  features: [
+    "5 Bedrooms, All En-Suite",
+    "Swimming Pool",
+    "Large Garden",
+    "Own Private Compound",
+    "Gated Community",
+    "Ample Parking",
+    "Spacious Interiors",
+    "24/7 Security",
+    "Prestigious Location",
+    "Serene Environment"
+  ],
+
+  previewImages: [
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.20 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.21 PM.jpeg"
+  ],
+
+  images: [
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.20 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.21 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.21 PM (1).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.21 PM (2).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.21 PM (3).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.22 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.22 PM (1).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.22 PM (2).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.22 PM (3).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.23 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.23 PM (1).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.23 PM (2).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.23 PM (3).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.24 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.24 PM (1).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.24 PM (2).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.25 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.25 PM (1).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.25 PM (2).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.25 PM (3).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.26 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.26 PM (1).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.26 PM (2).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.26 PM (3).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.27 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.27 PM (1).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.27 PM (2).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.27 PM (3).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.28 PM.jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.28 PM (1).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.28 PM (2).jpeg",
+    "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.28 PM (3).jpeg"
+  ],
+
+  image: "/5-bedroom rosslyn/WhatsApp Image 2026-03-25 at 8.00.24 PM.jpeg",
+
+  brochure: null,
+
+  coordinates: { lat: -1.2100, lng: 36.7900 } // Rosslyn approx
+}
 ]
 
 // ─── Helper Functions ─────────────────────────────────────────────────────────

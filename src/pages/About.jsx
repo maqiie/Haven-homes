@@ -6,6 +6,13 @@ const Arrow = () => (
   </svg>
 )
 
+const PinIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+    <circle cx="12" cy="10" r="3"/>
+  </svg>
+)
+
 const STATS = [
   { value: '500+', label: 'Properties Listed' },
   { value: '300+', label: 'Happy Clients' },
@@ -95,23 +102,23 @@ function About() {
           letter-spacing: -.03em;
         }
         .about-cta-btn { transition: background .2s, border-color .2s; }
-        .about-cta-btn:hover { background: #8B7355 !important; border-color: #8B7355 !important; }
+        .about-cta-btn:hover { background: #8B7355 !important; border-color: #8B7355 !important; color: #fff !important; }
         .about-cta-outline:hover { background: rgba(255,255,255,.05) !important; }
-
         @media (max-width: 768px) {
-          .hero-pad    { padding: 140px 5vw 80px !important; }
-          .sec-pad     { padding: 72px 5vw !important; }
-          .mission-grid { flex-direction: column !important; }
-          .mission-img  { width: 100% !important; height: 300px !important; }
-          .val-grid    { grid-template-columns: 1fr 1fr !important; }
-          .stat-grid   { grid-template-columns: 1fr 1fr !important; }
-          .team-grid   { grid-template-columns: 1fr 1fr !important; }
-          .cta-bar     { flex-direction: column !important; align-items: flex-start !important; }
+          .hero-pad      { padding: 140px 5vw 80px !important; }
+          .sec-pad       { padding: 72px 5vw !important; }
+          .mission-grid  { flex-direction: column !important; }
+          .mission-img   { width: 100% !important; height: 300px !important; }
+          .val-grid      { grid-template-columns: 1fr 1fr !important; }
+          .stat-grid     { grid-template-columns: 1fr 1fr !important; }
+          .team-grid     { grid-template-columns: 1fr 1fr !important; }
+          .cta-bar       { flex-direction: column !important; align-items: flex-start !important; }
+          .cta-address   { border-left: none !important; padding-left: 0 !important; border-top: 1px solid #E8E4DF; padding-top: 28px !important; width: 100% !important; }
         }
         @media (max-width: 520px) {
-          .val-grid    { grid-template-columns: 1fr !important; }
-          .team-grid   { grid-template-columns: 1fr !important; }
-          .stat-grid   { grid-template-columns: 1fr 1fr !important; }
+          .val-grid  { grid-template-columns: 1fr !important; }
+          .team-grid { grid-template-columns: 1fr !important; }
+          .stat-grid { grid-template-columns: 1fr 1fr !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           .fade, .team-img, .val-card { animation: none !important; transition: none !important; }
@@ -127,7 +134,6 @@ function About() {
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: .1 }}
         />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(ellipse at 30% 60%, rgba(139,115,85,.15) 0%, transparent 55%)', pointerEvents: 'none' }} aria-hidden="true" />
-
         <div style={{ position: 'relative', zIndex: 1, maxWidth: 1400, margin: '0 auto' }}>
           <div className="fade" style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28 }}>
             <div style={{ width: 32, height: 1, background: '#8B7355' }} aria-hidden="true" />
@@ -140,7 +146,6 @@ function About() {
             Nairobi's premier real estate agency — redefining luxury property with trust, expertise, and a relentless commitment to our clients.
           </p>
         </div>
-
         <div style={{ position: 'absolute', bottom: 40, right: '6vw', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }} aria-hidden="true">
           <p style={{ color: 'rgba(255,255,255,.2)', fontSize: 9, letterSpacing: '.25em', textTransform: 'uppercase', writingMode: 'vertical-lr' }}>Scroll</p>
           <div style={{ width: 1, height: 40, background: 'rgba(255,255,255,.12)' }} />
@@ -158,9 +163,7 @@ function About() {
                 alt="HavenRise property"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
-              {/* Accent border */}
               <div style={{ position: 'absolute', bottom: -16, right: -16, width: '60%', height: '60%', border: '1px solid #8B7355', zIndex: -1 }} aria-hidden="true" />
-              {/* Tag */}
               <div style={{ position: 'absolute', top: 24, left: 24, background: '#1a1a1a', color: '#fff', padding: '5px 14px', fontSize: 9, letterSpacing: '.18em', textTransform: 'uppercase', fontWeight: 700 }}>
                 Est. 2014
               </div>
@@ -262,12 +265,39 @@ function About() {
       {/* ── CTA STRIP ────────────────────────────────────── */}
       <section style={{ background: '#F0EDE8', padding: '64px 6vw', borderTop: '1px solid #E8E4DF' }}>
         <div className="cta-bar" style={{ maxWidth: 1400, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 28 }}>
+
+          {/* Heading */}
           <div>
             <p style={{ fontSize: 10, letterSpacing: '.22em', textTransform: 'uppercase', color: '#8B7355', fontWeight: 600, marginBottom: 10 }}>Ready to begin?</p>
             <h3 className="serif" style={{ fontSize: 'clamp(24px,3vw,40px)', fontWeight: 300, letterSpacing: '-.02em', lineHeight: 1.05 }}>
               Find Your Dream<br /><em>Property Today</em>
             </h3>
           </div>
+
+          {/* Office address */}
+          <div
+            className="cta-address"
+            style={{
+              borderLeft: '1px solid #D8D3CC',
+              paddingLeft: 36,
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 6,
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 4 }}>
+              <PinIcon />
+              <p style={{ fontSize: 9, letterSpacing: '.22em', textTransform: 'uppercase', color: '#8B7355', fontWeight: 600 }}>Our Office</p>
+            </div>
+            <p className="serif" style={{ fontSize: 20, fontWeight: 400, color: '#1a1a1a', lineHeight: 1.2, letterSpacing: '-.01em' }}>
+              Ciata City Mall
+            </p>
+            <p style={{ fontSize: 12, color: '#888', fontWeight: 300, lineHeight: 1.6 }}>
+              Ridgeways &nbsp;·&nbsp; Block B, 2nd Floor
+            </p>
+          </div>
+
+          {/* Buttons */}
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             <Link
               to="/properties"
@@ -284,9 +314,11 @@ function About() {
               Get in Touch <Arrow />
             </Link>
           </div>
+
         </div>
       </section>
     </div>
   )
 }
+
 export default About
