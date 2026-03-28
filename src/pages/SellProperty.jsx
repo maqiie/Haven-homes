@@ -285,7 +285,7 @@ const SellProperty = () => {
                   style={{ ...inputStyle, resize:'vertical', lineHeight:1.65 }} />
               </div>
 
-              {status==='error' && <p role="alert" style={{ fontSize:12, color:'#b94040', marginBottom:14, padding:'11px 13px', background:'#fdf2f2', border:'1px solid #f5c6c6' }}>Something went wrong — please call 0728 686 089 or email havenrise.realty25@gmail.com</p>}
+              {status==='error' && <p role="alert" style={{ fontSize:12, color:'#b94040', marginBottom:14, padding:'11px 13px', background:'#fdf2f2', border:'1px solid #f5c6c6' }}>Something went wrong — please call 0728 686 089 or email havenriserealtors@gmail.com</p>}
 
               <div style={{ display:'flex', alignItems:'center', gap:24, flexWrap:'wrap' }}>
                 <button type="submit" disabled={status==='sending'} className="cta-btn"

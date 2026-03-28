@@ -197,7 +197,7 @@ const Home = () => {
     description: "Nairobi's premier luxury real estate agency. Browse exclusive off-plan and ready properties in Lavington, Westlands, Kilimani, Riverside, Runda, Gigiri and Kiambu.",
     keywords: "luxury real estate Nairobi, apartments for sale Nairobi, Westlands apartments, Lavington off-plan, Kilimani homes, Riverside apartments, Kenya real estate, HavenRise Homes",
     ogImage: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
-    canonical: "https://havenrise.co.ke",
+    canonical: "https://www.havenriserealtors.com/",
   });
 
   // Filter featured properties by type
@@ -361,7 +361,7 @@ const Home = () => {
             Nairobi's Premier Real Estate
           </p>
           <h1 className="fade-up serif hero-title" style={{ fontSize: "clamp(52px,9vw,110px)", fontWeight: 300, color: "#fff", lineHeight: 0.95, letterSpacing: "-.02em", animationDelay: ".2s" }}>
-            HavenRise<br /><em>Realty</em>
+            HavenRise<br /><em>Realtors</em>
           </h1>
           <p className="fade-up hero-subtitle" style={{ marginTop: 28, fontSize: 16, color: "rgba(255,255,255,.6)", maxWidth: 420, lineHeight: 1.6, fontWeight: 300, animationDelay: ".35s" }}>
             Extraordinary properties in Kenya's most exclusive neighbourhoods — curated for those who expect the finest.
@@ -776,9 +776,13 @@ const Home = () => {
             </p>
             <address style={{ fontStyle: "normal", display: "flex", flexDirection: "column", gap: 20 }}>
               {[
-                { label: "Phone", val: "+254 700 000 000", href: "tel:+254700000000" },
-                { label: "Email", val: "hello@havenrise.co.ke", href: "mailto:hello@havenrise.co.ke" },
-                { label: "Office", val: "Westlands, Nairobi", href: null },
+                { label: "Phone", val: "+254728686089", href: "tel:+254728686089" },
+                { label: "Email", val: "havenriserealtors@gmail.com", href: "mailto:havenriserealtors@gmail.com" },
+                { 
+  label: "Office", 
+  val: "Ciata City Mall, Ridgeways, Block B, 2nd floor", 
+  href: "https://www.google.com/maps/search/?api=1&query=Ciata+City+Mall+Ridgeways" 
+},
               ].map(c => (
                 <div key={c.label} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <div>

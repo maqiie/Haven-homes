@@ -222,7 +222,7 @@ const FloatingChat = () => {
                   <svg style={{ marginLeft: 'auto', color: '#ccc' }} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
                 {/* Email */}
-                <a href="mailto:havenrise.realty25@gmail.com" className="contact-row" style={{ textDecoration: 'none' }}>
+                <a href="mailto:havenriserealtors@gmail.com" className="contact-row" style={{ textDecoration: 'none' }}>
                   <div className="contact-icon" style={{ background: '#F5F0EB' }}>
                     <svg width="17" height="17" fill="none" stroke="#8B7355" strokeWidth="1.5" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
@@ -230,7 +230,7 @@ const FloatingChat = () => {
                   </div>
                   <div>
                     <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 13, fontWeight: 600, color: '#1a1a1a' }}>Email Us</p>
-                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 12, color: '#888', marginTop: 2, fontWeight: 300 }}>havenrise.realty25@gmail.com</p>
+                    <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 12, color: '#888', marginTop: 2, fontWeight: 300 }}>havenriserealtors@gmail.com</p>
                   </div>
                   <svg style={{ marginLeft: 'auto', color: '#ccc' }} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>

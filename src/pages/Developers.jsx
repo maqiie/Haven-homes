@@ -260,7 +260,7 @@ const Developers = () => {
                   value={form.message} onChange={e=>set('message',e.target.value)}
                   style={{ width:'100%', padding:'11px 13px', fontSize:13, border:'1px solid #E8E4DF', background:'#FAFAFA', color:'#1a1a1a', fontFamily:'inherit', resize:'vertical', lineHeight:1.65 }} />
               </div>
-              {status==='error' && <p role="alert" style={{ fontSize:12, color:'#b94040', marginBottom:14, padding:'11px 13px', background:'#fdf2f2', border:'1px solid #f5c6c6' }}>Something went wrong — please email havenrise.realty25@gmail.com</p>}
+              {status==='error' && <p role="alert" style={{ fontSize:12, color:'#b94040', marginBottom:14, padding:'11px 13px', background:'#fdf2f2', border:'1px solid #f5c6c6' }}>Something went wrong — please email havenriserealtors@gmail.com</p>}
               <div style={{ display:'flex', alignItems:'center', gap:24, flexWrap:'wrap' }}>
                 <button type="submit" disabled={status==='sending'||!form.type} className="cta-btn"
                   style={{ display:'inline-flex', alignItems:'center', gap:10, padding:'14px 32px', fontSize:11, letterSpacing:'.18em', textTransform:'uppercase', fontWeight:600, border:'none', fontFamily:'inherit', background:form.type?'#1a1a1a':'#ccc', color:'#fff', cursor:form.type?'pointer':'not-allowed', transition:'background .2s' }}>

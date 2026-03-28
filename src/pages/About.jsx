@@ -289,12 +289,9 @@ function About() {
               <PinIcon />
               <p style={{ fontSize: 9, letterSpacing: '.22em', textTransform: 'uppercase', color: '#8B7355', fontWeight: 600 }}>Our Office</p>
             </div>
-            <p className="serif" style={{ fontSize: 20, fontWeight: 400, color: '#1a1a1a', lineHeight: 1.2, letterSpacing: '-.01em' }}>
-              Ciata City Mall
-            </p>
-            <p style={{ fontSize: 12, color: '#888', fontWeight: 300, lineHeight: 1.6 }}>
-              Ridgeways &nbsp;·&nbsp; Block B, 2nd Floor
-            </p>
+            <p className="serif" style={{ fontSize: 20, fontWeight: 400, color: '#1a1a1a', lineHeight: 1.4, letterSpacing: '-.01em' }}>
+  Ciata City Mall, Ridgeways · Block B, 2nd Floor
+</p>
           </div>
 
           {/* Buttons */}

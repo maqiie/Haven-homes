@@ -170,7 +170,7 @@ const Footer = () => (
               <svg style={{ width: 14, height: 14, color: '#8B7355', flexShrink: 0 }} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/>
               </svg>
-              <a href="mailto:havenrise.realty25@gmail.com" className="footer-link">havenrise.realty25@gmail.com</a>
+              <a href="mailto:havenriserealtors@gmail.com" className="footer-link">havenriserealtors@gmail.com</a>
             </div>
             {/* Office hours */}
             <div style={{ paddingTop: 20, marginTop: 4, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
