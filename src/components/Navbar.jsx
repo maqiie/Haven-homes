@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-// ── These map exactly to propertyType + type values in properties.js ──────────
 const forSaleTypes = [
   { label: 'All Properties For Sale', to: '/properties?type=for-sale' },
   { label: 'Apartments For Sale',     to: '/properties?type=for-sale&propertyType=apartment' },
@@ -9,19 +8,27 @@ const forSaleTypes = [
   { label: 'Houses For Sale',         to: '/properties?type=for-sale&propertyType=house' },
   { label: 'Townhouses For Sale',     to: '/properties?type=for-sale&propertyType=townhouse' },
 ]
-
 const forRentTypes = [
   { label: 'All Properties To Let',  to: '/properties?type=for-rent' },
   { label: 'Houses To Let',          to: '/properties?type=for-rent&propertyType=house' },
   { label: 'Villas To Let',          to: '/properties?type=for-rent&propertyType=villa' },
 ]
-
 const moreLinks = [
   { label: 'Our Services',           to: '/services',     desc: 'Everything we offer' },
   { label: 'Sell Your Property',     to: '/sellproperty', desc: 'Free valuation & sale' },
   { label: 'Developer Partnerships', to: '/developer',    desc: 'Land & JV opportunities' },
   { label: 'About Us',               to: '/about',        desc: 'Our story & team' },
 ]
+
+const ChevronIcon = ({ open }) => (
+  <svg
+    width="9" height="6" viewBox="0 0 9 6" fill="none"
+    style={{ transition: 'transform 0.25s cubic-bezier(.4,0,.2,1)', transform: open ? 'rotate(180deg)' : 'none', flexShrink: 0 }}
+    aria-hidden="true"
+  >
+    <path d="M1 1l3.5 3.5L8 1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+)
 
 const Navbar = () => {
   const [mobileOpen,    setMobileOpen]    = useState(false)
@@ -34,6 +41,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40)
+    fn()
     window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
   }, [])
@@ -58,172 +66,288 @@ const Navbar = () => {
   const closeMobile    = useCallback(() => { setMobileOpen(false); setMobileSection(null) }, [])
 
   const transparent = isHome && !scrolled && !mobileOpen
-  const navText = transparent ? 'rgba(255,255,255,0.85)' : '#1a1a1a'
-  const bg      = transparent ? 'transparent' : '#F9F7F4'
-  const border  = transparent ? 'transparent' : '#E8E4DF'
-  const shadow  = scrolled && !transparent ? '0 1px 0 #E8E4DF' : 'none'
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap');
-        .nav-link {
-          font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
-          letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
-          transition: color 0.2s; position: relative; padding-bottom: 2px;
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+        :root {
+          --nav-gold:    #8B7355;
+          --nav-dark:    #1a1a1a;
+          --nav-cream:   #F9F7F4;
+          --nav-border:  #E8E4DF;
+          --nav-muted:   #6b6b6b;
+          --nav-hover:   #FAFAF9;
         }
-        .nav-link::after {
-          content: ''; position: absolute; left: 0; bottom: -1px;
-          width: 0; height: 1px; background: #8B7355; transition: width 0.25s ease;
+
+        /* ── Base link ── */
+        .hr-nav-link {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11.5px;
+          font-weight: 500;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          text-decoration: none;
+          position: relative;
+          padding-bottom: 1px;
+          transition: color 0.2s;
+          white-space: nowrap;
         }
-        .nav-link:hover::after { width: 100%; }
-        .dd-wrap  { position: relative; }
-        .dd-panel {
-          position: absolute; top: calc(100% + 12px); left: 50%;
+        .hr-nav-link::after {
+          content: '';
+          position: absolute;
+          left: 0; bottom: -2px;
+          width: 0; height: 1px;
+          background: var(--nav-gold);
+          transition: width 0.28s cubic-bezier(.4,0,.2,1);
+        }
+        .hr-nav-link:hover::after { width: 100%; }
+
+        /* ── Dropdown trigger (button) ── */
+        .hr-nav-btn {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11.5px;
+          font-weight: 500;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          background: none; border: none;
+          cursor: pointer;
+          display: flex; align-items: center; gap: 5px;
+          padding: 0; position: relative; padding-bottom: 1px;
+          transition: color 0.2s;
+        }
+        .hr-nav-btn::after {
+          content: '';
+          position: absolute;
+          left: 0; bottom: -2px;
+          width: 0; height: 1px;
+          background: var(--nav-gold);
+          transition: width 0.28s cubic-bezier(.4,0,.2,1);
+        }
+        .hr-nav-btn:hover::after,
+        .hr-nav-btn[aria-expanded="true"]::after { width: calc(100% - 14px); }
+
+        /* ── Dropdown panels ── */
+        .hr-dd-panel {
+          position: absolute;
+          top: calc(100% + 16px);
+          left: 50%;
           transform: translateX(-50%);
-          background: #fff; border: 1px solid #E8E4DF;
-          box-shadow: 0 12px 40px rgba(0,0,0,0.10); z-index: 200; min-width: 220px;
+          background: #fff;
+          border: 1px solid var(--nav-border);
+          box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+          z-index: 200;
+          min-width: 230px;
+          animation: ddFadeIn 0.18s ease both;
         }
-        .dd-pip {
+        .hr-dd-panel-right {
+          left: auto; right: 0;
+          transform: none;
+          width: 280px;
+        }
+        @keyframes ddFadeIn {
+          from { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+          to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .hr-dd-panel-right {
+          animation: ddFadeInRight 0.18s ease both;
+        }
+        @keyframes ddFadeInRight {
+          from { opacity: 0; transform: translateY(-4px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* pip / caret decoration */
+        .hr-dd-pip {
           position: absolute; top: -5px; left: 50%;
           transform: translateX(-50%) rotate(45deg);
-          width: 9px; height: 9px; background: #fff;
-          border: 1px solid #E8E4DF; border-bottom: none; border-right: none;
+          width: 8px; height: 8px;
+          background: #fff;
+          border: 1px solid var(--nav-border);
+          border-bottom: none; border-right: none;
         }
-        .dd-item {
-          display: block; font-family: 'DM Sans', sans-serif; font-size: 12.5px;
-          font-weight: 400; color: #444; text-decoration: none;
-          padding: 11px 22px; border-bottom: 1px solid #F0EDE8;
-          letter-spacing: 0.03em; transition: color 0.15s, background 0.15s; white-space: nowrap;
+        .hr-dd-pip-right {
+          left: auto; right: 26px;
         }
-        .dd-item:last-child  { border-bottom: none; }
-        .dd-item:hover       { color: #8B7355; background: #FAFAF8; }
-        .dd-more-panel {
-          position: absolute; top: calc(100% + 12px); right: 0;
-          background: #fff; border: 1px solid #E8E4DF;
-          box-shadow: 0 12px 40px rgba(0,0,0,0.10); z-index: 200; width: 280px;
+
+        /* dropdown items */
+        .hr-dd-item {
+          display: block;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 12px; font-weight: 400;
+          color: #444;
+          text-decoration: none;
+          padding: 12px 22px;
+          border-bottom: 1px solid #F2EFEB;
+          letter-spacing: 0.02em;
+          transition: color 0.15s, background 0.15s, padding-left 0.2s;
+          white-space: nowrap;
         }
-        .dd-more-pip {
-          position: absolute; top: -5px; right: 28px;
-          transform: rotate(45deg);
-          width: 9px; height: 9px; background: #fff;
-          border: 1px solid #E8E4DF; border-bottom: none; border-right: none;
+        .hr-dd-item:last-child { border-bottom: none; }
+        .hr-dd-item:hover {
+          color: var(--nav-gold);
+          background: var(--nav-hover);
+          padding-left: 26px;
         }
-        .dd-more-item {
+
+        /* more-style items with description */
+        .hr-dd-more-item {
           display: block; text-decoration: none;
-          padding: 14px 22px; border-bottom: 1px solid #F0EDE8;
+          padding: 14px 22px;
+          border-bottom: 1px solid #F2EFEB;
           transition: background 0.15s;
         }
-        .dd-more-item:last-child { border-bottom: none; }
-        .dd-more-item:hover { background: #FAFAF8; }
-        .dd-more-item:hover .dd-more-title { color: #8B7355; }
-        .dd-more-title {
-          font-family: 'DM Sans', sans-serif; font-size: 12.5px; font-weight: 500;
-          color: #1a1a1a; letter-spacing: 0.03em; display: block; margin-bottom: 2px;
+        .hr-dd-more-item:last-child { border-bottom: none; }
+        .hr-dd-more-item:hover { background: var(--nav-hover); }
+        .hr-dd-more-item:hover .hr-dd-more-title { color: var(--nav-gold); }
+        .hr-dd-more-title {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 12.5px; font-weight: 500;
+          color: var(--nav-dark);
+          letter-spacing: 0.03em;
+          display: block; margin-bottom: 2px;
           transition: color 0.15s;
         }
-        .dd-more-desc {
-          font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 300;
-          color: #aaa; letter-spacing: 0.02em; display: block;
+        .hr-dd-more-desc {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 10.5px; font-weight: 300;
+          color: #b0a898; letter-spacing: 0.02em; display: block;
         }
-        .dd-caret         { width: 10px; height: 10px; transition: transform 0.2s; flex-shrink: 0; }
-        .dd-caret.is-open { transform: rotate(180deg); }
-        .mob-link {
+
+        /* ── Mobile ── */
+        .hr-mob-link {
           display: flex; align-items: center; justify-content: space-between;
-          width: 100%; font-family: 'DM Sans', sans-serif; font-size: 13px;
-          font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
-          text-decoration: none; color: #1a1a1a;
-          padding: 16px 0; border: none; border-bottom: 1px solid #F0EDE8;
+          width: 100%;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 12.5px; font-weight: 500;
+          letter-spacing: 0.13em; text-transform: uppercase;
+          text-decoration: none; color: var(--nav-dark);
+          padding: 16px 0;
+          border: none; border-bottom: 1px solid var(--nav-border);
           background: none; cursor: pointer; text-align: left;
           transition: color 0.2s; line-height: 1;
         }
-        .mob-link:hover { color: #8B7355; }
-        .mob-sub {
-          display: block; font-family: 'DM Sans', sans-serif; font-size: 12px;
-          font-weight: 400; letter-spacing: 0.06em; text-decoration: none; color: #666;
-          padding: 11px 0 11px 18px;
-          border-bottom: 1px solid #F5F3F0; border-left: 2px solid #E8E4DF;
-          transition: color 0.2s, border-left-color 0.2s;
+        .hr-mob-link:hover { color: var(--nav-gold); }
+        .hr-mob-sub {
+          display: block;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 11.5px; font-weight: 400;
+          letter-spacing: 0.04em; text-decoration: none;
+          color: var(--nav-muted);
+          padding: 11px 0 11px 20px;
+          border-bottom: 1px solid #F5F3F0;
+          border-left: 1.5px solid var(--nav-border);
+          transition: color 0.2s, border-left-color 0.2s, padding-left 0.2s;
         }
-        .mob-sub:last-child { border-bottom: none; }
-        .mob-sub:hover { color: #8B7355; border-left-color: #8B7355; }
-        .mob-acc { overflow: hidden; transition: max-height 0.32s ease, opacity 0.28s ease; }
-        @media (max-width: 1280px) {
-          .nav-desktop-row { gap: 20px !important; }
-          .nav-cta         { padding: 9px 16px !important; }
+        .hr-mob-sub:last-child { border-bottom: none; }
+        .hr-mob-sub:hover {
+          color: var(--nav-gold);
+          border-left-color: var(--nav-gold);
+          padding-left: 24px;
         }
-        @media (max-width: 1100px) {
-          .nav-desktop-row { gap: 16px !important; }
+        .hr-mob-acc {
+          overflow: hidden;
+          transition: max-height 0.32s cubic-bezier(.4,0,.2,1), opacity 0.25s ease;
         }
+
+        /* gold accent bar at top of nav (non-transparent) */
+        .hr-nav-accent {
+          position: absolute; top: 0; left: 0; right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, transparent 0%, var(--nav-gold) 40%, #c4a87a 70%, transparent 100%);
+          opacity: 0;
+          transition: opacity 0.35s;
+        }
+        .hr-nav-accent.visible { opacity: 1; }
+
+        /* responsive */
         @media (max-width: 1024px) {
-          .nav-desktop { display: none !important; }
-          .nav-burger  { display: flex !important; }
-          .nav-drawer  { display: block !important; }
+          .hr-nav-desktop { display: none !important; }
+          .hr-nav-burger  { display: flex !important; }
+          .hr-nav-drawer  { display: block !important; }
         }
         @media (max-width: 768px) {
-          .nav-bar   { height: 64px !important; }
-          .logo-word { font-size: 22px !important; }
-          .logo-tag  { font-size: 9px !important; }
+          .hr-nav-bar { height: 64px !important; }
+          .hr-logo-word { font-size: 23px !important; }
         }
         @media (max-width: 640px) {
-          .nav-bar        { height: 60px !important; padding: 0 5vw !important; }
-          .nav-drawer-pad { padding: 6px 5vw 32px !important; }
-          .mob-link       { font-size: 12px !important; padding: 14px 0 !important; }
-          .mob-sub        { font-size: 11px !important; }
+          .hr-nav-bar { height: 60px !important; padding: 0 5vw !important; }
+          .hr-drawer-pad { padding: 6px 5vw 36px !important; }
         }
         @media (max-width: 420px) {
-          .nav-bar        { height: 56px !important; padding: 0 4vw !important; }
-          .logo-word      { font-size: 20px !important; }
-          .logo-tag       { display: none !important; }
-          .nav-drawer-pad { padding: 6px 4vw 28px !important; }
+          .hr-nav-bar { height: 56px !important; padding: 0 4vw !important; }
+          .hr-logo-word { font-size: 21px !important; }
+          .hr-logo-tag { display: none !important; }
+          .hr-drawer-pad { padding: 6px 4vw 28px !important; }
         }
         @media (prefers-reduced-motion: reduce) {
-          .nav-link::after, .mob-acc, .dd-caret { transition: none !important; }
+          .hr-nav-link::after, .hr-nav-btn::after, .hr-mob-acc,
+          .hr-dd-panel, .hr-dd-panel-right { transition: none !important; animation: none !important; }
         }
       `}</style>
 
       <nav ref={navRef} style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        background: bg, borderBottom: `1px solid ${border}`,
-        boxShadow: shadow,
-        transition: 'background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease',
+        background: transparent ? 'transparent' : 'rgba(249,247,244,0.97)',
+        backdropFilter: transparent ? 'none' : 'blur(12px)',
+        WebkitBackdropFilter: transparent ? 'none' : 'blur(12px)',
+        borderBottom: `1px solid ${transparent ? 'transparent' : 'var(--nav-border)'}`,
+        boxShadow: scrolled && !transparent ? '0 1px 0 #E8E4DF' : 'none',
+        transition: 'background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease',
       }}>
-        <div style={{ maxWidth: 1400, margin: '0 auto' }}>
-          <div className="nav-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: 72, padding: '0 6vw' }}>
+        {/* top gold accent line */}
+        <div className={`hr-nav-accent${!transparent ? ' visible' : ''}`} />
 
-            {/* Logo */}
-            <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'baseline', gap: 2, flexShrink: 0 }}>
-              <span className="logo-word" style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', fontSize: 26, fontWeight: 600, color: transparent ? '#fff' : '#1a1a1a', letterSpacing: '-0.02em', lineHeight: 1, transition: 'color 0.35s' }}>HavenRise</span>
-              <span className="logo-tag"  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 10, fontWeight: 400, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8B7355', marginLeft: 7 }}>Realty</span>
+        <div style={{ maxWidth: 1380, margin: '0 auto' }}>
+          <div className="hr-nav-bar" style={{
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+            height: 72, padding: '0 5vw',
+          }}>
+
+            {/* ── Logo ── */}
+            <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'baseline', gap: 0, flexShrink: 0 }}>
+              <span className="hr-logo-word" style={{
+                fontFamily: 'Cormorant Garamond, Georgia, serif',
+                fontSize: 27, fontWeight: 600,
+                color: transparent ? '#fff' : 'var(--nav-dark)',
+                letterSpacing: '-0.02em', lineHeight: 1,
+                transition: 'color 0.4s',
+              }}>HavenRise</span>
+              <span className="hr-logo-tag" style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: 9.5, fontWeight: 400,
+                letterSpacing: '0.28em', textTransform: 'uppercase',
+                color: 'var(--nav-gold)', marginLeft: 8,
+                transition: 'opacity 0.4s',
+              }}>Realty</span>
             </Link>
 
-            {/* ── DESKTOP NAV ── */}
-            <div className="nav-desktop" style={{ display: 'flex' }}>
-              <div className="nav-desktop-row" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
+            {/* ── Desktop Nav ── */}
+            <div className="hr-nav-desktop" style={{ display: 'flex' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
 
-                <Link to="/" className="nav-link" style={{ color: navText }}>Home</Link>
+                <Link to="/" className="hr-nav-link"
+                  style={{ color: transparent ? 'rgba(255,255,255,0.88)' : 'var(--nav-dark)' }}>
+                  Home
+                </Link>
 
-                {/* For Sale dropdown */}
-                <div className="dd-wrap">
-                  <button className="nav-link" onClick={() => toggleDropdown('sale')}
-                    aria-expanded={openDropdown === 'sale'} aria-haspopup="true"
-                    style={{ color: navText, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontFamily: 'inherit' }}>
+                {/* For Sale */}
+                <div style={{ position: 'relative' }}>
+                  <button className="hr-nav-btn"
+                    onClick={() => toggleDropdown('sale')}
+                    aria-expanded={openDropdown === 'sale'}
+                    aria-haspopup="true"
+                    style={{ color: transparent ? 'rgba(255,255,255,0.88)' : 'var(--nav-dark)' }}>
                     For Sale
-                    <svg className={`dd-caret${openDropdown === 'sale' ? ' is-open' : ''}`} viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <ChevronIcon open={openDropdown === 'sale'} />
                   </button>
                   {openDropdown === 'sale' && (
-                    <div className="dd-panel" style={{ width: 260 }} role="menu">
-                      <div className="dd-pip" aria-hidden="true" />
+                    <div className="hr-dd-panel" role="menu">
+                      <div className="hr-dd-pip" />
                       {forSaleTypes.map(item => (
-                        <Link
-                          key={item.to}
-                          to={item.to}
-                          className="dd-item"
-                          role="menuitem"
-                          onClick={() => setOpenDropdown(null)}
-                        >
+                        <Link key={item.to} to={item.to} className="hr-dd-item"
+                          role="menuitem" onClick={() => setOpenDropdown(null)}>
                           {item.label}
                         </Link>
                       ))}
@@ -231,27 +355,22 @@ const Navbar = () => {
                   )}
                 </div>
 
-                {/* To Let dropdown */}
-                <div className="dd-wrap">
-                  <button className="nav-link" onClick={() => toggleDropdown('rent')}
-                    aria-expanded={openDropdown === 'rent'} aria-haspopup="true"
-                    style={{ color: navText, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontFamily: 'inherit' }}>
+                {/* To Let */}
+                <div style={{ position: 'relative' }}>
+                  <button className="hr-nav-btn"
+                    onClick={() => toggleDropdown('rent')}
+                    aria-expanded={openDropdown === 'rent'}
+                    aria-haspopup="true"
+                    style={{ color: transparent ? 'rgba(255,255,255,0.88)' : 'var(--nav-dark)' }}>
                     To Let
-                    <svg className={`dd-caret${openDropdown === 'rent' ? ' is-open' : ''}`} viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <ChevronIcon open={openDropdown === 'rent'} />
                   </button>
                   {openDropdown === 'rent' && (
-                    <div className="dd-panel" style={{ width: 240 }} role="menu">
-                      <div className="dd-pip" aria-hidden="true" />
+                    <div className="hr-dd-panel" role="menu">
+                      <div className="hr-dd-pip" />
                       {forRentTypes.map(item => (
-                        <Link
-                          key={item.to}
-                          to={item.to}
-                          className="dd-item"
-                          role="menuitem"
-                          onClick={() => setOpenDropdown(null)}
-                        >
+                        <Link key={item.to} to={item.to} className="hr-dd-item"
+                          role="menuitem" onClick={() => setOpenDropdown(null)}>
                           {item.label}
                         </Link>
                       ))}
@@ -259,131 +378,200 @@ const Navbar = () => {
                   )}
                 </div>
 
-                <Link to="/sellproperty" className="nav-link" style={{ color: navText }}>Sell</Link>
+                <Link to="/sellproperty" className="hr-nav-link"
+                  style={{ color: transparent ? 'rgba(255,255,255,0.88)' : 'var(--nav-dark)' }}>
+                  Sell
+                </Link>
 
-                {/* More dropdown */}
-                <div className="dd-wrap">
-                  <button className="nav-link" onClick={() => toggleDropdown('more')}
-                    aria-expanded={openDropdown === 'more'} aria-haspopup="true"
-                    style={{ color: navText, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5, fontFamily: 'inherit' }}>
+                {/* More */}
+                <div style={{ position: 'relative' }}>
+                  <button className="hr-nav-btn"
+                    onClick={() => toggleDropdown('more')}
+                    aria-expanded={openDropdown === 'more'}
+                    aria-haspopup="true"
+                    style={{ color: transparent ? 'rgba(255,255,255,0.88)' : 'var(--nav-dark)' }}>
                     More
-                    <svg className={`dd-caret${openDropdown === 'more' ? ' is-open' : ''}`} viewBox="0 0 10 6" fill="none" aria-hidden="true">
-                      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <ChevronIcon open={openDropdown === 'more'} />
                   </button>
                   {openDropdown === 'more' && (
-                    <div className="dd-more-panel" role="menu">
-                      <div className="dd-more-pip" aria-hidden="true" />
+                    <div className="hr-dd-panel hr-dd-panel-right" role="menu">
+                      <div className="hr-dd-pip hr-dd-pip-right" />
                       {moreLinks.map(item => (
-                        <Link key={item.to} to={item.to} className="dd-more-item" role="menuitem" onClick={() => setOpenDropdown(null)}>
-                          <span className="dd-more-title">{item.label}</span>
-                          <span className="dd-more-desc">{item.desc}</span>
+                        <Link key={item.to} to={item.to} className="hr-dd-more-item"
+                          role="menuitem" onClick={() => setOpenDropdown(null)}>
+                          <span className="hr-dd-more-title">{item.label}</span>
+                          <span className="hr-dd-more-desc">{item.desc}</span>
                         </Link>
                       ))}
                     </div>
                   )}
                 </div>
 
-                <Link to="/contact" className="nav-link" style={{ color: navText }}>Contact</Link>
-
-                {/* CTA */}
-                <Link to="/sellproperty" className="nav-cta"
-                  style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', padding: '10px 22px', background: transparent ? 'rgba(255,255,255,0.12)' : '#8B7355', color: '#fff', border: `1px solid ${transparent ? 'rgba(255,255,255,0.3)' : '#8B7355'}`, transition: 'background 0.2s, border-color 0.2s', whiteSpace: 'nowrap' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.borderColor = '#1a1a1a' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = transparent ? 'rgba(255,255,255,0.12)' : '#8B7355'; e.currentTarget.style.borderColor = transparent ? 'rgba(255,255,255,0.3)' : '#8B7355' }}>
-                  Free Valuation
+                <Link to="/contact" className="hr-nav-link"
+                  style={{ color: transparent ? 'rgba(255,255,255,0.88)' : 'var(--nav-dark)' }}>
+                  Contact
                 </Link>
+
+                {/* CTA — Get Started */}
+                <Link to="/contact"
+                  style={{
+                    fontFamily: 'DM Sans, sans-serif',
+                    fontSize: 10.5, fontWeight: 600,
+                    letterSpacing: '0.2em', textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    padding: '10px 20px',
+                    background: transparent ? 'rgba(255,255,255,0.1)' : 'var(--nav-gold)',
+                    color: '#fff',
+                    border: `1px solid ${transparent ? 'rgba(255,255,255,0.35)' : 'var(--nav-gold)'}`,
+                    transition: 'background 0.22s, border-color 0.22s, transform 0.15s',
+                    whiteSpace: 'nowrap',
+                    display: 'inline-block',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.background = 'var(--nav-dark)'
+                    e.currentTarget.style.borderColor = 'var(--nav-dark)'
+                    e.currentTarget.style.transform = 'translateY(-1px)'
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.background = transparent ? 'rgba(255,255,255,0.1)' : 'var(--nav-gold)'
+                    e.currentTarget.style.borderColor = transparent ? 'rgba(255,255,255,0.35)' : 'var(--nav-gold)'
+                    e.currentTarget.style.transform = 'none'
+                  }}>
+                  Get Started
+                </Link>
+
               </div>
             </div>
 
-            {/* Hamburger */}
-            <button className="nav-burger"
+            {/* ── Hamburger ── */}
+            <button
+              className="hr-nav-burger"
               onClick={() => { setMobileOpen(o => !o); setMobileSection(null) }}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileOpen}
-              style={{ display: 'none', background: 'none', border: 'none', cursor: 'pointer', padding: 6, flexDirection: 'column', gap: 5, alignItems: 'center', justifyContent: 'center', width: 36, height: 36 }}>
-              <span style={{ display: 'block', height: 1.5, width: 22, background: transparent ? '#fff' : '#1a1a1a', transition: 'transform 0.25s', transform: mobileOpen ? 'translateY(6.5px) rotate(45deg)' : 'none' }} />
-              <span style={{ display: 'block', height: 1.5, width: 16, background: transparent ? '#fff' : '#1a1a1a', transition: 'opacity 0.25s', opacity: mobileOpen ? 0 : 1 }} />
-              <span style={{ display: 'block', height: 1.5, width: 22, background: transparent ? '#fff' : '#1a1a1a', transition: 'transform 0.25s', transform: mobileOpen ? 'translateY(-6.5px) rotate(-45deg)' : 'none' }} />
+              style={{
+                display: 'none',
+                background: 'none', border: 'none', cursor: 'pointer',
+                padding: 6, flexDirection: 'column', gap: 5,
+                alignItems: 'center', justifyContent: 'center',
+                width: 36, height: 36,
+              }}>
+              {[
+                { transform: mobileOpen ? 'translateY(6.5px) rotate(45deg)' : 'none', width: 22 },
+                { opacity: mobileOpen ? 0 : 1, width: 14 },
+                { transform: mobileOpen ? 'translateY(-6.5px) rotate(-45deg)' : 'none', width: 22 },
+              ].map((s, i) => (
+                <span key={i} style={{
+                  display: 'block', height: 1.5,
+                  background: transparent ? '#fff' : 'var(--nav-dark)',
+                  transition: 'transform 0.28s ease, opacity 0.22s ease',
+                  ...s,
+                }} />
+              ))}
             </button>
+
           </div>
         </div>
 
-        {/* ── MOBILE DRAWER ── */}
-        <div className="nav-drawer"
-          style={{ display: 'none', background: '#F9F7F4', borderTop: '1px solid #E8E4DF', overflow: 'hidden', maxHeight: mobileOpen ? 'calc(100dvh - 72px)' : 0, overflowY: mobileOpen ? 'auto' : 'hidden', transition: 'max-height 0.4s ease', WebkitOverflowScrolling: 'touch' }}>
-          <div className="nav-drawer-pad" style={{ padding: '8px 6vw 32px' }}>
+        {/* ── Mobile Drawer ── */}
+        <div className="hr-nav-drawer" style={{
+          display: 'none',
+          background: 'var(--nav-cream)',
+          borderTop: '1px solid var(--nav-border)',
+          maxHeight: mobileOpen ? 'calc(100dvh - 72px)' : 0,
+          overflowY: mobileOpen ? 'auto' : 'hidden',
+          transition: 'max-height 0.4s cubic-bezier(.4,0,.2,1)',
+          WebkitOverflowScrolling: 'touch',
+        }}>
+          <div className="hr-drawer-pad" style={{ padding: '6px 5vw 36px' }}>
 
-            <Link to="/" onClick={closeMobile} className="mob-link">Home</Link>
+            <Link to="/" onClick={closeMobile} className="hr-mob-link">Home</Link>
 
             {/* For Sale accordion */}
             <div>
-              <button className="mob-link" onClick={() => setMobileSection(s => s === 'sale' ? null : 'sale')} aria-expanded={mobileSection === 'sale'}>
+              <button className="hr-mob-link"
+                onClick={() => setMobileSection(s => s === 'sale' ? null : 'sale')}
+                aria-expanded={mobileSection === 'sale'}>
                 <span>For Sale</span>
-                <svg viewBox="0 0 10 6" fill="none" aria-hidden="true" style={{ width: 10, height: 10, flexShrink: 0, transition: 'transform 0.25s', transform: mobileSection === 'sale' ? 'rotate(180deg)' : 'none' }}>
-                  <path d="M1 1l4 4 4-4" stroke="#8B7355" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <ChevronIcon open={mobileSection === 'sale'} />
               </button>
-              <div className="mob-acc" style={{ maxHeight: mobileSection === 'sale' ? 400 : 0, opacity: mobileSection === 'sale' ? 1 : 0, marginBottom: mobileSection === 'sale' ? 4 : 0 }}>
+              <div className="hr-mob-acc" style={{
+                maxHeight: mobileSection === 'sale' ? 400 : 0,
+                opacity: mobileSection === 'sale' ? 1 : 0,
+                marginBottom: mobileSection === 'sale' ? 6 : 0,
+              }}>
                 {forSaleTypes.map(item => (
-                  <Link key={item.to} to={item.to} onClick={closeMobile} className="mob-sub">{item.label}</Link>
+                  <Link key={item.to} to={item.to} onClick={closeMobile} className="hr-mob-sub">{item.label}</Link>
                 ))}
               </div>
             </div>
 
             {/* To Let accordion */}
             <div>
-              <button className="mob-link" onClick={() => setMobileSection(s => s === 'rent' ? null : 'rent')} aria-expanded={mobileSection === 'rent'}>
+              <button className="hr-mob-link"
+                onClick={() => setMobileSection(s => s === 'rent' ? null : 'rent')}
+                aria-expanded={mobileSection === 'rent'}>
                 <span>To Let</span>
-                <svg viewBox="0 0 10 6" fill="none" aria-hidden="true" style={{ width: 10, height: 10, flexShrink: 0, transition: 'transform 0.25s', transform: mobileSection === 'rent' ? 'rotate(180deg)' : 'none' }}>
-                  <path d="M1 1l4 4 4-4" stroke="#8B7355" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <ChevronIcon open={mobileSection === 'rent'} />
               </button>
-              <div className="mob-acc" style={{ maxHeight: mobileSection === 'rent' ? 240 : 0, opacity: mobileSection === 'rent' ? 1 : 0, marginBottom: mobileSection === 'rent' ? 4 : 0 }}>
+              <div className="hr-mob-acc" style={{
+                maxHeight: mobileSection === 'rent' ? 240 : 0,
+                opacity: mobileSection === 'rent' ? 1 : 0,
+                marginBottom: mobileSection === 'rent' ? 6 : 0,
+              }}>
                 {forRentTypes.map(item => (
-                  <Link key={item.to} to={item.to} onClick={closeMobile} className="mob-sub">{item.label}</Link>
+                  <Link key={item.to} to={item.to} onClick={closeMobile} className="hr-mob-sub">{item.label}</Link>
                 ))}
               </div>
             </div>
 
-            <Link to="/sellproperty" onClick={closeMobile} className="mob-link">Sell Your Property</Link>
+            <Link to="/sellproperty" onClick={closeMobile} className="hr-mob-link">Sell Your Property</Link>
 
             {/* More accordion */}
             <div>
-              <button className="mob-link" onClick={() => setMobileSection(s => s === 'more' ? null : 'more')} aria-expanded={mobileSection === 'more'}>
+              <button className="hr-mob-link"
+                onClick={() => setMobileSection(s => s === 'more' ? null : 'more')}
+                aria-expanded={mobileSection === 'more'}>
                 <span>More</span>
-                <svg viewBox="0 0 10 6" fill="none" aria-hidden="true" style={{ width: 10, height: 10, flexShrink: 0, transition: 'transform 0.25s', transform: mobileSection === 'more' ? 'rotate(180deg)' : 'none' }}>
-                  <path d="M1 1l4 4 4-4" stroke="#8B7355" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <ChevronIcon open={mobileSection === 'more'} />
               </button>
-              <div className="mob-acc" style={{ maxHeight: mobileSection === 'more' ? 300 : 0, opacity: mobileSection === 'more' ? 1 : 0, marginBottom: mobileSection === 'more' ? 4 : 0 }}>
+              <div className="hr-mob-acc" style={{
+                maxHeight: mobileSection === 'more' ? 300 : 0,
+                opacity: mobileSection === 'more' ? 1 : 0,
+                marginBottom: mobileSection === 'more' ? 6 : 0,
+              }}>
                 {moreLinks.map(item => (
-                  <Link key={item.to} to={item.to} onClick={closeMobile} className="mob-sub">{item.label}</Link>
+                  <Link key={item.to} to={item.to} onClick={closeMobile} className="hr-mob-sub">{item.label}</Link>
                 ))}
               </div>
             </div>
 
-            <Link to="/contact" onClick={closeMobile} className="mob-link">Contact</Link>
+            <Link to="/contact" onClick={closeMobile} className="hr-mob-link">Contact</Link>
 
-            <Link to="/sellproperty" onClick={closeMobile}
-              style={{ display: 'block', marginTop: 24, fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', textAlign: 'center', padding: '14px', background: '#8B7355', color: '#fff' }}>
-              Free Property Valuation
-            </Link>
-            <Link to="/contact" onClick={closeMobile}
-              style={{ display: 'block', marginTop: 8, fontFamily: 'DM Sans, sans-serif', fontSize: 11, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', textDecoration: 'none', textAlign: 'center', padding: '14px', background: '#1a1a1a', color: '#fff' }}>
+            {/* Mobile CTA */}
+            <Link to="/contact" onClick={closeMobile} style={{
+              display: 'block', marginTop: 28,
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: 11, fontWeight: 600,
+              letterSpacing: '0.2em', textTransform: 'uppercase',
+              textDecoration: 'none', textAlign: 'center',
+              padding: '15px', background: 'var(--nav-gold)', color: '#fff',
+            }}>
               Get Started
             </Link>
+
           </div>
         </div>
       </nav>
 
+      {/* Spacer for non-home pages */}
       {!isHome && (
         <>
-          <div className="nav-spacer" style={{ height: 72 }} />
+          <div className="hr-nav-spacer" style={{ height: 72 }} />
           <style>{`
-            @media (max-width: 768px) { .nav-spacer { height: 64px !important; } }
-            @media (max-width: 640px) { .nav-spacer { height: 60px !important; } }
-            @media (max-width: 420px) { .nav-spacer { height: 56px !important; } }
+            @media (max-width: 768px) { .hr-nav-spacer { height: 64px !important; } }
+            @media (max-width: 640px) { .hr-nav-spacer { height: 60px !important; } }
+            @media (max-width: 420px) { .hr-nav-spacer { height: 56px !important; } }
           `}</style>
         </>
       )}

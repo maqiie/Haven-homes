@@ -54,7 +54,6 @@ const useSEO = ({ title, description, keywords, ogImage, canonical }) => {
       url: canonical,
       logo: "https://havenrise.co.ke/logo.png",
       image: ogImage,
-      priceRange: "KES 6,900,000 – KES 37,270,000",
       areaServed: "Nairobi, Kenya",
       telephone: "+254700000000",
       email: "hello@havenrise.co.ke",
@@ -77,79 +76,37 @@ const useSEO = ({ title, description, keywords, ogImage, canonical }) => {
 // ─── Constants ────────────────────────────────────────────────────────────────
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnjbzqjn";
 
-// Gallery images pulled from real project assets
+// Gigiri (13,14) and 4BR Townhouse (18,19) removed
 const galleryImages = [
-  { id: 1,  src: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",                                    label: "A-One Pandora",          cat: "Apartment" },
-  { id: 2,  src: "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.webp",                                    label: "A-One Pandora",          cat: "Apartment" },
-  { id: 3,  src: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.webp",                    label: "Panorama West",          cat: "Apartment" },
-  { id: 4,  src: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.webp",                    label: "Panorama West",          cat: "Apartment" },
-  { id: 5,  src: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",                                    label: "Balkis Riverside",       cat: "Apartment" },
-  { id: 6,  src: "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp",                                 label: "Balkis Riverside",       cat: "Apartment" },
-  { id: 7,  src: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",                          label: "Amethyst Springs",       cat: "Apartment" },
-  { id: 8,  src: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.webp",                          label: "Amethyst Springs",       cat: "Apartment" },
-  { id: 9,  src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",                                     label: "Lesto Residences",       cat: "Apartment" },
-  { id: 10, src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp",                                     label: "Lesto Residences",       cat: "Apartment" },
-  { id: 11, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.webp",                    label: "Runda Residence",        cat: "House"     },
-  { id: 12, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM.webp",                    label: "Runda Residence",        cat: "House"     },
-  { id: 13, src: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.webp",           label: "Gigiri Residence",       cat: "House"     },
-  { id: 14, src: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.01.00 PM.webp",           label: "Gigiri Residence",       cat: "House"     },
-  { id: 15, src: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.17 PM.webp",                       label: "Runda Kiambu Home",      cat: "House"     },
-  { id: 16, src: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.31 PM.webp",                       label: "Runda Kiambu Home",      cat: "House"     },
-  { id: 17, src: "/7-bedroom-runda/WhatsApp Image 2026-03-05 at 7.51.21 PM.webp",                            label: "Runda Acacia 7BR",       cat: "House"     },
-  { id: 18, src: "/4-bedroom-townhouse/WhatsApp Image 2026-03-05 at 7.53.53 PM.webp",                        label: "4BR Townhouse",          cat: "House"     },
-  { id: 19, src: "/4-bedroom-townhouse/WhatsApp Image 2026-03-05 at 7.54.05 PM.webp",                        label: "4BR Townhouse",          cat: "House"     },
+  { id: 1,  src: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",                 label: "A-One Pandora",      cat: "Apartment" },
+  { id: 2,  src: "/pandora/WhatsApp Image 2026-03-03 at 6.30.25 PM.webp",                 label: "A-One Pandora",      cat: "Apartment" },
+  { id: 3,  src: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.00.43 PM.webp", label: "Panorama West",      cat: "Apartment" },
+  { id: 4,  src: "/panorama west residence/WhatsApp Image 2026-03-03 at 9.01.04 PM.webp", label: "Panorama West",      cat: "Apartment" },
+  { id: 5,  src: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",                 label: "Balkis Riverside",   cat: "Apartment" },
+  { id: 6,  src: "/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp",              label: "Balkis Riverside",   cat: "Apartment" },
+  { id: 7,  src: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",       label: "Amethyst Springs",   cat: "Apartment" },
+  { id: 8,  src: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.49 PM.webp",       label: "Amethyst Springs",   cat: "Apartment" },
+  { id: 9,  src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",                  label: "Lesto Residences",   cat: "Apartment" },
+  { id: 10, src: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp",                  label: "Lesto Residences",   cat: "Apartment" },
+  { id: 11, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.09 PM.webp", label: "Runda Residence",    cat: "House"     },
+  { id: 12, src: "/Rentals/Runda-5bedroom/WhatsApp Image 2026-03-04 at 10.47.22 PM.webp", label: "Runda Residence",    cat: "House"     },
+  { id: 15, src: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.17 PM.webp",    label: "Runda Kiambu Home",  cat: "House"     },
+  { id: 16, src: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.31 PM.webp",    label: "Runda Kiambu Home",  cat: "House"     },
+  { id: 17, src: "/7-bedroom-runda/WhatsApp Image 2026-03-05 at 7.51.21 PM.webp",         label: "Runda Acacia 7BR",   cat: "House"     },
 ];
 
 const galHeights = [320, 240, 260, 300, 240, 280, 260, 300, 240, 260, 300, 240];
-
 const propFilters = ["All", "For Sale", "For Rent"];
-
 const galTabs = ["All", "Apartment", "House"];
 
-// Locations derived from real listings
+// Gigiri removed
 const locationCards = [
-  {
-    name: "Westlands",
-    description: "Lesto Residences & Panorama West",
-    img: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",
-    tall: false,
-  },
-  {
-    name: "Kilimani",
-    description: "Amethyst Springs",
-    img: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",
-    tall: true,
-  },
-  {
-    name: "Lavington",
-    description: "A-One Pandora",
-    img: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
-    tall: false,
-  },
-  {
-    name: "Riverside",
-    description: "Balkis Residences",
-    img: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",
-    tall: false,
-  },
-  {
-    name: "Runda",
-    description: "Premium Residences & Rentals",
-    img: "/7-bedroom-runda/WhatsApp Image 2026-03-05 at 7.51.21 PM.webp",
-    tall: false,
-  },
-  {
-    name: "Gigiri",
-    description: "Diplomatic Residences",
-    img: "/Rentals/6bedroom-united nations/WhatsApp Image 2026-03-05 at 12.00.42 PM.webp",
-    tall: false,
-  },
-  {
-    name: "Kiambu",
-    description: "Gated Family Homes",
-    img: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.17 PM.webp",
-    tall: false,
-  },
+  { name: "Westlands", description: "Lesto Residences & Panorama West",  img: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",                 tall: false },
+  { name: "Kilimani",  description: "Amethyst Springs",                   img: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",      tall: true  },
+  { name: "Lavington", description: "A-One Pandora",                      img: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",                tall: false },
+  { name: "Riverside", description: "Balkis Residences",                  img: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",                tall: false },
+  { name: "Runda",     description: "Premium Residences & Rentals",       img: "/7-bedroom-runda/WhatsApp Image 2026-03-05 at 7.51.21 PM.webp",        tall: false },
+  { name: "Kiambu",    description: "Gated Family Homes",                 img: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.17 PM.webp",   tall: false },
 ];
 
 const testimonials = [
@@ -182,7 +139,6 @@ const ArrowRight = () => (
 // ─── Home Component ────────────────────────────────────────────────────────────
 const Home = () => {
   const featuredProperties = getFeaturedProperties();
-
   const [activeFilter, setActiveFilter] = useState("all");
   const [formData, setFormData] = useState({
     role: "", intent: "", bedrooms: "", priceMin: "", priceMax: "",
@@ -194,13 +150,12 @@ const Home = () => {
 
   useSEO({
     title: "HavenRise Homes | Luxury Real Estate in Nairobi, Kenya",
-    description: "Nairobi's premier luxury real estate agency. Browse exclusive off-plan and ready properties in Lavington, Westlands, Kilimani, Riverside, Runda, Gigiri and Kiambu.",
+    description: "Nairobi's premier luxury real estate agency. Browse exclusive off-plan and ready properties in Lavington, Westlands, Kilimani, Riverside, Runda and Kiambu.",
     keywords: "luxury real estate Nairobi, apartments for sale Nairobi, Westlands apartments, Lavington off-plan, Kilimani homes, Riverside apartments, Kenya real estate, HavenRise Homes",
     ogImage: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",
     canonical: "https://www.havenriserealtors.com/",
   });
 
-  // Filter featured properties by type
   const filtered = useMemo(() => {
     if (activeFilter === "all") return featuredProperties;
     if (activeFilter === "for sale") return featuredProperties.filter(p => p.type === "for-sale");
@@ -214,11 +169,11 @@ const Home = () => {
   );
 
   const handleFilterChange = useCallback((f) => setActiveFilter(f.toLowerCase()), []);
-  const handleTabChange = useCallback((t) => setGalleryTab(t), []);
-  const openLightbox = useCallback((img) => setLightbox(img), []);
-  const closeLightbox = useCallback(() => setLightbox(null), []);
-  const handleFormField = useCallback((key, val) => setFormData(prev => ({ ...prev, [key]: val })), []);
-  const handleRoleSelect = useCallback((role) => setFormData(prev => ({ ...prev, role })), []);
+  const handleTabChange    = useCallback((t) => setGalleryTab(t), []);
+  const openLightbox       = useCallback((img) => setLightbox(img), []);
+  const closeLightbox      = useCallback(() => setLightbox(null), []);
+  const handleFormField    = useCallback((key, val) => setFormData(prev => ({ ...prev, [key]: val })), []);
+  const handleRoleSelect   = useCallback((role) => setFormData(prev => ({ ...prev, role })), []);
 
   const handleForm = useCallback(async (e) => {
     e.preventDefault();
@@ -265,22 +220,17 @@ const Home = () => {
         .gal-ov { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.72) 0%,transparent 55%); opacity:0; transition:opacity 0.3s; display:flex; align-items:flex-end; padding:20px 22px; }
         .gal-item:hover .gal-ov { opacity:1; }
         .lbx { position:fixed; inset:0; background:rgba(0,0,0,0.94); z-index:1000; display:flex; align-items:center; justify-content:center; padding:24px; cursor:zoom-out; }
-        .policy-row:not(:last-child) { border-bottom:1px solid rgba(255,255,255,0.07); }
         .about-img-hover { transition:transform 0.6s ease; will-change:transform; }
         .about-img-wrap:hover .about-img-hover { transform:scale(1.03); }
         .loc-card img { transition:transform 0.6s ease; will-change:transform; }
         .loc-card:hover img { transform:scale(1.05); }
-        @media (max-width:1200px) { .about-grid { gap:48px !important; } }
         @media (max-width:1024px) {
           .about-grid { grid-template-columns:1fr !important; }
           .about-imgs { grid-template-columns:1fr 1fr !important; height:360px !important; }
-          .about-imgs-tall { display:none !important; }
-          .about-stat-card { left:0 !important; bottom:-24px !important; }
           .two-col { grid-template-columns:1fr !important; gap:48px !important; }
           .four-stat { grid-template-columns:1fr 1fr !important; }
           .loc-grid { grid-template-columns:1fr 1fr !important; grid-template-rows:auto !important; }
           .loc-grid .loc-card[data-tall] { grid-row:auto !important; }
-          .pol-ben { grid-template-columns:1fr 1fr !important; }
           .about-vals { grid-template-columns:1fr 1fr !important; }
           .hero-title { font-size:clamp(44px,8vw,80px) !important; }
         }
@@ -288,19 +238,15 @@ const Home = () => {
           .hero-cta-row { flex-direction:column !important; align-items:flex-start !important; }
           .hero-cta-row a { width:100%; justify-content:center !important; }
           .prop-grid { grid-template-columns:1fr 1fr !important; }
-          .about-grid { padding:40px 6vw 0 !important; }
-          .about-right { margin-top:64px; }
           .contact-grid { grid-template-columns:1fr !important; gap:48px !important; }
           .newsletter-form { flex-direction:column !important; }
           .newsletter-form input { border-right:1px solid rgba(255,255,255,.15) !important; border-bottom:none; }
           .newsletter-form button { width:100%; }
           .stats-strip { flex-direction:column !important; gap:16px !important; }
-          .marquee-inner { padding-left:4vw !important; }
         }
         @media (max-width:640px) {
           .gal-cols { columns:1 !important; }
           .four-stat { grid-template-columns:1fr 1fr !important; }
-          .pol-ben { grid-template-columns:1fr !important; }
           .loc-grid { grid-template-columns:1fr !important; }
           .about-imgs { grid-template-columns:1fr !important; height:auto !important; }
           .about-vals { grid-template-columns:1fr !important; }
@@ -311,15 +257,10 @@ const Home = () => {
           .hero-pad { padding:0 5vw 60px !important; }
           .section-pad { padding:72px 5vw !important; }
           .hero-title { font-size:clamp(38px,12vw,64px) !important; }
-          .marquee-inner { gap:40px !important; }
-          .marquee-inner span { font-size:10px !important; }
-          .pol-quote-row { flex-direction:column !important; align-items:flex-start !important; }
-          .pol-quote-row a { margin-top:20px; width:100%; text-align:center; justify-content:center !important; }
           .filter-row { gap:6px !important; }
           .filter-row button { padding:7px 14px !important; font-size:11px !important; }
           .gallery-header { flex-direction:column !important; align-items:flex-start !important; gap:20px !important; }
           .props-header { flex-direction:column !important; align-items:flex-start !important; gap:20px !important; }
-          .two-col { gap:32px !important; }
           .four-stat div { padding:40px 20px !important; border-right:none !important; border-bottom:1px solid #E8E4DF; }
           .lbx img { max-height:65vh !important; }
           .form-price-grid { grid-template-columns:1fr !important; }
@@ -330,19 +271,10 @@ const Home = () => {
           .gal-tabs-row { gap:4px !important; }
           .prop-stats { gap:14px !important; }
           .about-stat-nums { gap:16px !important; }
-          .pol-fee-card { padding:28px 22px !important; }
-          .pol-fee-card .serif { font-size:40px !important; }
-        }
-        @supports (padding: env(safe-area-inset-bottom)) {
-          .hero-content { padding-bottom:calc(80px + env(safe-area-inset-bottom)); }
         }
         @media (prefers-reduced-motion: reduce) {
           .fade-up { animation:none !important; }
           .prop-img, .gal-img-el, .about-img-hover, .loc-card img { transition:none !important; }
-        }
-        @media print {
-          .lbx, .marquee-bar, .newsletter-section { display:none !important; }
-          body { background:#fff !important; color:#000 !important; }
         }
       `}</style>
 
@@ -383,8 +315,8 @@ const Home = () => {
 
       {/* ══ MARQUEE ═══════════════════════════════════════════════════════════ */}
       <div className="marquee-bar" style={{ background: "#1a1a1a", padding: "20px 0", borderBottom: "1px solid #2a2a2a", overflow: "hidden" }} aria-hidden="true">
-        <div className="marquee-inner" style={{ display: "flex", gap: 80, whiteSpace: "nowrap", paddingLeft: "6vw" }}>
-          {["23 Premium Listings", "7 Prime Locations", "Off-Plan & Ready Units", "Lavington · Westlands · Kilimani · Riverside · Runda · Gigiri · Kiambu", "Flexible Payment Plans Available"].map((item, i) => (
+        <div style={{ display: "flex", gap: 80, whiteSpace: "nowrap", paddingLeft: "6vw" }}>
+          {["23 Premium Listings", "6 Prime Locations", "Off-Plan & Ready Units", "Lavington · Westlands · Kilimani · Riverside · Runda · Kiambu", "Flexible Payment Plans Available"].map((item, i) => (
             <span key={i} style={{ fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(255,255,255,.45)" }}>
               <span style={{ color: "#8B7355", marginRight: 16 }}>◆</span>{item}
             </span>
@@ -418,10 +350,10 @@ const Home = () => {
             </blockquote>
             <div className="about-vals" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, marginBottom: 52 }}>
               {[
-                { icon: "◈", title: "Trust First",       desc: "Every relationship we build is grounded in transparency and integrity." },
-                { icon: "◈", title: "Curated Quality",   desc: "We handpick only properties that meet our exacting standards." },
-                { icon: "◈", title: "Client-Centred",    desc: "Your goals drive every decision our agents make on your behalf." },
-                { icon: "◈", title: "Deep Local Roots",  desc: "Intimate knowledge of Nairobi's premium neighbourhoods." },
+                { icon: "◈", title: "Trust First",      desc: "Every relationship we build is grounded in transparency and integrity." },
+                { icon: "◈", title: "Curated Quality",  desc: "We handpick only properties that meet our exacting standards." },
+                { icon: "◈", title: "Client-Centred",   desc: "Your goals drive every decision our agents make on your behalf." },
+                { icon: "◈", title: "Deep Local Roots", desc: "Intimate knowledge of Nairobi's premium neighbourhoods." },
               ].map(v => (
                 <div key={v.title} style={{ background: "#F0EDE8", padding: "24px 22px" }}>
                   <span style={{ color: "#8B7355", fontSize: 13, display: "block", marginBottom: 10 }} aria-hidden="true">{v.icon}</span>
@@ -434,11 +366,10 @@ const Home = () => {
               Discover Our Full Story <ArrowRight />
             </Link>
           </div>
-          {/* Right — real project images */}
           <div className="about-right" style={{ position: "relative" }}>
             <div className="about-imgs" style={{ display: "grid", gridTemplateColumns: "1.1fr 0.9fr", gridTemplateRows: "280px 220px", gap: 8, height: 516 }}>
               <div className="about-img-wrap" style={{ gridRow: "span 2", overflow: "hidden" }}>
-                <img className="about-img-hover" src="/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp" alt="Amethyst Springs Kilimani — premium apartments" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                <img className="about-img-hover" src="/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp" alt="Amethyst Springs Kilimani" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
               <div className="about-img-wrap" style={{ overflow: "hidden" }}>
                 <img className="about-img-hover" src="/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp" alt="Balkis Residences Riverside" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
@@ -450,7 +381,7 @@ const Home = () => {
             </div>
             <div className="about-stat-card" style={{ position: "absolute", bottom: -36, left: -28, background: "#fff", padding: "28px 30px", border: "1px solid #E8E4DF", boxShadow: "0 8px 40px rgba(0,0,0,0.08)", zIndex: 2 }}>
               <div className="about-stat-nums" style={{ display: "flex", gap: 28 }}>
-                {[["7", "Locations"], ["23+", "Listings"], ["6", "Projects"]].map(([n, l]) => (
+                {[["6", "Locations"], ["23+", "Listings"], ["6", "Projects"]].map(([n, l]) => (
                   <div key={l} style={{ textAlign: "center" }}>
                     <p className="serif" style={{ fontSize: 32, fontWeight: 300, color: "#1a1a1a", lineHeight: 1 }}>{n}</p>
                     <p style={{ fontSize: 10, letterSpacing: ".14em", textTransform: "uppercase", color: "#8B7355", marginTop: 5, fontWeight: 600 }}>{l}</p>
@@ -465,8 +396,8 @@ const Home = () => {
         <div style={{ borderTop: "1px solid #E8E4DF", marginTop: 80 }}>
           <div className="stats-strip" style={{ maxWidth: 1400, margin: "0 auto", padding: "32px 6vw", display: "flex", alignItems: "center", gap: 48, flexWrap: "wrap", justifyContent: "space-between" }}>
             <p style={{ fontSize: 11, letterSpacing: ".2em", textTransform: "uppercase", color: "#aaa", fontWeight: 500 }}>Our Projects</p>
-            {["A-One Pandora", "Panorama West Residence", "Balkis Residences Riverside", "Amethyst Springs", "Lesto Residences", "Premium Residences"].map(award => (
-              <span key={award} style={{ fontSize: 12, color: "#bbb", fontWeight: 300, letterSpacing: ".04em", borderLeft: "1px solid #E8E4DF", paddingLeft: 24 }}>{award}</span>
+            {["A-One Pandora", "Panorama West Residence", "Balkis Residences Riverside", "Amethyst Springs", "Lesto Residences", "Premium Residences"].map(p => (
+              <span key={p} style={{ fontSize: 12, color: "#bbb", fontWeight: 300, letterSpacing: ".04em", borderLeft: "1px solid #E8E4DF", paddingLeft: 24 }}>{p}</span>
             ))}
           </div>
         </div>
@@ -614,7 +545,7 @@ const Home = () => {
 
       {/* ══ FULL-BLEED QUOTE ══════════════════════════════════════════════════ */}
       <section style={{ position: "relative", height: 520, overflow: "hidden" }} aria-labelledby="quote-heading">
-        <img src="/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp" alt="Lesto Residences Westlands — HavenRise commitment to quality" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <img src="/Lesto/WhatsApp Image 2026-03-04 at 10.41.42 PM.webp" alt="Lesto Residences Westlands" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(10,8,6,.62)" }} aria-hidden="true" />
         <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "0 6vw" }}>
           <blockquote>
@@ -626,79 +557,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ══ VIEWING POLICY ════════════════════════════════════════════════════ */}
-      <section aria-labelledby="policy-heading" className="section-pad" style={{ background: "#111010", padding: "100px 6vw" }}>
-        <div style={{ height: 1, background: "linear-gradient(to right,transparent,#8B7355,transparent)", marginBottom: 80 }} aria-hidden="true" />
-        <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-          <div className="two-col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "flex-start", marginBottom: 72 }}>
-            <div>
-              <p style={{ fontSize: 10, letterSpacing: ".22em", textTransform: "uppercase", color: "#8B7355", fontWeight: 600, marginBottom: 20 }}>HavenRise Realty</p>
-              <h2 id="policy-heading" className="serif" style={{ fontSize: "clamp(34px,4vw,56px)", fontWeight: 300, color: "#fff", lineHeight: 1.05, letterSpacing: "-.02em", marginBottom: 28 }}>
-                Our Viewing<br /><em>Policy</em>
-              </h2>
-              <div style={{ width: 40, height: 1, background: "#8B7355", marginBottom: 28 }} aria-hidden="true" />
-              <blockquote>
-                <p className="serif" style={{ fontSize: 20, fontWeight: 300, color: "rgba(255,255,255,.5)", lineHeight: 1.7, fontStyle: "italic", maxWidth: 460 }}>
-                  "We value both our clients' time and property owners' privacy — every viewing is a curated, purposeful experience."
-                </p>
-              </blockquote>
-            </div>
-            <div className="pol-fee-card" style={{ background: "#1a1a1a", padding: "44px 40px", borderTop: "2px solid #8B7355" }}>
-              <p style={{ fontSize: 10, letterSpacing: ".22em", textTransform: "uppercase", color: "#8B7355", fontWeight: 600, marginBottom: 20 }}>Commitment Fee</p>
-              <p className="serif" style={{ fontSize: 52, fontWeight: 300, color: "#fff", lineHeight: 1 }}>KES 3,000</p>
-              <p style={{ fontSize: 13, color: "rgba(255,255,255,.3)", margin: "6px 0", fontWeight: 300 }}>— to —</p>
-              <p className="serif" style={{ fontSize: 52, fontWeight: 300, color: "#fff", lineHeight: 1, marginBottom: 24 }}>5,000</p>
-              <div style={{ height: 1, background: "rgba(255,255,255,.07)", marginBottom: 20 }} />
-              <p style={{ fontSize: 13, color: "rgba(255,255,255,.45)", lineHeight: 1.75, fontWeight: 300 }}>Fully refundable or deductible from commission upon successful purchase. Fee varies by property value.</p>
-            </div>
-          </div>
-          <p style={{ fontSize: 10, letterSpacing: ".22em", textTransform: "uppercase", color: "#8B7355", fontWeight: 600, marginBottom: 28 }}>Before Scheduling a Viewing</p>
-          <div style={{ marginBottom: 64 }}>
-            {[
-              { n: "01", title: "Client Intake Form", desc: "A completed client intake form helps us understand your property needs, preferences, and lifestyle requirements so we can curate the most relevant viewings for you." },
-              { n: "02", title: "Budget &amp; Timeline Confirmation", desc: "Confirmation of your budget range and intended purchase or lease timeline allows our agents to prioritise the most suitable properties for your schedule." },
-              { n: "03", title: "Viewing Commitment Fee (KES 3,000 – 5,000)", desc: "Required prior to scheduling. Refundable or deductible from commission upon purchase — ensuring all parties engage seriously and respectfully." },
-            ].map(item => (
-              <div key={item.n} className="policy-row" style={{ display: "grid", gridTemplateColumns: "56px 1fr", gap: 28, padding: "32px 0" }}>
-                <p className="serif" style={{ fontSize: 38, fontWeight: 300, color: "rgba(255,255,255,.1)", lineHeight: 1 }} aria-hidden="true">{item.n}</p>
-                <div>
-                  <h3 style={{ fontSize: 16, fontWeight: 600, color: "#fff", marginBottom: 10 }} dangerouslySetInnerHTML={{ __html: item.title }} />
-                  <p style={{ fontSize: 14, color: "rgba(255,255,255,.45)", lineHeight: 1.75, fontWeight: 300 }}>{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p style={{ fontSize: 10, letterSpacing: ".22em", textTransform: "uppercase", color: "#8B7355", fontWeight: 600, marginBottom: 24 }}>This Policy Ensures</p>
-          <div className="pol-ben" style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12, marginBottom: 64 }}>
-            {[
-              { title: "Serious Buyer Engagement", desc: "Every viewing is attended by a financially ready, committed client." },
-              { title: "Structured Property Tours", desc: "Organised, guided viewings with full documentation prepared." },
-              { title: "Efficient Time Management", desc: "Respecting everyone's schedule through disciplined, planned appointments." },
-              { title: "Professional Seller Representation", desc: "Sellers confident their property is shown only to vetted buyers." },
-            ].map(item => (
-              <div key={item.title} style={{ background: "#1a1a1a", padding: "28px 24px 32px", borderTop: "1px solid rgba(139,115,85,.4)" }}>
-                <span style={{ color: "#8B7355", fontSize: 14, display: "block", marginBottom: 14 }} aria-hidden="true">✦</span>
-                <h3 style={{ fontSize: 14, fontWeight: 600, color: "#fff", marginBottom: 10, lineHeight: 1.35 }}>{item.title}</h3>
-                <p style={{ fontSize: 13, color: "rgba(255,255,255,.4)", lineHeight: 1.7, fontWeight: 300 }}>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="pol-quote-row" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
-            <div style={{ display: "flex", gap: 20, alignItems: "flex-start", flex: 1 }}>
-              <div style={{ width: 2, background: "#8B7355", flexShrink: 0, alignSelf: "stretch", minHeight: 40 }} aria-hidden="true" />
-              <blockquote>
-                <p className="serif" style={{ fontSize: 19, fontWeight: 300, color: "rgba(255,255,255,.55)", lineHeight: 1.65, fontStyle: "italic" }}>
-                  "We appreciate your understanding as we maintain the highest standards of service for all our clients." — The HavenRise Team
-                </p>
-              </blockquote>
-            </div>
-            <a href="#contact" style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "15px 32px", background: "#8B7355", color: "#fff", fontSize: 11, fontWeight: 600, letterSpacing: ".18em", textTransform: "uppercase", textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0 }}>
-              Book a Viewing →
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* ══ WHY US ════════════════════════════════════════════════════════════ */}
       <section aria-labelledby="why-heading" className="section-pad" style={{ padding: "100px 6vw", maxWidth: 1400, margin: "0 auto" }}>
         <div style={{ marginBottom: 72 }}>
@@ -707,9 +565,9 @@ const Home = () => {
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 40 }}>
           {[
-            { n: "01", title: "Verified Listings",    desc: "Every property is thoroughly vetted and authenticated before listing." },
-            { n: "02", title: "24/7 Support",          desc: "Round-the-clock assistance from our dedicated team of licensed professionals." },
-            { n: "03", title: "Transparent Pricing",   desc: "Competitive, honest rates with zero hidden fees or surprise costs." },
+            { n: "01", title: "Verified Listings",     desc: "Every property is thoroughly vetted and authenticated before listing." },
+            { n: "02", title: "24/7 Support",           desc: "Round-the-clock assistance from our dedicated team of licensed professionals." },
+            { n: "03", title: "Transparent Pricing",    desc: "Competitive, honest rates with zero hidden fees or surprise costs." },
             { n: "04", title: "Flexible Payment Plans", desc: "From 20% down to flexible installments — options tailored to your budget." },
           ].map(f => (
             <div key={f.n} style={{ borderTop: "1px solid #E8E4DF", paddingTop: 32 }}>
@@ -752,8 +610,8 @@ const Home = () => {
 
       {/* ══ STATS ════════════════════════════════════════════════════════════ */}
       <section aria-label="Company statistics" style={{ borderBottom: "1px solid #E8E4DF" }}>
-        <dl className="four-stat" style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}>
-          {[["23+", "Active Listings"], ["7", "Prime Locations"], ["6", "Landmark Projects"], ["KSh 6.9M", "Starting Price"]].map(([num, label]) => (
+        <dl className="four-stat" style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
+          {[["23+", "Active Listings"], ["6", "Prime Locations"], ["6", "Landmark Projects"]].map(([num, label]) => (
             <div key={label} style={{ padding: "60px 40px", textAlign: "center", borderRight: "1px solid #E8E4DF" }}>
               <dd className="serif" style={{ fontSize: 52, fontWeight: 300, lineHeight: 1 }}>{num}</dd>
               <dt style={{ fontSize: 11, letterSpacing: ".15em", textTransform: "uppercase", color: "#8B7355", marginTop: 10, fontWeight: 600 }}>{label}</dt>
@@ -776,18 +634,16 @@ const Home = () => {
             </p>
             <address style={{ fontStyle: "normal", display: "flex", flexDirection: "column", gap: 20 }}>
               {[
-                { label: "Phone", val: "+254728686089", href: "tel:+254728686089" },
-                { label: "Email", val: "havenriserealtors@gmail.com", href: "mailto:havenriserealtors@gmail.com" },
-                { 
-  label: "Office", 
-  val: "Ciata City Mall, Ridgeways, Block B, 2nd floor", 
-  href: "https://www.google.com/maps/search/?api=1&query=Ciata+City+Mall+Ridgeways" 
-},
+                { label: "Phone",  val: "+254728686089",                 href: "tel:+254728686089" },
+                { label: "Email",  val: "havenriserealtors@gmail.com",   href: "mailto:havenriserealtors@gmail.com" },
+                { label: "Office", val: "Ciata City Mall, Ridgeways, Block B, 2nd floor", href: "https://www.google.com/maps/search/?api=1&query=Ciata+City+Mall+Ridgeways" },
               ].map(c => (
                 <div key={c.label} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                   <div>
                     <p style={{ fontSize: 10, letterSpacing: ".15em", textTransform: "uppercase", color: "#8B7355", fontWeight: 600 }}>{c.label}</p>
-                    {c.href ? <a href={c.href} style={{ fontSize: 14, marginTop: 3, display: "block", color: "#1a1a1a", textDecoration: "none" }}>{c.val}</a> : <p style={{ fontSize: 14, marginTop: 3 }}>{c.val}</p>}
+                    {c.href
+                      ? <a href={c.href} style={{ fontSize: 14, marginTop: 3, display: "block", color: "#1a1a1a", textDecoration: "none" }}>{c.val}</a>
+                      : <p style={{ fontSize: 14, marginTop: 3 }}>{c.val}</p>}
                   </div>
                 </div>
               ))}
@@ -862,9 +718,9 @@ const Home = () => {
                   );
                 })()}
                 {[
-                  { key: "name", label: "Full Name", type: "text", placeholder: "Jane Doe", autoComplete: "name" },
-                  { key: "email", label: "Email Address", type: "email", placeholder: "jane@example.com", autoComplete: "email" },
-                  { key: "phone", label: "Phone Number", type: "tel", placeholder: "+254 700 000 000", autoComplete: "tel" },
+                  { key: "name",  label: "Full Name",     type: "text",  placeholder: "Jane Doe",             autoComplete: "name" },
+                  { key: "email", label: "Email Address", type: "email", placeholder: "jane@example.com",     autoComplete: "email" },
+                  { key: "phone", label: "Phone Number",  type: "tel",   placeholder: "+254 700 000 000",     autoComplete: "tel" },
                 ].map(f => (
                   <div key={f.key} style={{ marginBottom: 20 }}>
                     <label htmlFor={`contact-${f.key}`} style={{ display: "block", fontSize: 11, letterSpacing: ".15em", textTransform: "uppercase", color: "#999", marginBottom: 8, fontWeight: 600 }}>{f.label}</label>
@@ -878,7 +734,8 @@ const Home = () => {
                   <textarea id="contact-message" rows={3} placeholder="Tell us what you're looking for..." value={formData.message} onChange={e => handleFormField("message", e.target.value)} style={{ width: "100%", padding: "13px 16px", fontSize: 14, border: "1px solid #E8E4DF", background: "#FAFAFA", color: "#1a1a1a", fontFamily: "inherit", resize: "vertical", transition: "border-color .2s" }} />
                 </div>
                 {formStatus === "error" && <p role="alert" style={{ fontSize: 13, color: "#c0392b", marginBottom: 16 }}>Something went wrong. Please try again or email us directly.</p>}
-                <button type="submit" disabled={formStatus === "sending" || !formData.role} style={{ width: "100%", padding: "16px", background: formData.role ? "#1a1a1a" : "#ccc", color: "#fff", fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", fontWeight: 600, border: "none", cursor: formData.role ? "pointer" : "not-allowed", fontFamily: "inherit", transition: "background .2s" }}>
+                <button type="submit" disabled={formStatus === "sending" || !formData.role}
+                  style={{ width: "100%", padding: "16px", background: formData.role ? "#1a1a1a" : "#ccc", color: "#fff", fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", fontWeight: 600, border: "none", cursor: formData.role ? "pointer" : "not-allowed", fontFamily: "inherit", transition: "background .2s" }}>
                   {formStatus === "sending" ? "Sending…" : "Send Enquiry →"}
                 </button>
                 <p style={{ fontSize: 11, color: "#bbb", marginTop: 14, textAlign: "center" }}>We respond within 24 hours</p>
