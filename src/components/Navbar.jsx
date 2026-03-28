@@ -320,7 +320,7 @@ const Navbar = () => {
                 letterSpacing: '0.28em', textTransform: 'uppercase',
                 color: 'var(--nav-gold)', marginLeft: 8,
                 transition: 'opacity 0.4s',
-              }}>Realty</span>
+              }}>Realtors</span>
             </Link>
 
             {/* ── Desktop Nav ── */}
