@@ -151,8 +151,8 @@ const Footer = () => (
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
               </svg>
               <p style={{ fontSize: 13, fontWeight: 300, lineHeight: 1.65, color: 'rgba(255,255,255,0.4)' }}>
-                Ciata City Mall, Ridgeways<br />
-                Block A, 3rd Floor, Nairobi
+               Ciata City Mall, Ridgeways <br/>
+Block B, 2nd floor
               </p>
             </div>
             {/* Phone */}
