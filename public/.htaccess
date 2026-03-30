@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteBase /
+
+# Allow sitemap
+RewriteRule ^sitemap\.xml$ - [L]
+
+# Allow existing files
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Allow existing directories
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Redirect all other routes to index.html
+RewriteRule . /index.html [L]
