@@ -1,9 +1,289 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en-KE">
   <head>
-    <meta charset="UTF-8" />
-<link rel="icon" type="image/png" href="/logo-favicon.png" />
-    <title>havenrise</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- ═══════════════════════════════════════════════════
+         PRIMARY META — crawlers read this before JS runs
+    ═══════════════════════════════════════════════════ -->
+    <title>HavenRise Realtors | Luxury Real Estate in Nairobi, Kenya</title>
+    <meta name="description" content="Nairobi's premier luxury real estate agency. Browse exclusive off-plan and ready apartments, houses and land in Lavington, Westlands, Kilimani, Riverside, Runda and Kiambu. Properties from KES 6.9M." />
+    <meta name="keywords" content="luxury real estate Nairobi, apartments for sale Nairobi, houses for rent Nairobi, Westlands apartments, Lavington off-plan, Kilimani homes, Riverside apartments, Runda houses, Kenya real estate agent, HavenRise Realtors, off-plan apartments Nairobi, property for sale Kenya" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="HavenRise Realtors" />
+    <meta name="theme-color" content="#1a1a1a" />
+
+    <!-- Geo signals for local search -->
+    <meta name="geo.region" content="KE-30" />
+    <meta name="geo.placename" content="Nairobi, Kenya" />
+    <meta name="geo.position" content="-1.2166;36.8342" />
+    <meta name="ICBM" content="-1.2166, 36.8342" />
+
+    <!-- ═══════════════════════════════════════════════════
+         CANONICAL  (no trailing slash inconsistency)
+    ═══════════════════════════════════════════════════ -->
+    <link rel="canonical" href="https://www.havenriserealtors.com/" />
+
+    <!-- ═══════════════════════════════════════════════════
+         OPEN GRAPH  (WhatsApp, Facebook, LinkedIn previews)
+    ═══════════════════════════════════════════════════ -->
+    <meta property="og:type"           content="website" />
+    <meta property="og:url"            content="https://www.havenriserealtors.com/" />
+    <meta property="og:site_name"      content="HavenRise Realtors" />
+    <meta property="og:locale"         content="en_KE" />
+    <meta property="og:title"          content="HavenRise Realtors | Luxury Real Estate in Nairobi, Kenya" />
+    <meta property="og:description"    content="Nairobi's premier luxury real estate agency. Exclusive off-plan and ready properties in Lavington, Westlands, Kilimani, Riverside, Runda and Kiambu." />
+    <meta property="og:image"          content="https://www.havenriserealtors.com/og-image.jpg" />
+    <meta property="og:image:width"    content="1200" />
+    <meta property="og:image:height"   content="630" />
+    <meta property="og:image:alt"      content="HavenRise Realtors — Luxury Real Estate in Nairobi, Kenya" />
+
+    <!-- ═══════════════════════════════════════════════════
+         TWITTER / X CARD
+    ═══════════════════════════════════════════════════ -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:site"        content="@havenriserealtors" />
+    <meta name="twitter:title"       content="HavenRise Realtors | Luxury Real Estate Nairobi" />
+    <meta name="twitter:description" content="Exclusive off-plan and ready properties in Nairobi's prime neighbourhoods. From KES 6.9M." />
+    <meta name="twitter:image"       content="https://www.havenriserealtors.com/og-image.jpg" />
+
+    <!-- ═══════════════════════════════════════════════════
+         FAVICONS  (put these files in /public)
+    ═══════════════════════════════════════════════════ -->
+    <link rel="icon"             type="image/x-icon"  href="/favicon.ico" />
+    <link rel="icon"             type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon"             type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest"         href="/site.webmanifest" />
+
+    <!-- ═══════════════════════════════════════════════════
+         FONTS  (preconnect = faster LCP = better Core Web Vitals)
+    ═══════════════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload"    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" />
+    </noscript>
+
+    <!-- ═══════════════════════════════════════════════════
+         STRUCTURED DATA — JSON-LD
+         Google reads this directly. No JS needed.
+    ═══════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+
+        {
+          "@type": "RealEstateAgent",
+          "@id": "https://www.havenriserealtors.com/#organization",
+          "name": "HavenRise Realtors",
+          "alternateName": "HavenRise Homes",
+          "description": "Nairobi's premier luxury real estate agency specialising in off-plan and ready properties across Nairobi's most exclusive neighbourhoods.",
+          "url": "https://www.havenriserealtors.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.havenriserealtors.com/logo.png",
+            "width": 200,
+            "height": 60
+          },
+          "image": "https://www.havenriserealtors.com/og-image.jpg",
+          "priceRange": "KES 6,900,000 – KES 37,270,000",
+          "currenciesAccepted": "KES",
+          "areaServed": {
+            "@type": "City",
+            "name": "Nairobi",
+            "sameAs": "https://www.wikidata.org/wiki/Q3870"
+          },
+          "telephone": "+254728686089",
+          "email": "havenriserealtors@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Ciata City Mall, Ridgeways, Block B, 2nd Floor",
+            "addressLocality": "Nairobi",
+            "addressRegion": "Nairobi County",
+            "postalCode": "00100",
+            "addressCountry": "KE"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -1.2166,
+            "longitude": 36.8342
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": "Saturday",
+              "opens": "09:00",
+              "closes": "14:00"
+            }
+          ],
+          "sameAs": [
+            "https://www.instagram.com/havenriserealtors",
+            "https://www.facebook.com/havenriserealtors"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Luxury Real Estate Listings — Nairobi",
+            "itemListElement": [
+              { "@type": "Offer", "name": "A-One Pandora Lavington",       "areaServed": "Lavington, Nairobi" },
+              { "@type": "Offer", "name": "Balkis Residences Riverside",    "areaServed": "Riverside, Nairobi" },
+              { "@type": "Offer", "name": "Amethyst Springs Kilimani",      "areaServed": "Kilimani, Nairobi"  },
+              { "@type": "Offer", "name": "Lesto Residences Westlands",     "areaServed": "Westlands, Nairobi" },
+              { "@type": "Offer", "name": "Panorama West Residence",        "areaServed": "Westlands, Nairobi" }
+            ]
+          }
+        },
+
+        {
+          "@type": "WebSite",
+          "@id": "https://www.havenriserealtors.com/#website",
+          "url": "https://www.havenriserealtors.com/",
+          "name": "HavenRise Realtors",
+          "description": "Luxury real estate listings and property services in Nairobi, Kenya",
+          "publisher": { "@id": "https://www.havenriserealtors.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.havenriserealtors.com/properties?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What areas does HavenRise Realtors cover in Nairobi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "HavenRise Realtors operates across 6 prime Nairobi neighbourhoods: Lavington, Westlands, Kilimani, Riverside, Runda and Kiambu."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the starting price for HavenRise properties?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Properties start from KES 6,900,000. We offer flexible payment plans including options from a 20% deposit."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does HavenRise Realtors have both properties for sale and for rent?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. We offer luxury apartments for sale in off-plan and ready developments, and premium houses for rent in Runda and Kiambu."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I book a viewing with HavenRise Realtors?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Call +254728686089 or email havenriserealtors@gmail.com. A refundable viewing commitment fee of KES 3,000–5,000 applies, fully deductible from your purchase commission."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where is the HavenRise Realtors office?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our office is at Ciata City Mall, Ridgeways, Block B, 2nd Floor, Nairobi, Kenya."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does HavenRise help with selling property in Nairobi?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. HavenRise Realtors offers property listing and selling services. Visit our Sell Property page or contact us directly to list your property with us."
+              }
+            }
+          ]
+        }
+
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════
+         NOSCRIPT FALLBACK
+         Crawlers that don't run JS still get full content
+    ═══════════════════════════════════════════════════ -->
+    <noscript>
+      <style>
+        body { font-family: sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 24px; color: #1a1a1a; }
+        h1 { font-size: 2rem; margin-bottom: 12px; }
+        h2 { font-size: 1.3rem; margin: 32px 0 10px; }
+        p  { line-height: 1.7; color: #444; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 6px; line-height: 1.6; }
+        a  { color: #8B7355; }
+      </style>
+      <div>
+        <h1>HavenRise Realtors — Luxury Real Estate in Nairobi, Kenya</h1>
+        <p>
+          HavenRise Realtors is Nairobi's premier luxury real estate agency, specialising in
+          exclusive off-plan and ready properties across Lavington, Westlands, Kilimani,
+          Riverside, Runda and Kiambu. Properties from KES 6,900,000 with flexible payment plans.
+        </p>
+        <p>
+          📞 <a href="tel:+254728686089">+254 728 686 089</a> &nbsp;|&nbsp;
+          ✉ <a href="mailto:havenriserealtors@gmail.com">havenriserealtors@gmail.com</a> &nbsp;|&nbsp;
+          📍 Ciata City Mall, Ridgeways, Block B, 2nd Floor, Nairobi
+        </p>
+
+        <h2>Off-Plan Apartments for Sale — Nairobi</h2>
+        <ul>
+          <li><a href="/property/1">A-One Pandora — Lavington luxury apartments, from KES 6.9M</a></li>
+          <li><a href="/property/2">Panorama West Residence — Westlands apartments</a></li>
+          <li><a href="/property/3">Balkis Residences Riverside — premium riverside apartments</a></li>
+          <li><a href="/property/4">Amethyst Springs — Kilimani luxury apartments</a></li>
+          <li><a href="/property/5">Lesto Residences — Westlands contemporary apartments</a></li>
+        </ul>
+
+        <h2>Houses &amp; Villas for Rent — Nairobi</h2>
+        <ul>
+          <li><a href="/properties?location=runda">5-bedroom house for rent — Runda, Nairobi</a></li>
+          <li><a href="/properties?location=runda">7-bedroom Runda Acacia residence for rent</a></li>
+          <li><a href="/properties?location=kiambu">4-bedroom gated home — Kiambu Road</a></li>
+        </ul>
+
+        <h2>Neighbourhoods We Serve</h2>
+        <ul>
+          <li><a href="/properties?location=lavington">Lavington properties</a></li>
+          <li><a href="/properties?location=westlands">Westlands properties</a></li>
+          <li><a href="/properties?location=kilimani">Kilimani properties</a></li>
+          <li><a href="/properties?location=riverside">Riverside properties</a></li>
+          <li><a href="/properties?location=runda">Runda properties</a></li>
+          <li><a href="/properties?location=kiambu">Kiambu properties</a></li>
+        </ul>
+
+        <h2>Our Services</h2>
+        <ul>
+          <li>Luxury property sales — off-plan and ready units</li>
+          <li>Premium rental listings across Nairobi</li>
+          <li>Property selling and listing services — <a href="/sellproperty">list your property</a></li>
+          <li>Developer partnerships and off-plan marketing — <a href="/developer">developers page</a></li>
+          <li>Investment advisory and property management</li>
+        </ul>
+
+        <p>Please enable JavaScript to use the full HavenRise Realtors website.</p>
+      </div>
+    </noscript>
+
   </head>
   <body>
     <div id="root"></div>

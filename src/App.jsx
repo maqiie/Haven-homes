@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Analytics } from "@vercel/analytics/react"
+import { HelmetProvider } from 'react-helmet-async'   // ← ADD THIS
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -14,27 +15,27 @@ import Services from './pages/Services'
 
 function App() {
   return (
-    <Router>
-      <div className="flex flex-col min-h-screen">
-        <Navbar />
-        <FloatingChat />
-
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/properties" element={<Properties />} />
-            <Route path="/property/:id" element={<PropertyDetail />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path='/developer' element={<Developers/>} />
-            <Route path='/services' element={<Services/>} />
-            <Route path='/sellproperty' element={<SellProperty/>} />
-
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <HelmetProvider>                          {/* ← WRAP HERE */}
+      <Router>
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <FloatingChat />
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/properties" element={<Properties />} />
+              <Route path="/property/:id" element={<PropertyDetail />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path='/developer' element={<Developers/>} />
+              <Route path='/services' element={<Services/>} />
+              <Route path='/sellproperty' element={<SellProperty/>} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </HelmetProvider>                        
   )
 }
 

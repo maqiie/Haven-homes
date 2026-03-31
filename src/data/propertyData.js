@@ -3055,8 +3055,8 @@ export const properties = [
   title: "Garden Villas Lavington — 5 Bed Luxury Villa",
   location: "Lavington",
   fullAddress: "Chalbi Drive, Garden Villas, Lavington, Nairobi",
-  price: "From KSh 45,000,000", // Update with actual pricing if available
-  priceValue: 45000000,
+  price: "From KSh 110,000,000", 
+  priceValue: 110000000,
   beds: 5,
   baths: 5, // All en-suite
   sqm: null,
@@ -3260,11 +3260,11 @@ export const properties = [
 },
 {
   id: 56,
-  title: "Runda — Iconic 5 Bed Luxury Villa on ½ Acre",
+  title: "Runda — Iconic 4 Bed Luxury Villa ",
   location: "Runda",
   fullAddress: "Runda Estate, Nairobi",
-  price: "KSh 350,000,000",
-  priceValue: 350000000,
+  price: "KSh 48,500,000",
+  priceValue: 48500000,
   beds: 5,
   baths: 5,
   sqm: null,
