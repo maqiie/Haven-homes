@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://havenriserealtors.com/sitemap.xml
+# Block dev/build artefacts
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.js.map$
+
+# Allow all major crawlers to access images for Google Images indexing
+User-agent: Googlebot-Image
+Allow: /
+
+Sitemap: https://www.havenriserealtors.com/sitemap.xml
