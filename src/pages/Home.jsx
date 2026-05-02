@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { getFeaturedProperties } from "../data/propertyData";
 
 // ─── SEO Hook ─────────────────────────────────────────────────────────────────
+// JSON-LD is handled statically in index.html — do NOT inject it here.
+// This hook only manages dynamic meta tags, canonical, and OG tags.
 const useSEO = ({ title, description, keywords, ogImage, canonical }) => {
   useEffect(() => {
     document.title = title;
@@ -25,13 +27,13 @@ const useSEO = ({ title, description, keywords, ogImage, canonical }) => {
     setMeta("theme-color", "#1a1a1a");
     setMeta("geo.region", "KE-30");
     setMeta("geo.placename", "Nairobi, Kenya");
-    setMeta("geo.position", "-1.2921;36.8219");
-    setMeta("ICBM", "-1.2921, 36.8219");
+    setMeta("geo.position", "-1.2166;36.8342");
+    setMeta("ICBM", "-1.2166, 36.8342");
 
-    // Open Graph — ogImage must be an ABSOLUTE URL for social shares
+    // Open Graph
     setMeta("og:title", title, true);
     setMeta("og:description", description, true);
-    setMeta("og:image", ogImage, true);  // pass full https:// URL
+    setMeta("og:image", ogImage, true);
     setMeta("og:image:width", "1200", true);
     setMeta("og:image:height", "630", true);
     setMeta("og:image:alt", "HavenRise Realtors — Luxury Real Estate in Nairobi", true);
@@ -42,7 +44,7 @@ const useSEO = ({ title, description, keywords, ogImage, canonical }) => {
 
     // Twitter Card
     setMeta("twitter:card", "summary_large_image");
-    setMeta("twitter:site", "@havenrisehomes");
+    setMeta("twitter:site", "@havenriserealtors");
     setMeta("twitter:title", title);
     setMeta("twitter:description", description);
     setMeta("twitter:image", ogImage);
@@ -56,156 +58,14 @@ const useSEO = ({ title, description, keywords, ogImage, canonical }) => {
     }
     canonEl.setAttribute("href", canonical);
 
-    // JSON-LD Structured Data
-    let ldEl = document.getElementById("ld-havenrise-home");
-    if (!ldEl) {
-      ldEl = document.createElement("script");
-      ldEl.id = "ld-havenrise-home";
-      ldEl.type = "application/ld+json";
-      document.head.appendChild(ldEl);
-    }
-    ldEl.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "RealEstateAgent",
-          "@id": "https://www.havenriserealtors.com/#organization",
-          "name": "HavenRise Realtors",
-          "description": description,
-          "url": "https://www.havenriserealtors.com/",
-          "logo": {
-            "@type": "ImageObject",
-            // ← REPLACE with your real logo URL once you have one hosted
-            "url": "https://www.havenriserealtors.com/logo.png",
-            "width": 200,
-            "height": 60
-          },
-          "image": ogImage,
-          "priceRange": "KES 6,900,000 – KES 37,270,000",
-          "currenciesAccepted": "KES",
-          "areaServed": [
-            { "@type": "City", "name": "Nairobi", "sameAs": "https://www.wikidata.org/wiki/Q3870" }
-          ],
-          // ← Using your real contact details from the Contact section
-          "telephone": "+254728686089",
-          "email": "havenriserealtors@gmail.com",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Ciata City Mall, Ridgeways, Block B, 2nd Floor",
-            "addressLocality": "Nairobi",
-            "addressRegion": "Nairobi County",
-            "postalCode": "00100",
-            "addressCountry": "KE"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            // ← Ridgeways, Nairobi coordinates
-            "latitude": -1.2166,
-            "longitude": 36.8342
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-              "opens": "08:00",
-              "closes": "18:00"
-            },
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": "Saturday",
-              "opens": "09:00",
-              "closes": "14:00"
-            }
-          ],
-          // ← UPDATE these with your real social handles once confirmed
-          "sameAs": [
-            "https://www.instagram.com/havenriserealtors",
-            "https://www.facebook.com/havenriserealtors"
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Luxury Real Estate Listings Nairobi",
-            "itemListElement": [
-              { "@type": "Offer", "name": "A-One Pandora Lavington", "areaServed": "Lavington, Nairobi" },
-              { "@type": "Offer", "name": "Balkis Residences Riverside", "areaServed": "Riverside, Nairobi" },
-              { "@type": "Offer", "name": "Amethyst Springs Kilimani", "areaServed": "Kilimani, Nairobi" },
-              { "@type": "Offer", "name": "Lesto Residences Westlands", "areaServed": "Westlands, Nairobi" },
-              { "@type": "Offer", "name": "Panorama West Residence", "areaServed": "Westlands, Nairobi" }
-            ]
-          }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://www.havenriserealtors.com/#website",
-          "url": "https://www.havenriserealtors.com/",
-          "name": "HavenRise Realtors",
-          "publisher": { "@id": "https://www.havenriserealtors.com/#organization" },
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": {
-              "@type": "EntryPoint",
-              "urlTemplate": "https://www.havenriserealtors.com/properties?q={search_term_string}"
-            },
-            "query-input": "required name=search_term_string"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What areas does HavenRise Realtors cover in Nairobi?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "HavenRise Realtors operates across 6 prime Nairobi neighbourhoods: Lavington, Westlands, Kilimani, Riverside, Runda and Kiambu."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What is the starting price for HavenRise properties?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Properties start from KES 6,900,000. Flexible payment plans are available, including options from 20% deposit."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Does HavenRise Realtors offer both properties for sale and for rent?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. We offer luxury apartments for sale in off-plan and ready developments, and premium houses for rent in Runda and Kiambu."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I book a property viewing with HavenRise Realtors?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Contact us at +254728686089 or havenriserealtors@gmail.com. Viewings require a refundable commitment fee of KES 3,000–5,000, deductible from your purchase commission."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Where is HavenRise Realtors office located?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Our office is at Ciata City Mall, Ridgeways, Block B, 2nd Floor, Nairobi."
-              }
-            }
-          ]
-        }
-      ]
-    });
-
-    return () => { document.getElementById("ld-havenrise-home")?.remove(); };
+    // ── JSON-LD is in index.html — removed from here to avoid duplicates ──
+    return () => {};
   }, [title, description, keywords, ogImage, canonical]);
 };
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnjbzqjn";
 const SITE_URL = "https://www.havenriserealtors.com";
-
-// How many featured properties to show before "Show More"
 const INITIAL_SHOW = 6;
 
 const galleryImages = [
@@ -231,12 +91,12 @@ const propFilters = ["All", "For Sale", "For Rent"];
 const galTabs = ["All", "Apartment", "House"];
 
 const locationCards = [
-  { name: "Westlands", description: "Lesto Residences & Panorama West",  img: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",               tall: false },
-  { name: "Kilimani",  description: "Amethyst Springs",                   img: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",    tall: true  },
-  { name: "Lavington", description: "A-One Pandora",                      img: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",              tall: false },
-  { name: "Riverside", description: "Balkis Residences",                  img: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",              tall: false },
-  { name: "Runda",     description: "Premium Residences & Rentals",       img: "/7-bedroom-runda/WhatsApp Image 2026-03-05 at 7.51.21 PM.webp",      tall: false },
-  { name: "Kiambu",    description: "Gated Family Homes",                 img: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.17 PM.webp", tall: false },
+  { name: "Westlands",    description: "Lesto Residences & Panorama West",  img: "/Lesto/WhatsApp Image 2026-03-04 at 10.41.32 PM.webp",               tall: false },
+  { name: "Kilimani",     description: "Amethyst Springs & Luna Oak",        img: "/Amethyst-springs/WhatsApp Image 2026-03-04 at 10.26.36 PM.webp",    tall: true  },
+  { name: "Lavington",    description: "A-One Pandora & Garden Villas",      img: "/pandora/WhatsApp Image 2026-03-03 at 6.30.20 PM.webp",              tall: false },
+  { name: "Riverside",    description: "Balkis Residences",                  img: "/Riverside/WhatsApp Image 2024-06-18 at 23.32.35.webp",              tall: false },
+  { name: "Runda",        description: "Premium Residences & Rentals",       img: "/7-bedroom-runda/WhatsApp Image 2026-03-05 at 7.51.21 PM.webp",      tall: false },
+  { name: "Kiambu",       description: "Gated Family Homes",                 img: "/Rentals/runda-kiambu/WhatsApp Image 2026-03-05 at 7.44.17 PM.webp", tall: false },
 ];
 
 const testimonials = [
@@ -269,37 +129,33 @@ const ArrowRight = () => (
 // ─── Home Component ────────────────────────────────────────────────────────────
 const Home = () => {
   const featuredProperties = getFeaturedProperties();
-  const [activeFilter, setActiveFilter]   = useState("all");
-  const [showAllProps, setShowAllProps]   = useState(false);   // ← NEW: show more state
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [showAllProps, setShowAllProps] = useState(false);
   const [formData, setFormData] = useState({
     role: "", intent: "", bedrooms: "", priceMin: "", priceMax: "",
     name: "", email: "", phone: "", message: "",
   });
-  const [formStatus, setFormStatus]   = useState(null);
-  const [galleryTab, setGalleryTab]   = useState("All");
-  const [lightbox, setLightbox]       = useState(null);
+  const [formStatus, setFormStatus] = useState(null);
+  const [galleryTab, setGalleryTab] = useState("All");
+  const [lightbox, setLightbox]     = useState(null);
 
-  // ─── SEO: ogImage must be an absolute URL ────────────────────────────────
   useSEO({
     title: "HavenRise Realtors | Luxury Real Estate in Nairobi, Kenya",
     description:
       "Nairobi's premier luxury real estate agency. Browse exclusive off-plan and ready apartments, houses and land in Lavington, Westlands, Kilimani, Riverside, Runda and Kiambu. Starting from KES 6.9M.",
     keywords:
       "luxury real estate Nairobi, apartments for sale Nairobi, Westlands apartments, Lavington off-plan, Kilimani homes, Riverside apartments, houses for rent Runda, Kenya real estate agent, HavenRise Realtors, off-plan apartments Kenya",
-    // ← ABSOLUTE URL — this is what Open Graph and Twitter Card require
     ogImage: `${SITE_URL}/pandora/WhatsApp%20Image%202026-03-03%20at%206.30.20%20PM.webp`,
     canonical: `${SITE_URL}/`,
   });
 
-  // ─── Filtered properties ─────────────────────────────────────────────────
   const allFiltered = useMemo(() => {
-    if (activeFilter === "all")       return featuredProperties;
-    if (activeFilter === "for sale")  return featuredProperties.filter(p => p.type === "for-sale");
-    if (activeFilter === "for rent")  return featuredProperties.filter(p => p.type === "for-rent");
+    if (activeFilter === "all")      return featuredProperties;
+    if (activeFilter === "for sale") return featuredProperties.filter(p => p.type === "for-sale");
+    if (activeFilter === "for rent") return featuredProperties.filter(p => p.type === "for-rent");
     return featuredProperties;
   }, [activeFilter, featuredProperties]);
 
-  // ── Show only INITIAL_SHOW until user clicks "Show More" ─────────────────
   const filtered = useMemo(
     () => showAllProps ? allFiltered : allFiltered.slice(0, INITIAL_SHOW),
     [allFiltered, showAllProps],
@@ -307,7 +163,6 @@ const Home = () => {
 
   const hasMore = allFiltered.length > INITIAL_SHOW;
 
-  // Reset show-more whenever the filter changes so user always starts fresh
   const handleFilterChange = useCallback((f) => {
     setActiveFilter(f.toLowerCase());
     setShowAllProps(false);
@@ -317,11 +172,11 @@ const Home = () => {
     () => galleryTab === "All" ? galleryImages : galleryImages.filter(i => i.cat === galleryTab),
     [galleryTab],
   );
-  const handleTabChange   = useCallback((t) => setGalleryTab(t), []);
-  const openLightbox      = useCallback((img) => setLightbox(img), []);
-  const closeLightbox     = useCallback(() => setLightbox(null), []);
-  const handleFormField   = useCallback((key, val) => setFormData(prev => ({ ...prev, [key]: val })), []);
-  const handleRoleSelect  = useCallback((role) => setFormData(prev => ({ ...prev, role })), []);
+  const handleTabChange  = useCallback((t) => setGalleryTab(t), []);
+  const openLightbox     = useCallback((img) => setLightbox(img), []);
+  const closeLightbox    = useCallback(() => setLightbox(null), []);
+  const handleFormField  = useCallback((key, val) => setFormData(prev => ({ ...prev, [key]: val })), []);
+  const handleRoleSelect = useCallback((role) => setFormData(prev => ({ ...prev, role })), []);
 
   const handleForm = useCallback(async (e) => {
     e.preventDefault();
@@ -372,7 +227,6 @@ const Home = () => {
         .about-img-wrap:hover .about-img-hover { transform:scale(1.03); }
         .loc-card img { transition:transform 0.6s ease; will-change:transform; }
         .loc-card:hover img { transform:scale(1.05); }
-        /* ── Show More transition ── */
         .prop-card { animation: fadeUp 0.5s ease both; }
         @media (max-width:1024px) {
           .about-grid { grid-template-columns:1fr !important; }
@@ -466,7 +320,7 @@ const Home = () => {
       {/* ══ MARQUEE ═══════════════════════════════════════════════════════════ */}
       <div className="marquee-bar" style={{ background: "#1a1a1a", padding: "20px 0", borderBottom: "1px solid #2a2a2a", overflow: "hidden" }} aria-hidden="true">
         <div style={{ display: "flex", gap: 80, whiteSpace: "nowrap", paddingLeft: "6vw" }}>
-          {["23 Premium Listings", "6 Prime Locations", "Off-Plan & Ready Units", "Lavington · Westlands · Kilimani · Riverside · Runda · Kiambu", "Flexible Payment Plans Available"].map((item, i) => (
+          {["59 Premium Listings", "6 Prime Locations", "Off-Plan & Ready Units", "Lavington · Westlands · Kilimani · Riverside · Runda · Kiambu", "Flexible Payment Plans Available"].map((item, i) => (
             <span key={i} style={{ fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", color: "rgba(255,255,255,.45)" }}>
               <span style={{ color: "#8B7355", marginRight: 16 }}>◆</span>{item}
             </span>
@@ -488,10 +342,10 @@ const Home = () => {
         <div className="about-grid section-pad" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", maxWidth: 1400, margin: "0 auto", padding: "60px 6vw 0" }}>
           <div style={{ paddingRight: "6vw", paddingBottom: 80 }}>
             <p style={{ fontSize: 17, lineHeight: 1.85, color: "#555", fontWeight: 300, marginBottom: 28, maxWidth: 520 }}>
-              HavenRise Realtors is Nairobi's premier real estate agency, specialising in luxury properties and bespoke real estate solutions. We represent a carefully curated portfolio of off-plan and ready developments across Nairobi's most desirable neighbourhoods.
+              HavenRise Realtors is Nairobi's premier real estate agency, specialising in luxury properties and bespoke real estate solutions. We represent a carefully curated portfolio of 59 off-plan and ready developments across Nairobi's most desirable neighbourhoods.
             </p>
             <p style={{ fontSize: 17, lineHeight: 1.85, color: "#555", fontWeight: 300, marginBottom: 48, maxWidth: 520 }}>
-              From the iconic A-One Pandora in Lavington to Balkis Residences in Riverside, and Amethyst Springs in Kilimani — we don't just sell properties, we curate lifestyles.
+              From the iconic A-One Pandora in Lavington to Balkis Residences in Riverside, Amethyst Springs in Kilimani, OSTREA Karen Villas, and Luna Oak in Kilimani — we don't just sell properties, we curate lifestyles.
             </p>
             <blockquote style={{ borderLeft: "2px solid #8B7355", paddingLeft: 24, marginBottom: 48 }}>
               <p className="serif" style={{ fontSize: 22, fontWeight: 300, color: "#1a1a1a", lineHeight: 1.55, fontStyle: "italic" }}>
@@ -525,13 +379,13 @@ const Home = () => {
                 <img className="about-img-hover" src="/Riverside/WhatsApp Image 2026-03-04 at 10.18.33 PM.webp" alt="Balkis Residences Riverside Nairobi" loading="lazy" decoding="async" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
               <div style={{ background: "#1a1a1a", display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: "24px 22px" }}>
-                <p className="serif" style={{ fontSize: 36, fontWeight: 300, color: "#fff", lineHeight: 1 }}>23+</p>
+                <p className="serif" style={{ fontSize: 36, fontWeight: 300, color: "#fff", lineHeight: 1 }}>59+</p>
                 <p style={{ fontSize: 10, letterSpacing: ".18em", textTransform: "uppercase", color: "#8B7355", marginTop: 6, fontWeight: 600 }}>Active Listings</p>
               </div>
             </div>
             <div className="about-stat-card" style={{ position: "absolute", bottom: -36, left: -28, background: "#fff", padding: "28px 30px", border: "1px solid #E8E4DF", boxShadow: "0 8px 40px rgba(0,0,0,0.08)", zIndex: 2 }}>
               <div className="about-stat-nums" style={{ display: "flex", gap: 28 }}>
-                {[["6", "Locations"], ["23+", "Listings"], ["6", "Projects"]].map(([n, l]) => (
+                {[["8+", "Locations"], ["59+", "Listings"], ["8+", "Projects"]].map(([n, l]) => (
                   <div key={l} style={{ textAlign: "center" }}>
                     <p className="serif" style={{ fontSize: 32, fontWeight: 300, color: "#1a1a1a", lineHeight: 1 }}>{n}</p>
                     <p style={{ fontSize: 10, letterSpacing: ".14em", textTransform: "uppercase", color: "#8B7355", marginTop: 5, fontWeight: 600 }}>{l}</p>
@@ -546,7 +400,7 @@ const Home = () => {
         <div style={{ borderTop: "1px solid #E8E4DF", marginTop: 80 }}>
           <div className="stats-strip" style={{ maxWidth: 1400, margin: "0 auto", padding: "32px 6vw", display: "flex", alignItems: "center", gap: 48, flexWrap: "wrap", justifyContent: "space-between" }}>
             <p style={{ fontSize: 11, letterSpacing: ".2em", textTransform: "uppercase", color: "#aaa", fontWeight: 500 }}>Our Projects</p>
-            {["A-One Pandora", "Panorama West Residence", "Balkis Residences Riverside", "Amethyst Springs", "Lesto Residences", "Premium Residences"].map(p => (
+            {["A-One Pandora", "Panorama West", "Balkis Residences", "Amethyst Springs", "Lesto Residences", "Crystal Oak", "Luna Oak", "OSTREA Karen Villas"].map(p => (
               <span key={p} style={{ fontSize: 12, color: "#bbb", fontWeight: 300, letterSpacing: ".04em", borderLeft: "1px solid #E8E4DF", paddingLeft: 24 }}>{p}</span>
             ))}
           </div>
@@ -571,7 +425,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Property grid */}
           <div className="prop-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(320px,1fr))", gap: 24 }}>
             {filtered.map((p, idx) => (
               <article
@@ -584,7 +437,7 @@ const Home = () => {
                 }}
               >
                 <div style={{ position: "relative", height: 280, overflow: "hidden" }}>
-                  <img src={p.image} alt={`${p.title} — ${p.beds} bed property in ${p.location}, Nairobi`} className="prop-img" loading="lazy" decoding="async" width="800" height="560" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  <img src={p.image} alt={`${p.title} — ${p.beds ? p.beds + " bed " : ""}property in ${p.location}, Nairobi`} className="prop-img" loading="lazy" decoding="async" width="800" height="560" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                   <span style={{ position: "absolute", top: 20, left: 20, background: p.type === "for-rent" ? "#8B7355" : "#1a1a1a", color: "#fff", fontSize: 10, letterSpacing: ".15em", textTransform: "uppercase", padding: "6px 14px", fontWeight: 600 }}>
                     {p.type === "for-rent" ? "For Rent" : "For Sale"}
                   </span>
@@ -603,7 +456,7 @@ const Home = () => {
                   </p>
                   <div style={{ height: 1, background: "#F0EDE8", marginBottom: 20 }} />
                   <div className="prop-stats" style={{ display: "flex", gap: 24, marginBottom: 24 }}>
-                    {[{ v: p.beds, l: "Beds" }, { v: p.baths, l: "Baths" }, { v: p.sqm ? `${p.sqm}` : "—", l: "Sq m" }].map(s => (
+                    {[{ v: p.beds ?? "—", l: "Beds" }, { v: p.baths ?? "—", l: "Baths" }, { v: p.sqm ? `${p.sqm}` : "—", l: "Sq m" }].map(s => (
                       <div key={s.l}>
                         <p style={{ fontSize: 16, fontWeight: 600 }}>{s.v}</p>
                         <p style={{ fontSize: 11, color: "#999", marginTop: 2 }}>{s.l}</p>
@@ -621,26 +474,16 @@ const Home = () => {
             ))}
           </div>
 
-          {/* ── Show More / Show Less + View All ─────────────────────────── */}
           <div style={{ textAlign: "center", marginTop: 56, display: "flex", flexDirection: "column", alignItems: "center", gap: 16 }}>
             {hasMore && (
               <button
                 onClick={() => setShowAllProps(v => !v)}
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: 10,
-                  background: "transparent", color: "#1a1a1a",
-                  padding: "15px 40px", fontSize: 12, fontWeight: 600,
-                  letterSpacing: ".15em", textTransform: "uppercase",
-                  border: "1px solid #1a1a1a", cursor: "pointer",
-                  fontFamily: "inherit", transition: "all .2s",
-                }}
+                style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "transparent", color: "#1a1a1a", padding: "15px 40px", fontSize: 12, fontWeight: 600, letterSpacing: ".15em", textTransform: "uppercase", border: "1px solid #1a1a1a", cursor: "pointer", fontFamily: "inherit", transition: "all .2s" }}
                 onMouseEnter={e => { e.currentTarget.style.background = "#1a1a1a"; e.currentTarget.style.color = "#fff"; }}
                 onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#1a1a1a"; }}
                 aria-expanded={showAllProps}
               >
-                {showAllProps
-                  ? `Show Less ↑`
-                  : `Show More (${allFiltered.length - INITIAL_SHOW} more)`}
+                {showAllProps ? `Show Less ↑` : `Show More (${allFiltered.length - INITIAL_SHOW} more)`}
               </button>
             )}
             <Link to="/properties" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#1a1a1a", color: "#fff", padding: "15px 40px", fontSize: 12, fontWeight: 600, letterSpacing: ".15em", textTransform: "uppercase", textDecoration: "none" }}>
@@ -793,7 +636,7 @@ const Home = () => {
       {/* ══ STATS ════════════════════════════════════════════════════════════ */}
       <section aria-label="Company statistics" style={{ borderBottom: "1px solid #E8E4DF" }}>
         <dl className="four-stat" style={{ maxWidth: 1400, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
-          {[["23+", "Active Listings"], ["6", "Prime Locations"], ["6", "Landmark Projects"]].map(([num, label]) => (
+          {[["59+", "Active Listings"], ["8+", "Prime Locations"], ["8+", "Landmark Projects"]].map(([num, label]) => (
             <div key={label} style={{ padding: "60px 40px", textAlign: "center", borderRight: "1px solid #E8E4DF" }}>
               <dd className="serif" style={{ fontSize: 52, fontWeight: 300, lineHeight: 1 }}>{num}</dd>
               <dt style={{ fontSize: 11, letterSpacing: ".15em", textTransform: "uppercase", color: "#8B7355", marginTop: 10, fontWeight: 600 }}>{label}</dt>
@@ -816,8 +659,8 @@ const Home = () => {
             </p>
             <address style={{ fontStyle: "normal", display: "flex", flexDirection: "column", gap: 20 }}>
               {[
-                { label: "Phone",  val: "+254728686089",                                 href: "tel:+254728686089" },
-                { label: "Email",  val: "havenriserealtors@gmail.com",                   href: "mailto:havenriserealtors@gmail.com" },
+                { label: "Phone",  val: "+254728686089",                                  href: "tel:+254728686089" },
+                { label: "Email",  val: "havenriserealtors@gmail.com",                    href: "mailto:havenriserealtors@gmail.com" },
                 { label: "Office", val: "Ciata City Mall, Ridgeways, Block B, 2nd Floor", href: "https://www.google.com/maps/search/?api=1&query=Ciata+City+Mall+Ridgeways+Nairobi" },
               ].map(c => (
                 <div key={c.label}>
@@ -872,8 +715,12 @@ const Home = () => {
                 </div>
                 {formData.intent && (() => {
                   const isBuy = formData.intent === "Buy";
-                  const mins = isBuy ? ["", "Under KES 5M", "KES 5M", "KES 10M", "KES 20M", "KES 40M"] : ["", "Under KES 25K/mo", "KES 25K/mo", "KES 50K/mo", "KES 100K/mo", "KES 200K/mo", "KES 400K/mo"];
-                  const maxs = isBuy ? ["", "KES 10M", "KES 20M", "KES 40M", "KES 80M", "No limit"] : ["", "KES 25K/mo", "KES 50K/mo", "KES 100K/mo", "KES 200K/mo", "KES 400K/mo", "No limit"];
+                  const mins = isBuy
+                    ? ["", "Under KES 5M", "KES 5M", "KES 10M", "KES 20M", "KES 40M"]
+                    : ["", "Under KES 25K/mo", "KES 25K/mo", "KES 50K/mo", "KES 100K/mo", "KES 200K/mo", "KES 400K/mo"];
+                  const maxs = isBuy
+                    ? ["", "KES 10M", "KES 20M", "KES 40M", "KES 80M", "No limit"]
+                    : ["", "KES 25K/mo", "KES 50K/mo", "KES 100K/mo", "KES 200K/mo", "KES 400K/mo", "No limit"];
                   const selStyle = { width: "100%", padding: "11px 28px 11px 13px", fontSize: 13, border: "1px solid #E8E4DF", background: "#FAFAFA", color: "#1a1a1a", fontFamily: "inherit", cursor: "pointer", appearance: "none", backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23aaa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E\")", backgroundRepeat: "no-repeat", backgroundPosition: "right 10px center" };
                   return (
                     <div style={{ marginBottom: 24 }}>
@@ -896,9 +743,9 @@ const Home = () => {
                   );
                 })()}
                 {[
-                  { key: "name",  label: "Full Name",     type: "text",  placeholder: "Jane Doe",          autoComplete: "name" },
-                  { key: "email", label: "Email Address", type: "email", placeholder: "jane@example.com",  autoComplete: "email" },
-                  { key: "phone", label: "Phone Number",  type: "tel",   placeholder: "+254 700 000 000",  autoComplete: "tel" },
+                  { key: "name",  label: "Full Name",     type: "text",  placeholder: "Jane Doe",         autoComplete: "name" },
+                  { key: "email", label: "Email Address", type: "email", placeholder: "jane@example.com", autoComplete: "email" },
+                  { key: "phone", label: "Phone Number",  type: "tel",   placeholder: "+254 700 000 000", autoComplete: "tel" },
                 ].map(f => (
                   <div key={f.key} style={{ marginBottom: 20 }}>
                     <label htmlFor={`contact-${f.key}`} style={{ display: "block", fontSize: 11, letterSpacing: ".15em", textTransform: "uppercase", color: "#999", marginBottom: 8, fontWeight: 600 }}>{f.label}</label>
@@ -911,7 +758,9 @@ const Home = () => {
                   </label>
                   <textarea id="contact-message" rows={3} placeholder="Tell us what you're looking for..." value={formData.message} onChange={e => handleFormField("message", e.target.value)} style={{ width: "100%", padding: "13px 16px", fontSize: 14, border: "1px solid #E8E4DF", background: "#FAFAFA", color: "#1a1a1a", fontFamily: "inherit", resize: "vertical", transition: "border-color .2s" }} />
                 </div>
-                {formStatus === "error" && <p role="alert" style={{ fontSize: 13, color: "#c0392b", marginBottom: 16 }}>Something went wrong. Please try again or email us directly.</p>}
+                {formStatus === "error" && (
+                  <p role="alert" style={{ fontSize: 13, color: "#c0392b", marginBottom: 16 }}>Something went wrong. Please try again or email us directly.</p>
+                )}
                 <button type="submit" disabled={formStatus === "sending" || !formData.role}
                   style={{ width: "100%", padding: "16px", background: formData.role ? "#1a1a1a" : "#ccc", color: "#fff", fontSize: 12, letterSpacing: ".2em", textTransform: "uppercase", fontWeight: 600, border: "none", cursor: formData.role ? "pointer" : "not-allowed", fontFamily: "inherit", transition: "background .2s" }}>
                   {formStatus === "sending" ? "Sending…" : "Send Enquiry →"}
